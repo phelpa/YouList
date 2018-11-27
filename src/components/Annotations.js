@@ -29,7 +29,7 @@ class Annotations extends React.Component {
       <h1 className="Title f4 bg-near-white br3 br--top black-60 mv0 pv2 ph3">Anotações</h1>
       <div className="Annotations pa3 bt b--black-10">
 
-      { isPending ? <h1> Waiting Request </h1> :
+      {/* isPending ? <h1> Waiting Request </h1> :
 
       this.props.annotations.annotationsData[videoId].map((annotation,i) =>
 
@@ -37,7 +37,7 @@ class Annotations extends React.Component {
         {annotation.text}
         </p>
         
-      )}
+      )*/}
 
       
       </div>

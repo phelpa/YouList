@@ -21,8 +21,6 @@ class VideoGrid extends React.Component {
   render(){
 
   const { isPending } = this.props.videos;
-  const { courseId } = this.props.params;
-
 
     return (
 
@@ -30,13 +28,13 @@ class VideoGrid extends React.Component {
         <Nav/> 
         <div className="flex flex-wrap">  
         VideoGrid
-        {/*faz a pagina de videos de acordo com o courseId*/}
-     
-          { /* isPending ? <h1>Waiting request</h1> :
-            
-            
-           this.props.videos.videosData[courseId].map((video,i) => 
-          <Video key={i} i={i} video={video} />)*/}
+
+          {  isPending ? <h1>Waiting request</h1> :
+           
+          //maps the data received from the reducer to the <Video/> component
+           this.props.videos.videosData.map((video,i) => 
+          <Video key={i} i={i} video={video} />)}
+
         </div>
       </div>  
     );

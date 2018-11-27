@@ -7,21 +7,21 @@ const Single = (props) => {
   
   const { params, videos } = props; 
 
-  const { courseId } = params; 
+  const { videoId } = params; 
 
-  /*locating the index on the Array related to the courseId*/
+  /*locating the index on the Array related to the videoId
   const index = videos.videosData[courseId].findIndex((post) =>
   post.code === params.videoId);
   
   const youtubeURL = videos.videosData[courseId][index].display_src
   console.log(youtubeURL, 'oia a youtube Url ai')
 
-  
+  */
   return (
 
     <div className="flex flex-wrap justify-center ">
-      <VideoSingle {...props} youtubeURL={youtubeURL}  /> 
-      <Annotations {...props}/>
+      <VideoSingle {...props}  /> 
+    { /* <Annotations {...props}/>*/ }
     </div>
       
     );

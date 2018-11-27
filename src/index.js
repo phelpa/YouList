@@ -23,7 +23,7 @@ render(
       <Route path="/" component={App}>
         <IndexRoute component={CourseGrid} />
         <Route path="/course/:courseId" component={VideoGrid}></Route>
-        <Route path="/:courseId/:videoId" component={Single}></Route>
+        <Route path="/course/:courseId/video/:videoId" component={Single}></Route>
       </Route>
     </Router>
   </Provider>,
