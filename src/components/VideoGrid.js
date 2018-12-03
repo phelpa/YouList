@@ -13,7 +13,6 @@ class VideoGrid extends React.Component {
   
   componentDidMount() {
     const { courseId } = this.props.params;
-    console.log (courseId, 'oiaaa aiii o courseId')
     this.props.requestVideos(courseId);
     
   }
@@ -41,5 +40,4 @@ class VideoGrid extends React.Component {
   }
 };
 
-/*console.log(this.props.videos.videosData[courseId], 'oia ai os videos')*/
 export default VideoGrid;

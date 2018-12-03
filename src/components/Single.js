@@ -1,30 +1,30 @@
 import React from 'react';
 import VideoSingle from './VideoSingle';
-import Annotations from './Annotations';
+/*import Annotations from './Annotations';*/
 
 
-const Single = (props) => {
-  
-  const { params, videos } = props; 
+class Single extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {}
+  }
 
-  const { videoId } = params; 
+  componentDidMount() {
+    console.log(this.props.params,'params value')
+    
+  }
 
-  /*locating the index on the Array related to the videoId
-  const index = videos.videosData[courseId].findIndex((post) =>
-  post.code === params.videoId);
-  
-  const youtubeURL = videos.videosData[courseId][index].display_src
-  console.log(youtubeURL, 'oia a youtube Url ai')
+  render(){
 
-  */
-  return (
+    return (
 
-    <div className="flex flex-wrap justify-center ">
-      <VideoSingle {...props}  /> 
-    { /* <Annotations {...props}/>*/ }
-    </div>
-      
+      <div className="flex flex-wrap justify-center ">
+        <VideoSingle {...this.props}  /> 
+      { /* <Annotations {...props}/>*/ }
+      </div>
+        
     );
+  }
 };
 
 export default Single;

@@ -13,7 +13,6 @@ const courses = (state=initialStateCourses, action) => {
     case REQUEST_COURSES_PENDING:
       return {...state, isPending:true}
     case REQUEST_COURSES_SUCCESS:
-      console.log('REDUCER RECEBEU A INFORMAÇAO DOS CURSOS')
       return {...state, coursesData:action.payload, isPending:false } 
     case REQUEST_COURSES_FAILED:
       return {...state, error:action.payload} 

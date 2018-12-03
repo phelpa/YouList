@@ -12,7 +12,6 @@ const annotations = (state=initialStateAnnotations, action) => {
     case REQUEST_ANNOTATIONS_PENDING:
       return {...state, isPending:true}
     case REQUEST_ANNOTATIONS_SUCCESS:
-      console.log('REDUCER RECEBEU A INFORMAÇAO DAS ANNOTATIONS')
       return {...state, annotationsData:action.payload, isPending:false } 
     case REQUEST_ANNOTATIONS_FAILED:
       return {...state, error:action.payload} 

@@ -13,8 +13,6 @@ const videos = (state=initialStateVideos, action) => {
     case REQUEST_VIDEOS_PENDING:
       return {...state, isPending:true}
     case REQUEST_VIDEOS_SUCCESS:
-      console.log('REDUCER RECEBEU A INFORMAÇAO DOS VIDEOS')
-      console.log(state,'oia ai o state')
       return {...state, videosData:action.payload, isPending:false } 
     case REQUEST_VIDEOS_FAILED:
       return {...state, error:action.payload} 

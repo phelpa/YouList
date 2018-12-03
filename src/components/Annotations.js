@@ -11,10 +11,10 @@ class Annotations extends React.Component {
   }  
 
   render() {
-  
+  /*
   const { isPending } = this.props.annotations;
   const { videoId } = this.props.params; 
-
+*/
  //locating the array to map the annotations
  /*
   const annotationsArrays = this.props.annotations.annotationsData[videoId];
