@@ -10,17 +10,27 @@ class Single extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.params,'params value')
+    
+    const { videoId } = this.props.params;
+    this.props.requestVideo(videoId)
     
   }
 
   render(){
 
+    const { isPending } = this.props.video;
+
     return (
+    
 
       <div className="flex flex-wrap justify-center ">
-        <VideoSingle {...this.props}  /> 
+
+      { isPending ? <h1>Waiting request</h1> :
+       <VideoSingle {...this.props} /> }
+      
       { /* <Annotations {...props}/>*/ }
+
+
       </div>
         
     );

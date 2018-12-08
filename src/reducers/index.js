@@ -6,6 +6,7 @@ import annotations from './annotations';
 import courses from './courses';
 import video from './video';
 
-const rootReducer = combineReducers({videos, annotations, courses, video, routing: routerReducer});
+
+const rootReducer = combineReducers({video, annotations, courses, videos, routing: routerReducer});
 
 export default rootReducer;

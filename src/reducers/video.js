@@ -4,7 +4,7 @@ const REQUEST_VIDEO_FAILED = 'REQUEST_VIDEO_FAILED';
 
 
 const initialStateVideo =  {
-  isPending: true,
+  isPending: true
 } 
 
 const video = (state=initialStateVideo, action) => {
@@ -13,7 +13,6 @@ const video = (state=initialStateVideo, action) => {
       return {...state, isPending:true}
     case REQUEST_VIDEO_SUCCESS:
       console.log('REDUCER RECEBEU A INFORMAÇAO DO VIDEO')
-      console.log(state,'oia ai o state')
       return {...state, videoData:action.payload, isPending:false } 
     case REQUEST_VIDEO_FAILED:
       return {...state, error:action.payload} 

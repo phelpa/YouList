@@ -3,8 +3,8 @@ const REQUEST_ANNOTATIONS_SUCCESS = 'REQUEST_ANNOTATIONS_SUCCESS';
 const REQUEST_ANNOTATIONS_FAILED = 'REQUEST_ANNOTATIONS_FAILED';
 
 const initialStateAnnotations =  {
-  isPending: true,
-  annotationsData: ['pending']
+  isPending: true
+ 
 } 
 
 const annotations = (state=initialStateAnnotations, action) => {
