@@ -33,7 +33,7 @@ export const requestVideos = (course_id) => (dispatch) => {
 }
 
 
-//------------------------------------------------------
+//---------------------------------------------------------------
 
 
 const REQUEST_VIDEO_PENDING = 'REQUEST_VIDEO_PENDING';
@@ -56,16 +56,18 @@ export const requestVideo = (video_id) => (dispatch) => {
 }
 
 
-//-----------------------------------------------------
+//--------------------------------------------------------------
 
 const REQUEST_ANNOTATIONS_PENDING = 'REQUEST_ANNOTATIONS_PENDING';
 const REQUEST_ANNOTATIONS_SUCCESS = 'REQUEST_ANNOTATIONS_SUCCESS';
 const REQUEST_ANNOTATIONS_FAILED = 'REQUEST_ANNOTATIONS_FAILED';
 
-export const requestAnnotations = () => (dispatch) => {
+export const requestAnnotations = (user_id, video_id) => (dispatch) => {
+
   console.log('dispatching request annotations action')
+
   dispatch({type:REQUEST_ANNOTATIONS_PENDING})
-  fetch('http://localhost:3000/annotations')
+  fetch(`http://localhost:3000/annotations/user/${user_id}/video/${video_id}`) 
   .then(response => response.json())
   .then(data => dispatch ({type:REQUEST_ANNOTATIONS_SUCCESS,payload:data}))
   .catch(error => dispatch({type:REQUEST_ANNOTATIONS_FAILED,payload:error}) )

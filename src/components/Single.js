@@ -1,7 +1,6 @@
 import React from 'react';
 import VideoSingle from './VideoSingle';
-/*import Annotations from './Annotations';*/
-
+import Annotations from './Annotations';
 
 class Single extends React.Component {
   constructor(props){
@@ -13,6 +12,9 @@ class Single extends React.Component {
     
     const { videoId } = this.props.params;
     this.props.requestVideo(videoId)
+
+    const userId = 10
+    this.props.requestAnnotations(userId, videoId)
     
   }
 
@@ -22,15 +24,14 @@ class Single extends React.Component {
 
     return (
     
-
       <div className="flex flex-wrap justify-center ">
 
       { isPending ? <h1>Waiting request</h1> :
-       <VideoSingle {...this.props} /> }
+      <React.Fragment>
+        <VideoSingle {...this.props}/> 
+        <Annotations {...this.props}/>
+      </React.Fragment> }
       
-      { /* <Annotations {...props}/>*/ }
-
-
       </div>
         
     );

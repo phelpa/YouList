@@ -4,7 +4,6 @@ const REQUEST_ANNOTATIONS_FAILED = 'REQUEST_ANNOTATIONS_FAILED';
 
 const initialStateAnnotations =  {
   isPending: true
- 
 } 
 
 const annotations = (state=initialStateAnnotations, action) => {

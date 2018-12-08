@@ -6,15 +6,14 @@ import Main from './Main';
 function mapStateToProps(state) {
   return {
     videos: state.videos,        //gonna be this.props.videos
-    annotations: state.annotations,   //gonna be this.props.annotations
-    courses: state.courses,  //gonna be this.props.courses
+    annotations: state.annotations,  
+    courses: state.courses,  
     video: state.video
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actionCreators, dispatch);
-  
+  return bindActionCreators(actionCreators, dispatch); 
 }
 
 const App = connect(mapStateToProps, mapDispatchToProps)(Main);
