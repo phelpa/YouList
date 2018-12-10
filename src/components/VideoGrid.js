@@ -13,6 +13,7 @@ class VideoGrid extends React.Component {
   
   componentDidMount() {
     const { courseId } = this.props.params;
+    console.log(courseId, 'asasass')
     this.props.requestVideos(courseId);
     
   }

@@ -13,8 +13,8 @@ class Single extends React.Component {
     const { videoId } = this.props.params;
     this.props.requestVideo(videoId)
 
-    const userId = 10
-    this.props.requestAnnotations(userId, videoId)
+    /*const userId = 10*/
+    /*this.props.requestAnnotations(userId, videoId)*/
     
   }
 

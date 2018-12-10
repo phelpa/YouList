@@ -6,28 +6,46 @@ class Annotations extends React.Component {
     this.state = {}
   }
 
+  componentDidMount() {
+
+    const { videoId } = this.props.params;
+    const userId = 10
+    this.props.requestAnnotations(userId, videoId)
+
+    
+  }
+
+
   render() {
-  
+
+  //const {title, annotation} = this.props.annotations.annotationsData[0];
+  const { isPending } = this.props.annotations;
+
   return (
 
+     isPending ? <h1>Waiting request</h1> :
+
+    <React.Fragment>
+   
     <article className="mainDiv vh-75 w-20  br2 ba dark-gray b--black-10 mh1 mv5">
       <h1 className="Title f4 bg-near-white br3 br--top black-60 mv0 pv2 ph3">Annotations</h1>
       <div className="Annotations pa3 bt b--black-10">
 
-        <div className="f6 f5-ns lh-copy measure">
-        {'Title'}
-        </div>
-        <div className="f6 f5-ns lh-copy measure">
-        {'annotation'}
-        </div>
-        
+        <span className="f6 f5-ns lh-copy b measure ph1">
+        {/*title*/} aldair
+        </span>
+        <span className="f6 f5-ns lh-copy measure">
+        {this.props.annotations.annotationsData[0].annotation} pereira
+        </span>
+
 
       </div>
     </article>
-      
-    );
-  }
+    </React.Fragment> 
+    
+  );
+ }
 };
-  
+  //  const {title, annotation} = this.props.annotations.annotationsData[0]
 
 export default Annotations;
