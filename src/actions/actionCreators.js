@@ -42,8 +42,6 @@ const REQUEST_VIDEO_FAILED = 'REQUEST_VIDEO_FAILED';
 
 export const requestVideo = (video_id) => (dispatch) => {
 
-  console.log('1 - dispatching request video action')
-
   dispatch({type:REQUEST_VIDEO_PENDING})
 
   console.log('2 - enviou o dispatch pending ')
@@ -64,7 +62,6 @@ const REQUEST_ANNOTATIONS_FAILED = 'REQUEST_ANNOTATIONS_FAILED';
 
 export const requestAnnotations = (user_id, video_id) => (dispatch) => {
 
-  console.log('dispatching request annotations action')
 
   dispatch({type:REQUEST_ANNOTATIONS_PENDING})
   fetch(`http://localhost:3000/annotations/user/${user_id}/video/${video_id}`) 

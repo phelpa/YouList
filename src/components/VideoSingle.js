@@ -1,6 +1,4 @@
 import React from 'react';
-/*import { Link } from 'react-router';*/
-
 
 class VideoSingle extends React.Component {
   constructor(props){
@@ -22,10 +20,11 @@ class VideoSingle extends React.Component {
    var YT;
    window.onYouTubeIframeAPIReady = function() {
      YT = window.YT;
-     window.player = new YT.Player('player', {
+     window.player = new YT.Player('videoplayer', {
        height: '390',
        width: '640',
        videoId: 'M7lc1UVf-VE',
+       origin:'http://localhost:3001',
        events: {
          
        }
@@ -33,17 +32,28 @@ class VideoSingle extends React.Component {
      });
     
    }
-
+ 
   }
 
+  componentDidUpdate() {
 
+    console.log(window.player,'logging window.player at componentDidUpdate')
+  }
   render(){
+   
+    console.log(window.player,'logging window.player at render')
 
+    
   return (
    //1. The <iframe> (and video player) will replace this <div> tag. 
-    <div id="player"></div>
+    <div id="videoplayer"></div>
+    
     );
   }
 };
+
+//let xunda = window.player.getCurrentTime()
+
+//console.log(xunda)
 
 export default VideoSingle;
