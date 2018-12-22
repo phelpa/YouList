@@ -9,7 +9,7 @@ class Single extends React.Component {
   }
 
   componentDidMount() {
-    
+    //fazer os requests por componentes separados e não esse
     const { videoId } = this.props.params;
     this.props.requestVideo(videoId)
 
@@ -24,9 +24,10 @@ class Single extends React.Component {
 
     return (
     
-      <div className="flex flex-wrap justify-center ">
+      <div className="flex flex-wrap justify-center">
 
       { isPending ? <h1>Waiting request</h1> :
+
       <React.Fragment>
         <VideoSingle {...this.props}/> 
         <Annotations {...this.props}/>

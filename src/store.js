@@ -7,18 +7,8 @@ import thunkMiddleware from 'redux-thunk';
 import rootReducer from './reducers/index';
 
 
-//create an object for the default data
-/*
-const defaultState = {
-    
-  annotations: annotations, //has its own reducer 
-}
-*/
-
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-
-/*const store = createStore(rootReducer, defaultState, applyMiddleware(thunkMiddleware));*/
 
 const store = createStore(
   rootReducer,

@@ -6,20 +6,22 @@ class VideoSingle extends React.Component {
     this.state = {}
   }
 
-  componentDidMount() {
-   // 2. This code loads the IFrame Player API code asynchronously.
+  componentWillMount() {
+
+  // 2. This code loads the IFrame Player API code asynchronously.
    var tag = document.createElement('script');
 
-   tag.src = "https://www.youtube.com/iframe_api";
+   tag.src = "https://www.youtube.com/iframe_api"; 
    var firstScriptTag = document.getElementsByTagName('script')[0];
    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
    // 3. This function creates an <iframe> (and YouTube player)
    //    after the API code downloads.
    
-   var YT;
+   var YT; //declaring outside the function to avoid 'not defined'
    window.onYouTubeIframeAPIReady = function() {
-     YT = window.YT;
+     YT = window.YT; //youtube API expects the YT object to be 
+                     //assigned to the window object
      window.player = new YT.Player('videoplayer', {
        height: '390',
        width: '640',
@@ -28,32 +30,25 @@ class VideoSingle extends React.Component {
        events: {
          
        }
-
+       
      });
-    
    }
- 
   }
 
-  componentDidUpdate() {
-
-    console.log(window.player,'logging window.player at componentDidUpdate')
-  }
   render(){
-   
-    console.log(window.player,'logging window.player at render')
-
     
   return (
-   //1. The <iframe> (and video player) will replace this <div> tag. 
-    <div id="videoplayer"></div>
-    
+    <React.Fragment>
+    <iframe title='iframe' id="videoplayer"
+        width="640" height="360"
+        src="https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1"
+        frameBorder="0"
+    ></iframe>
+
+    </React.Fragment>
     );
   }
 };
 
-//let xunda = window.player.getCurrentTime()
-
-//console.log(xunda)
 
 export default VideoSingle;

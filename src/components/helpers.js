@@ -2,7 +2,6 @@
 /* OLD FUNCTIONAL VERSION OF THE VIDEOSINGLE COMPONENT
 
 
-
 import React from 'react';
 
 
@@ -46,3 +45,47 @@ class VideoSingle extends React.Component {
 export default VideoSingle;
 
 */
+
+
+
+/* OLD SEMI-FUNCTIONAL VERSION OF THE ANNOTATIONS REDUCER
+
+
+const REQUEST_ANNOTATIONS_PENDING = 'REQUEST_ANNOTATIONS_PENDING';
+const REQUEST_ANNOTATIONS_SUCCESS = 'REQUEST_ANNOTATIONS_SUCCESS';
+const REQUEST_ANNOTATIONS_FAILED = 'REQUEST_ANNOTATIONS_FAILED';
+const ADD = 'ADD';
+
+const initialStateAnnotations =  {
+  isPending: true
+} 
+
+const annotations = (state=initialStateAnnotations, action) => {
+  switch(action.type){
+
+    case REQUEST_ANNOTATIONS_PENDING:
+      return {...state, isPending:true}
+    case REQUEST_ANNOTATIONS_SUCCESS:
+      return {...state, annotationsData:action.payload, isPending:false } 
+    case REQUEST_ANNOTATIONS_FAILED:
+      return {...state, error:action.payload}
+
+
+
+    case ADD:
+      
+      return {...state, 
+        annotationsData:[action.annotation]
+      };
+    default:
+      return state;
+  }
+}
+
+
+
+
+export default annotations;
+
+*/
+
