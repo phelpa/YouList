@@ -29,35 +29,38 @@ class Annotations extends React.Component {
   }
 
   render() {
-
+    
+  let sortedAnnotations;
   const { isPending } = this.props.annotations;
 
-  return (
 
+  return (
+    
     isPending  ? <h1>Waiting request</h1> :
 
     <React.Fragment>
+    
     <article className="mainDiv vh-75 w-20  br2 ba dark-gray b--black-10 mh1 mv5">
       <h1 className="Title f4 bg-near-white br3 br--top black-60 mv0 pv2 ph3">Annotations</h1>
       <div className="Annotations pa3 bt b--black-10">
+      {console.log(sortedAnnotations = this.props.annotations.annotationsData.sort((a, b) => a.videotime - b.videotime))}
+      
+      { 
+        sortedAnnotations.map((annotation, i) => {
+        return (
+        <div key={i}>
 
-      {/*
-        <span className="f6 f5-ns lh-copy b measure ph1">
-        {this.props.annotations.annotationsData[0].title}
-        </span>
-        
-        <span className="f6 f5-ns lh-copy measure">
-        {this.props.annotations.annotationsData[0].annotation} 
-        </span>
-
-        <div className="f6 b f5-ns lh-copy measure">
-        {this.props.annotations.time} 
-        </div>
-
-        <div className="f6 f5-ns lh-copy measure">
-        {this.props.annotations.annotation} 
-        </div>
-  */}
+          <span className="f6 f5-ns lh-copy b measure ph1">
+          {annotation.videotime}
+          </span>
+          
+          <span className="f6 f5-ns lh-copy measure">
+          {annotation.annotation} 
+          </span>
+        </div> 
+        )
+      })
+        }
         <form ref="annotationForm" onSubmit={this.submitAnnotation}>
           <input type="text" ref="annotation" placeholder="annotation" 
           className="form-control form-control-alternative" />
