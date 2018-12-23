@@ -6,8 +6,15 @@ class VideoSingle extends React.Component {
     this.state = {}
   }
 
-  componentWillMount() {
+  componentDidMount() {
 
+    const { videoId } = this.props.params;
+    this.props.requestVideo(videoId)
+
+  }  
+    
+  loadYoutubeAPI() {
+  
   // 2. This code loads the IFrame Player API code asynchronously.
    var tag = document.createElement('script');
 
@@ -22,33 +29,36 @@ class VideoSingle extends React.Component {
    window.onYouTubeIframeAPIReady = function() {
      YT = window.YT; //youtube API expects the YT object to be 
                      //assigned to the window object
-     window.player = new YT.Player('videoplayer', {
-       height: '390',
-       width: '640',
-       videoId: 'M7lc1UVf-VE',
-       origin:'http://localhost:3001',
-       events: {
-         
-       }
-       
+     window.player = new YT.Player('videoplayer2', {
+ 
      });
    }
   }
+  
 
   render(){
-    
-  return (
-    <React.Fragment>
-    <iframe title='iframe' id="videoplayer"
-        width="640" height="360"
-        src="https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1"
-        frameBorder="0"
-    ></iframe>
 
+  const { isPending } = this.props.video;
+
+  return (
+
+    isPending  ? <h1>Waiting request</h1> :
+
+
+    <React.Fragment>
+      <iframe title='iframe' id="videoplayer2"
+          src={this.props.video.videoData[0].youtubeurl+'?enablejsapi=1'}
+          frameBorder="0"
+          height='390'
+          width= '640'
+      ></iframe>
+      {this.loadYoutubeAPI() /*calling the youtubeAPI only after the iframe has the urlsource*/}
     </React.Fragment>
     );
   }
 };
 
+//src="https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1" com isso funciona
+//src={this.props.video.videoData[0].youtubeurl /*window.player.getCurrentTime is not a function*/}
 
 export default VideoSingle;

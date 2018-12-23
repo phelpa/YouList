@@ -7,8 +7,6 @@ const initialStateAnnotations =  {
   isPending: true
 } 
 
-
-
 const annotations = (state=initialStateAnnotations, action) => {
   switch(action.type){
 
@@ -33,7 +31,7 @@ const annotations = (state=initialStateAnnotations, action) => {
 
 //sub-reducer to add Annotations
 const postAnnotations = (state=[],action) => {
-  
+
   const {user_id, video_id, annotation,videotime} = action.payload[0]
   
   return [

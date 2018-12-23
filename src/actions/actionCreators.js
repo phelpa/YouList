@@ -81,22 +81,5 @@ export const submitAnnotation = (user_id, video_id, videotime, annotation) => (d
   })
   .then(response => response.json())
   .then(response2 => dispatch ({type:ADD_ANNOTATION,payload:response2})) 
-  /*
-  .then(response => response.json())
-  .then(data => dispatch ({type:ADD,payload:data}))
-  */
   
 };
-/*
-[
-    {
-        "id": 3,
-        "user_id": 10,
-        "video_id": 3,
-        "annotation": "annotation test",
-        "created": "2018-12-21T12:26:30.045Z",
-        "title": null,
-        "videotime": 200
-    }
-]
-*/
