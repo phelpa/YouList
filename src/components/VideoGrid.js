@@ -26,7 +26,6 @@ class VideoGrid extends React.Component {
       <div className="w-100 sans-serif bg-white "> 
         <Nav/> 
         <div className="flex flex-wrap">  
-        VideoGrid
 
           {  isPending ? <h1>Waiting request</h1> :
            

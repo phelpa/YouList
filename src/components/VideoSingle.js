@@ -29,9 +29,7 @@ class VideoSingle extends React.Component {
    window.onYouTubeIframeAPIReady = function() {
      YT = window.YT; //youtube API expects the YT object to be 
                      //assigned to the window object
-     window.player = new YT.Player('videoplayer2', {
- 
-     });
+     window.player = new YT.Player('videoplayer2', {});
    }
   }
   
@@ -52,13 +50,13 @@ class VideoSingle extends React.Component {
           height='390'
           width= '640'
       ></iframe>
-      {this.loadYoutubeAPI() /*calling the youtubeAPI only after the iframe has the urlsource*/}
+      {/*calling the youtubeAPI only after the iframe has the urlsource */}
+      {this.loadYoutubeAPI()}
     </React.Fragment>
     );
   }
 };
 
-//src="https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1" com isso funciona
-//src={this.props.video.videoData[0].youtubeurl /*window.player.getCurrentTime is not a function*/}
+
 
 export default VideoSingle;
