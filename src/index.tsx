@@ -8,7 +8,7 @@ import VideoGrid from './components/VideoGrid';
 import CourseGrid from './components/CourseGrid';
 
 // Import react router deps
-import { Router, Route, IndexRoute, } from 'react-router';
+import { Router, Route, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import store, { history } from './store';
 

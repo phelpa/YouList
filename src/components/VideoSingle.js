@@ -42,21 +42,21 @@ class VideoSingle extends React.Component {
 
     isPending  ? <h1>Waiting request</h1> :
 
-
-    <React.Fragment>
-      <iframe title='iframe' id="videoplayer2"
+    <div className="w-40 vh-75" >
+      <iframe className="w-100 h-100" title='iframe' id="videoplayer2"
           src={this.props.video.videoData[0].youtubeurl+'?enablejsapi=1'}
-          frameBorder="0"
-          height='390'
-          width= '640'
+          frameBorder="0"       
       ></iframe>
       {/*calling the youtubeAPI only after the iframe has the urlsource */}
       {this.loadYoutubeAPI()}
-    </React.Fragment>
+    </div>
     );
   }
 };
 
 
+//height='390'
+//width= '640'
+//document.querySelector(".ytp-time-current").textContent
 
 export default VideoSingle;

@@ -1,6 +1,7 @@
 import React from 'react';
 import VideoSingle from './VideoSingle';
 import Annotations from './Annotations';
+import Nav from './Nav';
 
 class Single extends React.Component {
   constructor(props){
@@ -12,18 +13,16 @@ class Single extends React.Component {
   render(){
 
     return (
-    
-      <div className="flex flex-wrap justify-center">
-
-      <React.Fragment>
-        <VideoSingle {...this.props}/> 
-        <Annotations {...this.props}/>
-      </React.Fragment> 
-      
-      </div>
-        
+      <div>
+        <Nav/>
+          <div className="flex flex-wrap justify-center ">
+            <VideoSingle {...this.props}/> 
+            <Annotations {...this.props}/>
+          </div>
+      </div> 
     );
   }
 };
 
 export default Single;
+//<h1 className="mt2 mb0 baskerville i fw1 f1">YouList</h1>

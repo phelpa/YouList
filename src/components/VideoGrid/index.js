@@ -1,6 +1,6 @@
 import React from 'react';
-import Video from './Video';
-import Nav from './Nav';
+import Video from '../Video';
+import Nav from '../Nav';
 import 'tachyons';
 
 
@@ -27,7 +27,7 @@ class VideoGrid extends React.Component {
         <Nav/> 
         <div className="flex flex-wrap">  
 
-          {  isPending ? <h1>Waiting request</h1> :
+          {  isPending   ? <h1>Waiting request</h1> :
            
           //maps the data received from the reducer to the <Video/> component
            this.props.videos.videosData.map((video,i) => 

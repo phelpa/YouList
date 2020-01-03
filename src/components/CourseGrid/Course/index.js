@@ -1,7 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router';
+//import { ICourse } from '../../../interfaces/ICourse';
 
-const Course = ({ course, i, annotations, params }) => {
+/*
+interface IProps {
+  key: number,
+  course : ICourse
+}
+*/
+
+const Course = ({ course }) => {
  
   return (
      
