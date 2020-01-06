@@ -3,27 +3,30 @@ import Nav from '../Nav';
 import 'tachyons';
 import Course from './Course';
 import coursesApi from '../../services/coursesApi';
+import useApiCall from '../../hooks/apiCall';
+import { ICourse } from '../../interfaces/ICourse'
+
+interface ICourses {
+  courses: Array<ICourse>
+}
 
 const pereira = 10;
 
 const CourseGrid = () => {
   
   const [courses, setCourses] = useState([]);
- 
+  
   useEffect(() => {
     // Create an scoped async function in the hook
-    async function anyNameFunction() {
-      const courses: any = await coursesApi.list(pereira);
+    const courseList = async () => {
+      const courses : any = await coursesApi.list(pereira);
       setCourses(courses);
     }
     // Execute the created function directly
-    anyNameFunction();
+    courseList();
   }, []);
 
-  
  
-  console.log(courses, 'olha o courses ai');
- //  const [user] = useApiCall<IProfile>(() => usersService.getProfile(), []); 
   return (
     <div className="w-100 sans-serif bg-white "> 
       <Nav/> 

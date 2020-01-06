@@ -1,15 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router';
-//import { ICourse } from '../../../interfaces/ICourse';
+import { ICourse } from '../../../interfaces/ICourse';
 
-/*
 interface IProps {
-  key: number,
   course : ICourse
 }
-*/
 
-const Course = ({ course }) => {
+const Course = React.memo(({ course }: IProps) => {
  
   return (
      
@@ -34,7 +31,7 @@ const Course = ({ course }) => {
       
   );
   
-};
+});
 
 export default Course;
 
