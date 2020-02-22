@@ -3,8 +3,8 @@ import Nav from '../Nav';
 import 'tachyons';
 import Course from './Course';
 import coursesApi from '../../services/coursesApi';
-import useApiCall from '../../hooks/apiCall';
 import { ICourse } from '../../interfaces/ICourse'
+import CreateCourse from './CreateCourse/index';
 
 interface ICourses {
   courses: Array<ICourse>
@@ -34,6 +34,7 @@ const CourseGrid = () => {
         {courses && courses.map((course,i) => 
         <Course key={i} course={course} />)
         }
+        <CreateCourse/>
       </div>
     </div>  
   );

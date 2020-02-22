@@ -11,9 +11,11 @@ import CourseGrid from './components/CourseGrid';
 import { Router, Route, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import store, { history } from './store';
+import ModalProvider from './providers/modal/index';
 
 render(
   <Provider store={store}>
+    <ModalProvider>
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={CourseGrid} />
@@ -21,6 +23,8 @@ render(
         <Route path='/course/:courseId/video/:videoId' component={Single}></Route>
       </Route>
     </Router>
+    </ModalProvider>
+
   </Provider>,
   document.getElementById('root')
 );

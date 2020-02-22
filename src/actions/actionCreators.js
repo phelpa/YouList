@@ -1,3 +1,5 @@
+import { baseUrl } from '../constants/endpoint';
+
 const REQUEST_COURSES_PENDING = 'REQUEST_COURSES_PENDING';
 const REQUEST_COURSES_SUCCESS = 'REQUEST_COURSES_SUCCESS'
 const REQUEST_COURSES_FAILED = 'REQUEST_COURSES_FAILED'
@@ -6,7 +8,7 @@ export const requestCourses = (user_id) => (dispatch) => {
 
   dispatch({type:REQUEST_COURSES_PENDING})
 
-  fetch(`http://localhost:3000/courses/user/${user_id}`)
+  fetch(`${baseUrl}/courses/user/${user_id}`)
   .then(response => response.json())
   .then(data => dispatch ({type:REQUEST_COURSES_SUCCESS,payload:data}))
   .catch(error => dispatch({type:REQUEST_COURSES_FAILED,payload:error}) )
@@ -23,7 +25,7 @@ export const requestVideos = (course_id) => (dispatch) => {
 
   dispatch({type:REQUEST_VIDEOS_PENDING})
 
-  fetch(`http://localhost:3000/course/${course_id}/videos`)
+  fetch(`${baseUrl}/course/${course_id}/videos`)
   .then(response => response.json())
   .then(data => dispatch ({type:REQUEST_VIDEOS_SUCCESS,payload:data}))
   .catch(error => dispatch({type:REQUEST_VIDEOS_FAILED,payload:error}) )
@@ -40,7 +42,7 @@ export const requestVideo = (video_id) => (dispatch) => {
 
   dispatch({type:REQUEST_VIDEO_PENDING})
 
-  fetch(`http://localhost:3000/video/${video_id}`)
+  fetch(`${baseUrl}/video/${video_id}`)
   .then(response => response.json())
   .then(data => dispatch ({type:REQUEST_VIDEO_SUCCESS,payload:data}))
   .catch(error => dispatch({type:REQUEST_VIDEO_FAILED,payload:error}) )
@@ -56,7 +58,7 @@ const REQUEST_ANNOTATIONS_FAILED = 'REQUEST_ANNOTATIONS_FAILED';
 export const requestAnnotations = (user_id, video_id) => (dispatch) => {
 
   dispatch({type:REQUEST_ANNOTATIONS_PENDING})
-  fetch(`http://localhost:3000/annotations/user/${user_id}/video/${video_id}`) 
+  fetch(`${baseUrl}/annotations/user/${user_id}/video/${video_id}`) 
   .then(response => response.json())
   .then(data => dispatch ({type:REQUEST_ANNOTATIONS_SUCCESS,payload:data}))
   .catch(error => dispatch({type:REQUEST_ANNOTATIONS_FAILED,payload:error}) )
@@ -69,7 +71,7 @@ const ADD_ANNOTATION = 'ADD_ANNOTATION';
 export const submitAnnotation = (user_id, video_id, videotime, annotation) => (dispatch) => {
   
   console.log('dentro da função action creator')
-  fetch('http://localhost:3000/annotations',{
+  fetch(`${baseUrl}/annotations`,{
     method: 'post',
     headers: {'Content-Type': 'application/json'},
     body:JSON.stringify({
