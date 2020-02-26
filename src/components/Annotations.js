@@ -68,11 +68,11 @@ class Annotations extends React.Component {
         return (
         <div className="mv2" key={i}>
 
-          <span className="f6 f5-ns lh-copy b measure ph1 avenir" >
+          <span className="f6 f5-ns lh-copy b measure ph1" >
           {this.secondsToMinutes(annotation.videotime)}
           </span>
           
-          <span className="f6 f5-ns lh-copy fs-normal avenir measure">
+          <span className="f6 f5-ns lh-copy fs-normal measure">
           {annotation.annotation} 
           </span>
         </div> 

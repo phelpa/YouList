@@ -1,8 +1,6 @@
 import React from 'react';
 import Video from '../Video';
 import Nav from '../Nav';
-import 'tachyons';
-
 
 class VideoGrid extends React.Component {
   constructor(props){
@@ -23,7 +21,7 @@ class VideoGrid extends React.Component {
 
     return (
 
-      <div className="w-100 sans-serif bg-white "> 
+      <div className="w-100 bg-white "> 
         <Nav/> 
         <div className="flex flex-wrap">  
 

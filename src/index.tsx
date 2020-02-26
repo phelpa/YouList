@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { MuiThemeProvider } from '@material-ui/core';
 
 // Import Components
 import App from './components/App';
@@ -12,9 +13,17 @@ import { Router, Route, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import store, { history } from './store';
 import ModalProvider from './providers/modal/index';
+import { theme } from './assets/theme/';
+import { defaultFont} from './assets/theme';
+
+import './reset.css';
+import 'tachyons';
+import './index.css';
 
 render(
   <Provider store={store}>
+    <MuiThemeProvider theme={defaultFont}>
+    <MuiThemeProvider theme={theme}>
     <ModalProvider>
     <Router history={history}>
       <Route path="/" component={App}>
@@ -24,7 +33,8 @@ render(
       </Route>
     </Router>
     </ModalProvider>
-
+    </MuiThemeProvider>
+    </MuiThemeProvider>
   </Provider>,
   document.getElementById('root')
 );

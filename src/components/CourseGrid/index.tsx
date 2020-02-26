@@ -4,7 +4,8 @@ import 'tachyons';
 import Course from './Course';
 import coursesApi from '../../services/coursesApi';
 import { ICourse } from '../../interfaces/ICourse'
-import CreateCourse from './CreateCourse/index';
+import CreateCourse from './CreateCourse/';
+import CreateCourseModal from './CreateCourseModal';
 
 interface ICourses {
   courses: Array<ICourse>
@@ -28,13 +29,14 @@ const CourseGrid = () => {
 
  
   return (
-    <div className="w-100 sans-serif bg-white "> 
+    <div className="w-100 bg-white "> 
       <Nav/> 
       <div className="flex flex-wrap">  
         {courses && courses.map((course,i) => 
         <Course key={i} course={course} />)
         }
         <CreateCourse/>
+        <CreateCourseModal/>
       </div>
     </div>  
   );

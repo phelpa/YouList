@@ -9,13 +9,18 @@ function modalReducer(state: any, action: IAction) {
     case 'OPEN_CREATE_COURSE': {
       return { isOpen: true }
     }
+    case 'CLOSE_CREATE_COURSE': {
+      return { isOpen: false }
+    }
     default:
       return;
   }
 }
 
 type IAction = {
-  type: 'OPEN_CREATE_COURSE'
+  type:
+   'OPEN_CREATE_COURSE'|
+   'CLOSE_CREATE_COURSE'
 };
 type IDispatch = (action: IAction) => void
 type IState = {

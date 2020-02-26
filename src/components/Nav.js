@@ -6,7 +6,7 @@ const Nav = (props) => {
  
   return (
 
-    <header className="bg-white black-80 tc pv4 avenir">
+    <header className="bg-white black-80 tc pv4">
       {<a className="bg-black-80 ba b--black dib pa3 w2 h2 br-100" href="/"> 
       </a>}
       {/*<a className="circle bw4 bg-white-80 ba b--black dib pa5 w4 h4 br-100" href="/"> 
