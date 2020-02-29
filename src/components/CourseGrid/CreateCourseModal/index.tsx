@@ -4,16 +4,17 @@ import { useModalState } from '../../../providers/modal/';
 import { useModalDispatch } from '../../../providers/modal/';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
 import { Field, Form, Formik } from 'formik';
 import TextFormField from '../../Shared/TextFormField/';
-import { makeStyles } from '@material-ui/core/styles';
 import { TextField } from '@material-ui/core';
+import { styled } from '@material-ui/core/styles';
 
 
+const SubmitButton = styled(Button)({
+  backgroundColor: '#eee',
+});
 
 const CreateCourseModal = () => {
   const { isOpen } = useModalState();
@@ -21,7 +22,7 @@ const CreateCourseModal = () => {
 
   return(
     <Dialog
-      maxWidth='sm'
+      maxWidth='xs'
       fullWidth={true}
       open={isOpen}
       onClose={() => dispatch({type: 'CLOSE_CREATE_COURSE'})}
@@ -29,44 +30,57 @@ const CreateCourseModal = () => {
         <DialogTitle className="bg-light-gray" >Novo Curso</DialogTitle>
         <DialogContent>
           <Formik initialValues={{}} onSubmit={data => console.log(data)}>
+
             <Form>
-
-                <TextField 
-                fullWidth
-                margin='normal'
-                name='title' 
-                label='Título' 
-                type='text' 
-               />
-
                 <Field 
+                size='small'
                 fullWidth
                 margin='normal'
                 name='title' 
                 label='Título' 
                 type='text' 
+                variant="outlined"
                 component={TextFormField} />
             
-                <Field 
+                <Field
+                size='small'
                 fullWidth
                 margin='normal'
                 name='description' 
                 label='Descrição' 
-                type='text' 
+                type='text'
+                variant="outlined" 
+                multiline={true}
+                rows='3'
+                helperText='Uma descrição do que seria o seu curso'
                 component={TextFormField} />
           
                 <Field 
+                size='small'
                 fullWidth
                 margin='normal'
+                helperText='Escolha sua melhor foto de apresentação'
                 name='image' 
-                label='Imagem' 
                 type='text' 
-                component={TextFormField} />
+                multiline={true}
+                rows='3'
+                variant="outlined"
+                inputProps={{
+                  style: { 
+                    cursor: 'default',
+                    backgroundImage: "url('../../img/vectorpaint.svg')",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center",
+                    caretColor: 'transparent',
+                   },
+                }}
+                component={TextFormField}
+                />
                  
                 <DialogActions>
-                  <Button>
+                  <SubmitButton>
                     Criar
-                  </Button>
+                  </SubmitButton>
               </DialogActions>
             </Form>
           </Formik>

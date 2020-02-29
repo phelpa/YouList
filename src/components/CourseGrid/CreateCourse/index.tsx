@@ -16,7 +16,7 @@ const CreateCourse = memo(() => {
       </div>
       
         <p className="f6 lh-copy measure mt2 mid-gray flex justify-center tc">
-        <b>Create new course</b>
+        <b>Criar novo curso</b>
         </p>
           
       </div>

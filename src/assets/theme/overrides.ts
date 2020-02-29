@@ -7,9 +7,6 @@ const overrides: Overrides = {
     },
     },
   MuiInput: {
-    // input: { 
-    //   'marginTop' : '12px',
-    // },
     underline: {
       '&:after': {
         borderBottom: 'black'
@@ -23,7 +20,11 @@ const overrides: Overrides = {
       }
     }
   },
-
+  MuiFormHelperText: {
+    contained: {
+      marginLeft: '6px'
+    }
+  }
 };
 
 export default overrides;

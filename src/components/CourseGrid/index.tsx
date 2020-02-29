@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Nav from '../Nav';
-import 'tachyons';
 import Course from './Course';
 import coursesApi from '../../services/coursesApi';
 import { ICourse } from '../../interfaces/ICourse'

@@ -16,8 +16,8 @@ import ModalProvider from './providers/modal/index';
 import { theme } from './assets/theme/';
 import { defaultFont} from './assets/theme';
 
-import './reset.css';
 import 'tachyons';
+import './reset.css';
 import './index.css';
 
 render(
