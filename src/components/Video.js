@@ -1,8 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const Video = ({courseId, video, i, annotations, params }) => {
- 
+const Video = (props) => {
+
+  /*
+  id: 2
+  title: "Curso 2"
+  description: "primeiro vídeo do curso2"
+  course_id: 20
+  youtubeurl: "https://www.youtube.com/embed/htdCJdy90WA"
+  created: "2018-11-24T12:29:53.153Z"
+  */
+  
+  const video = props.video;
   return (
     
   <article className="mainDiv w5 br2 ba dark-gray b--black-10 mh4 mv4 center">

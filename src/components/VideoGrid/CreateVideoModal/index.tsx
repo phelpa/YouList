@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import { useModalState } from '../../../providers/modal/';
 import { useModalDispatch } from '../../../providers/modal/';
@@ -10,19 +10,14 @@ import { Field, Form, Formik } from 'formik';
 import TextFormField from '../../Shared/TextFormField/';
 import { styled } from '@material-ui/core/styles';
 
+
 const SubmitButton = styled(Button)({
   backgroundColor: '#eee',
 });
 
-const CreateCourseModal = () => {
+const CreateVideoModal = () => {
   const { isOpen } = useModalState();
-  const [uploaded, setUploaded] = useState(false);
   const dispatch = useModalDispatch();
-
-  const handleFileUpload = () => {
-    console.log('entrou');
-    setUploaded(true);
-  }
 
   return(
     <Dialog
@@ -34,6 +29,7 @@ const CreateCourseModal = () => {
         <DialogTitle className="bg-light-gray" >Novo Curso</DialogTitle>
         <DialogContent>
           <Formik initialValues={{}} onSubmit={data => console.log(data)}>
+
             <Form>
                 <Field 
                 size='small'
@@ -57,7 +53,7 @@ const CreateCourseModal = () => {
                 rows='3'
                 helperText='Uma descrição do que seria o seu curso'
                 component={TextFormField} />
-
+          
                 <Field 
                 size='small'
                 fullWidth
@@ -65,8 +61,8 @@ const CreateCourseModal = () => {
                 helperText='Escolha sua melhor foto de apresentação'
                 name='image' 
                 type='file' 
+                multiline={true}
                 rows='3'
-                onClick={() => handleFileUpload()}
                 variant="outlined"
                 inputProps={{
                   style: { 
@@ -79,9 +75,9 @@ const CreateCourseModal = () => {
                 }}
                 component={TextFormField}
                 />
-
+                 
                 <DialogActions>
-                  <SubmitButton type='submit'>
+                  <SubmitButton>
                     Criar
                   </SubmitButton>
               </DialogActions>
@@ -93,4 +89,4 @@ const CreateCourseModal = () => {
   );
 }
 
-export default CreateCourseModal;
+export default CreateVideoModal;

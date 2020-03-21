@@ -16,7 +16,7 @@ const Course = React.memo(({ course }: IProps) => {
        
         <div className="description pa2 ph3-ns pb3-ns">
           
-          <Link to={`/course/${course.course_id}`} className ="no-underline black" >
+          <Link to={`/course/${course.id}`} className ="no-underline black" >
             <h1 className="videotitle f5 f4-ns mv0">{course.title}</h1>
           </Link>
           
