@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import Dialog from '@material-ui/core/Dialog';
-import { useModalState } from '../../../providers/modal/';
-import { useModalDispatch } from '../../../providers/modal/';
+import { useModalState } from '../../../providers/modal';
+import { useModalDispatch } from '../../../providers/modal';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 import { Field, Form, Formik } from 'formik';
-import TextFormField from '../../Shared/TextFormField/';
+import TextFormField from '../../Shared/TextFormField';
 import { styled } from '@material-ui/core/styles';
 
 const SubmitButton = styled(Button)({
   backgroundColor: '#eee',
 });
 
-const CreateCourseModal = () => {
+const CreateListModal = () => {
   const { isOpen } = useModalState();
   const [uploaded, setUploaded] = useState(false);
   const dispatch = useModalDispatch();
@@ -93,4 +93,4 @@ const CreateCourseModal = () => {
   );
 }
 
-export default CreateCourseModal;
+export default CreateListModal;

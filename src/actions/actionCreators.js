@@ -8,7 +8,7 @@ export const requestCourses = (user_id) => (dispatch) => {
 
   dispatch({type:REQUEST_COURSES_PENDING})
 
-  fetch(`${baseUrl}/courses/user/${user_id}`)
+  fetch(`${baseUrl}/lists/user/${user_id}`)
   .then(response => response.json())
   .then(data => dispatch ({type:REQUEST_COURSES_SUCCESS,payload:data}))
   .catch(error => dispatch({type:REQUEST_COURSES_FAILED,payload:error}) )
@@ -25,7 +25,7 @@ export const requestVideos = (course_id) => (dispatch) => {
 
   dispatch({type:REQUEST_VIDEOS_PENDING})
 
-  fetch(`${baseUrl}/course/${course_id}/videos`)
+  fetch(`${baseUrl}/list/${course_id}/videos`)
   .then(response => response.json())
   .then(data => dispatch ({type:REQUEST_VIDEOS_SUCCESS,payload:data}))
   .catch(error => dispatch({type:REQUEST_VIDEOS_FAILED,payload:error}) )
@@ -58,7 +58,7 @@ const REQUEST_ANNOTATIONS_FAILED = 'REQUEST_ANNOTATIONS_FAILED';
 export const requestAnnotations = (user_id, video_id) => (dispatch) => {
 
   dispatch({type:REQUEST_ANNOTATIONS_PENDING})
-  fetch(`${baseUrl}/annotations/user/${user_id}/video/${video_id}`) 
+  fetch(`${baseUrl}/annotations/user/${user_id}/video/${video_id}`)
   .then(response => response.json())
   .then(data => dispatch ({type:REQUEST_ANNOTATIONS_SUCCESS,payload:data}))
   .catch(error => dispatch({type:REQUEST_ANNOTATIONS_FAILED,payload:error}) )
@@ -69,8 +69,7 @@ export const requestAnnotations = (user_id, video_id) => (dispatch) => {
 const ADD_ANNOTATION = 'ADD_ANNOTATION';
 //TO DO
 export const submitAnnotation = (user_id, video_id, videotime, annotation) => (dispatch) => {
-  
-  console.log('dentro da função action creator')
+
   fetch(`${baseUrl}/annotations`,{
     method: 'post',
     headers: {'Content-Type': 'application/json'},
@@ -82,6 +81,6 @@ export const submitAnnotation = (user_id, video_id, videotime, annotation) => (d
     })
   })
   .then(response => response.json())
-  .then(response2 => dispatch ({type:ADD_ANNOTATION,payload:response2})) 
-  
+  .then(response2 => dispatch ({type:ADD_ANNOTATION,payload:response2}))
+
 };

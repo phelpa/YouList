@@ -1,4 +1,4 @@
-export interface ICourse {
+export interface IList {
   id: number,
   title: string,
   description: string,
@@ -7,13 +7,13 @@ export interface ICourse {
   created: string,
 }
 
-export interface ICreateCourse {
+export interface ICreateList {
   title : string,
   description : string,
   user_id : number,
   urlimage : string
 }
 
-export interface ICreateCourseResponse {
-  data : Array<ICourse>
+export interface ICreateListResponse {
+  data : Array<IList>
 }

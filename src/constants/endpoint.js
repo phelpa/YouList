@@ -7,7 +7,7 @@ export const baseUrl = 'http://localhost:3003';
 export const baseService = `${baseUrl}`;
 
 //COURSES
-export const coursesPath = `${baseService}/courses`;
+export const listsPath = `${baseService}/lists`;
 
 //COURSE
-export const coursePath = `${baseService}/course`;
+export const coursePath = `${baseService}/list`;

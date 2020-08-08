@@ -19,7 +19,7 @@ const VideoGrid = (props: any) => {
   useEffect(() => {
     // Create an scoped async function in the hook
     const videoList = async () => {
-     const videos : any = await videosApi.list(props.params.courseId);
+     const videos : any = await videosApi.list(props.params.listId);
       setVideos(videos);
     }
     // Execute the created function directly
@@ -31,7 +31,6 @@ const VideoGrid = (props: any) => {
       <div className="w-100 bg-white ">
         <Nav/>
         <div className="flex flex-wrap">
-
           {videos && videos.map((video,i) =>
            <Video key={i} i={i} video={video} />)}
           <ActionIcon

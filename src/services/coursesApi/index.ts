@@ -1,20 +1,20 @@
 import { get, post } from '../../utils/agent';
-import { ICourse, ICreateCourse, ICreateCourseResponse } from '../../interfaces/ICourse';
-import { coursesPath } from '../../constants/endpoint';
+import { IList, ICreateList, ICreateListResponse } from '../../interfaces/IList';
+import { listsPath } from '../../constants/endpoint';
 
-export class CoursesApi {
+export class ListsApi {
   async list(user: number) {
     try {
-      const result = await get(`${coursesPath}/user/${user}`);
+      const result = await get(`${listsPath}/user/${user}`);
       return result
     } catch (err) {
       throw err;
     }
   }
 
-  async create(data: ICreateCourse): Promise<ICreateCourseResponse> {
+  async create(data: ICreateList): Promise<ICreateListResponse> {
     try {
-      const result = await post(coursesPath, data);
+      const result = await post(listsPath, data);
       return result;
 
     } catch (err) {
@@ -24,6 +24,6 @@ export class CoursesApi {
   }
 
 }
-const coursesApi = new CoursesApi();
+const coursesApi = new ListsApi();
 
 export default coursesApi;
