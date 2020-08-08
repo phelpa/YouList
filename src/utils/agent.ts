@@ -18,7 +18,6 @@ axios.interceptors.request.use(
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Authorization': `Bearer ${'auth.getToken()'}`,
         ...config.headers
       }
     };
@@ -28,14 +27,16 @@ axios.interceptors.request.use(
   }
 );
 
-export const get = (url, headers=null) =>
+//arrancar o any do retorno
+export const get = (url: any, params?: any, headers=null): any =>
   axios({
     method: 'get',
+    params,
     headers,
     url
   });
 
-export const post = (url, data, headers=null) =>
+export const post = (url: any, data : any, headers=null) =>
   axios({
     method: 'post',
     headers,
@@ -43,7 +44,7 @@ export const post = (url, data, headers=null) =>
     data
   });
 
-export const put = (url, data, headers=null) =>
+export const put = (url: any, data: any, headers=null) =>
   axios({
     method: 'put',
     headers,
@@ -51,7 +52,7 @@ export const put = (url, data, headers=null) =>
     data
   });
 
-export const del = (url, data=null) =>
+export const del = (url: any, data=null) =>
   axios({
     method: 'delete',
     data,

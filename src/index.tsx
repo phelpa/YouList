@@ -12,7 +12,8 @@ import CourseGrid from './components/CourseGrid';
 import { Router, Route, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import store, { history } from './store';
-import ModalProvider from './providers/modal/index';
+import ModalProvider from './providers/modal';
+import CoursesProvider from './providers/courses';
 import { theme } from './assets/theme/';
 import { defaultFont} from './assets/theme';
 
@@ -25,6 +26,7 @@ render(
     <MuiThemeProvider theme={defaultFont}>
     <MuiThemeProvider theme={theme}>
     <ModalProvider>
+    <CoursesProvider>
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={CourseGrid} />
@@ -32,13 +34,10 @@ render(
         <Route path='/course/:courseId/video/:videoId' component={Single}></Route>
       </Route>
     </Router>
+    </CoursesProvider>
     </ModalProvider>
     </MuiThemeProvider>
     </MuiThemeProvider>
   </Provider>,
   document.getElementById('root')
 );
-
-
-
-

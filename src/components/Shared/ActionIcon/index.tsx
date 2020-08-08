@@ -3,7 +3,8 @@ import Icon from '@material-ui/core/Icon';
 
 interface IProps {
   callback: Function;
-  icon: string
+  icon: string;
+  description: string;
 }
 
 const ActionIcon = memo((props: IProps) => {
@@ -19,9 +20,9 @@ const ActionIcon = memo((props: IProps) => {
       </div>
       
         <p className="f6 lh-copy measure mt2 mid-gray flex justify-center tc">
-        <b>Criar novo curso</b>
+        <b>{props.description}</b>
         </p>
-          
+
       </div>
       </article>
   );

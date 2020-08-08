@@ -6,13 +6,12 @@ import videosApi from '../../services/videosApi';
 import ActionIcon from '../Shared/ActionIcon';
 import { useModalDispatch } from '../../providers/modal';
 
-
 // interface IVideos {
 //   videos: Array<IVideo>
 // }
 
 const VideoGrid = (props: any) => {
-  
+
   const dispatch = useModalDispatch();
   const [videos, setVideos] = useState([]);
 
@@ -29,18 +28,19 @@ const VideoGrid = (props: any) => {
 
 
     return (
-      <div className="w-100 bg-white "> 
-        <Nav/> 
-        <div className="flex flex-wrap">  
+      <div className="w-100 bg-white ">
+        <Nav/>
+        <div className="flex flex-wrap">
 
-          {videos && videos.map((video,i) => 
+          {videos && videos.map((video,i) =>
            <Video key={i} i={i} video={video} />)}
           <ActionIcon
             callback={() => dispatch({type: 'OPEN_CREATE_VIDEO'})}
             icon='ondemand_video'
-          /> }
+            description='Criar novo vídeo'
+          />
         </div>
-      </div>  
+      </div>
     );
 };
 

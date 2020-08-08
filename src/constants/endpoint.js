@@ -11,5 +11,3 @@ export const coursesPath = `${baseService}/courses`;
 
 //COURSE
 export const coursePath = `${baseService}/course`;
-
-

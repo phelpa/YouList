@@ -19,8 +19,8 @@ const CreateCourseModal = () => {
   const [uploaded, setUploaded] = useState(false);
   const dispatch = useModalDispatch();
 
+
   const handleFileUpload = () => {
-    console.log('entrou');
     setUploaded(true);
   }
 
@@ -31,45 +31,45 @@ const CreateCourseModal = () => {
       open={isOpen}
       onClose={() => dispatch({type: 'CLOSE_CREATE_COURSE'})}
     >
-        <DialogTitle className="bg-light-gray" >Novo Curso</DialogTitle>
+        <DialogTitle className="bg-light-gray" >Nova lista</DialogTitle>
         <DialogContent>
           <Formik initialValues={{}} onSubmit={data => console.log(data)}>
             <Form>
-                <Field 
-                size='small'
-                fullWidth
-                margin='normal'
-                name='title' 
-                label='Título' 
-                type='text' 
-                variant="outlined"
-                component={TextFormField} />
-            
                 <Field
                 size='small'
                 fullWidth
                 margin='normal'
-                name='description' 
-                label='Descrição' 
+                name='title'
+                label='Título'
                 type='text'
-                variant="outlined" 
+                variant="outlined"
+                component={TextFormField} />
+
+                <Field
+                size='small'
+                fullWidth
+                margin='normal'
+                name='description'
+                label='Descrição'
+                type='text'
+                variant="outlined"
                 multiline={true}
                 rows='3'
                 helperText='Uma descrição do que seria o seu curso'
                 component={TextFormField} />
 
-                <Field 
+                <Field
                 size='small'
                 fullWidth
                 margin='normal'
                 helperText='Escolha sua melhor foto de apresentação'
-                name='image' 
-                type='file' 
+                name='image'
+                type='file'
                 rows='3'
                 onClick={() => handleFileUpload()}
                 variant="outlined"
                 inputProps={{
-                  style: { 
+                  style: {
                     cursor: 'pointer',
                     backgroundImage: "url('../../img/vectorpaint.svg')",
                     backgroundRepeat: "no-repeat",
