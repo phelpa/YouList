@@ -1,11 +1,11 @@
 import React from 'react';
+import Nav from './Nav';
 
-const Main = (props) => {
-  return (
+const Main = (props) =>  (
     <React.Fragment>
+        <Nav/>
           {React.cloneElement(props.children, props)}
-    </React.Fragment>   
-    );
-};
+    </React.Fragment>
+  );
 
 export default Main;

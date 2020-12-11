@@ -1,39 +1,37 @@
 import React, { useState } from 'react';
-import Dialog from '@material-ui/core/Dialog';
-import { useModalState } from '../../../providers/modal';
-import { useModalDispatch } from '../../../providers/modal';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Button from '@material-ui/core/Button';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle} from '@material-ui/core';
 import { Field, Form, Formik } from 'formik';
 import TextFormField from '../../Shared/TextFormField';
 import { styled } from '@material-ui/core/styles';
+import { useLists } from '../../../providers/lists';
+import { ICreateList } from '../../../interfaces/IList';
+
+interface IProps {
+  closeModal : () => void;
+}
 
 const SubmitButton = styled(Button)({
   backgroundColor: '#eee',
 });
 
-const CreateListModal = () => {
-  const { isOpen } = useModalState();
-  const [uploaded, setUploaded] = useState(false);
-  const dispatch = useModalDispatch();
+const CreateListModal = ({closeModal}: IProps) => {
+  const { addList } = useLists();
 
-
-  const handleFileUpload = () => {
-    setUploaded(true);
+  const sendList = async (list : ICreateList) => {
+    await addList({...list, user_id: 10})
+    closeModal()
   }
 
-  return(
+  return (
     <Dialog
       maxWidth='xs'
       fullWidth={true}
-      open={isOpen}
-      onClose={() => dispatch({type: 'CLOSE_CREATE_COURSE'})}
+      open={true}
+      onClose={() => closeModal()}
     >
-        <DialogTitle className="bg-light-gray" >Nova lista</DialogTitle>
+        <DialogTitle className="bg-light-gray">Nova lista</DialogTitle>
         <DialogContent>
-          <Formik initialValues={{}} onSubmit={data => console.log(data)}>
+          <Formik initialValues={{} as ICreateList} onSubmit={data => sendList(data)}>
             <Form>
                 <Field
                 size='small'
@@ -55,9 +53,36 @@ const CreateListModal = () => {
                 variant="outlined"
                 multiline={true}
                 rows='3'
-                helperText='Uma descrição do que seria o seu curso'
+                helperText='Uma descrição do que seria a sua lista'
                 component={TextFormField} />
 
+                <Field
+                size='small'
+                fullWidth
+                margin='normal'
+                name='list_image'
+                label='https:\\'
+                type='text'
+                variant="outlined"
+                helperText='Digite o endereço da imagem pra usar como capa da lista'
+                component={TextFormField} />
+
+                <DialogActions>
+                  <SubmitButton type='submit'>
+                    Criar
+                  </SubmitButton>
+              </DialogActions>
+            </Form>
+          </Formik>
+        </DialogContent>
+    </Dialog>
+
+  );
+}
+
+export default CreateListModal;
+
+{/* TODO COLOCAR UPLOAD DE ARQUIVO
                 <Field
                 size='small'
                 fullWidth
@@ -78,19 +103,4 @@ const CreateListModal = () => {
                    },
                 }}
                 component={TextFormField}
-                />
-
-                <DialogActions>
-                  <SubmitButton type='submit'>
-                    Criar
-                  </SubmitButton>
-              </DialogActions>
-            </Form>
-          </Formik>
-        </DialogContent>
-    </Dialog>
-
-  );
-}
-
-export default CreateListModal;
+                /> */}

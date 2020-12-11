@@ -6,8 +6,17 @@ export const baseUrl = 'http://localhost:3003';
 // BASE
 export const baseService = `${baseUrl}`;
 
-//COURSES
+//LISTS
 export const listsPath = `${baseService}/lists`;
 
-//COURSE
-export const coursePath = `${baseService}/list`;
+//LIST
+export const listPath = `${baseService}/list`;
+
+//VIDEOS
+export const videosPath = `${baseService}/videos`
+
+//VIDEO
+export const videoPath = `${baseService}/video`
+
+//Annotations
+export const annotationsPath = `${baseService}/annotations`

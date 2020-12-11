@@ -1,43 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Video from '../Video';
-import Nav from '../Nav';
-import videosApi from '../../services/videosApi';
-//import { IVideo } from '../../interfaces/Ivideo'
 import ActionIcon from '../Shared/ActionIcon';
-import { useModalDispatch } from '../../providers/modal';
-
-// interface IVideos {
-//   videos: Array<IVideo>
-// }
+import useModal from '../../hooks/useModal';
+import CreateVideoModal from './CreateVideoModal'
+import { useVideos } from '../../providers/videos';
+import { useParams } from 'react-router-dom';
 
 const VideoGrid = (props: any) => {
 
-  const dispatch = useModalDispatch();
-  const [videos, setVideos] = useState([]);
+  const [isOpen, openModal, closeModal] = useModal();
+  const { videos, isLoading, getVideos } = useVideos();
+  const params = useParams();
 
-  console.log(props.params, 'props.params');
-  useEffect(() => {
-    // Create an scoped async function in the hook
-    const videoList = async () => {
-     const videos : any = await videosApi.list(props.params.listId);
-      setVideos(videos);
-    }
-    // Execute the created function directly
-    videoList();
-  }, []);
-
+  useEffect(()=> {
+     getVideos(params.listId);
+  }, [])
 
     return (
       <div className="w-100 bg-white ">
-        <Nav/>
         <div className="flex flex-wrap">
+          {isLoading && <div>Carregando...</div>}
           {videos && videos.map((video,i) =>
            <Video key={i} i={i} video={video} />)}
           <ActionIcon
-            callback={() => dispatch({type: 'OPEN_CREATE_VIDEO'})}
+            callback={() => openModal()}
             icon='ondemand_video'
-            description='Criar novo vídeo'
+            description='Adicionar novo vídeo'
           />
+          {isOpen &&
+            <CreateVideoModal
+             listId = {params.listId}
+             closeModal={closeModal}
+            />
+          }
         </div>
       </div>
     );

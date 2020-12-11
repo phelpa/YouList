@@ -36,7 +36,7 @@ export const get = (url: any, params?: any, headers=null): any =>
     url
   });
 
-export const post = (url: any, data : any, headers=null) =>
+export const post = (url: any, data : any, headers=null): any =>
   axios({
     method: 'post',
     headers,

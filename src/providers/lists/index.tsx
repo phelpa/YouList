@@ -1,26 +1,29 @@
 import React, {createContext, useContext, useState, } from 'react';
-import { get } from '../../utils/agent';
+import { get, post } from '../../utils/agent';
 import { listsPath } from '../../constants/endpoint';
-import { IList } from '../../interfaces/IList';
+import { IList, ICreateList } from '../../interfaces/IList';
 
 export interface IListsContext {
   lists: Array<IList>
   isLoading: boolean
   error: any
-  getLists: () => void;
+  getLists: (user_id: number) => void;
+  isAdding: boolean
+  errorAddList: any
+  addList: (list: ICreateList) => void;
 }
 
-function Lists(user: number): IListsContext {
-  const [lists, setLists] = useState(undefined!);
+function Lists(): IListsContext {
+  const [lists, setLists] = useState<Array<IList>>(undefined!);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(undefined);
 
-  const getLists = async () => {
+  const getLists = async (user_id: number) => {
     setError(undefined);
     setLists(undefined!);
     setIsLoading(true);
     try {
-      const lists = await get(`${listsPath}/user/${user}`);
+      const lists = await get(`${listsPath}/user/${user_id}`);
       setLists(lists);
     } catch (e) {
       setError(e);
@@ -30,11 +33,27 @@ function Lists(user: number): IListsContext {
     }
   };
 
-  return { lists, isLoading, error, getLists };
+  const [isAdding, setIsAdding] = useState(false);
+  const [errorAddList, setErrorAddList] = useState(undefined);
+
+  const addList = async (list: ICreateList) => {
+    setErrorAddList(undefined);
+    setIsAdding(true);
+    try {
+      const { data }: any = await post(`${listsPath}`, list);
+      setLists([...lists, data]);
+    } catch (e) {
+      setError(e);
+      setLists(undefined!);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return { lists, isLoading, error, getLists, isAdding, errorAddList , addList };
 }
 
 const ListsContext = createContext<IListsContext>({} as IListsContext)
-export const useLists = () => useContext(ListsContext)
 
 type IProviderProps = {
   children: React.ReactNode
@@ -42,10 +61,12 @@ type IProviderProps = {
 
 const ListsProvider = ({children}: IProviderProps) => {
   return (
-    <ListsContext.Provider value={Lists(10)}>
+    <ListsContext.Provider value={Lists()}>
         {children}
     </ListsContext.Provider>
   )
 }
+
+export const useLists = () => useContext(ListsContext)
 
 export default ListsProvider;
