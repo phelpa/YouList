@@ -1,0 +1,143 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "react",
+    "react-hooks",
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "extends": [
+    "plugin:react/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 10,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true,
+      "jsx": true
+    }
+  },
+  "rules": {
+    "prettier/prettier": ["error", { "singleQuote": true }],
+    "react/display-name": [
+      "off"
+    ],
+    "indent": [2, 2],
+    "react/prop-types": [
+      "off"
+    ],
+    "no-restricted-imports": [
+      "warn",
+      "date-fns",
+      "mdi-react",
+      "lodash"
+    ],
+    "linebreak-style": [
+      "warn",
+      "unix"
+    ],
+    "max-lines": [
+      "warn",
+      300
+    ],
+    "max-len": [
+      "warn",
+      120,
+      2,
+      {
+        "ignorePattern": "^(import|export)",
+        "ignoreUrls": true
+      }
+    ],
+    "no-multiple-empty-lines": [
+      "warn",
+      {
+        "max": 1
+      }
+    ],
+    "no-trailing-spaces": [
+      "warn"
+    ],
+    "no-extra-semi": [
+      "warn"
+    ],
+    "no-var": [
+      "warn"
+    ],
+    "quotes": [
+      "warn",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "object-shorthand": [
+      "warn"
+    ],
+    "semi": [
+      "warn",
+      "always"
+    ],
+    "no-return-await": [
+      "warn"
+    ],
+    "react/jsx-no-undef": [
+      "off"
+    ],
+    "react-hooks/rules-of-hooks": "warn",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-no-bind": "warn",
+    "@typescript-eslint/no-unused-vars": [
+      "warn"
+    ],
+    "@typescript-eslint/adjacent-overload-signatures": [
+      "warn"
+    ],
+    "@typescript-eslint/explicit-member-accessibility": [
+      "warn",
+      {
+        "accessibility": "off"
+      }
+    ],
+    "@typescript-eslint/member-ordering": [
+      "warn",
+      {
+        "default": [
+          "public-static-method",
+          "protected-static-method",
+          "private-static-method",
+          "public-static-field",
+          "protected-static-field",
+          "private-static-field",
+          "public-instance-field",
+          "protected-instance-field",
+          "private-instance-field",
+          "public-field",
+          "protected-field",
+          "private-field",
+          "static-field",
+          "instance-field",
+          "field",
+          "constructor",
+          "public-instance-method",
+          "protected-instance-method",
+          "private-instance-method",
+          "public-method",
+          "protected-method",
+          "private-method",
+          "static-method",
+          "instance-method",
+          "method"
+        ]
+      }
+    ],
+    "@typescript-eslint/no-namespace": [
+      "warn"
+    ],
+    "@typescript-eslint/no-require-imports": [
+      "warn"
+    ]
+  }
+}
