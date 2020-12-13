@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from './Nav';
 
-const Main = props => (
+const Main = (props: any) => (
   <React.Fragment>
     <Nav />
     {React.cloneElement(props.children, props)}

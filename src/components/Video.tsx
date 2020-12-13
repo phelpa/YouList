@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Video = props => {
+const Video = (props: any) => {
   const video = props.video;
   return (
     <article className="mainDiv w5 br2 ba dark-gray b--black-10 mh4 mv4 center">
