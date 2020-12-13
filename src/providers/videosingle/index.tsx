@@ -1,21 +1,21 @@
-import React, { createContext, useContext, useState, } from 'react';
+import React, { createContext, useContext, useState, useCallback } from 'react';
 import { get } from '../../utils/agent';
 import { videoPath } from '../../constants/endpoint';
 import { IVideo } from '../../interfaces/IVideo';
 
 export interface IVideoContext {
-  video: Array<IVideo>
-  isLoading: boolean
-  error: any
+  video: IVideo[];
+  isLoading: boolean;
+  error: any;
   getVideo: (list_id: number) => void;
 }
 
 function Video(): IVideoContext {
-  const [video, setVideo] = useState<Array<IVideo>>(undefined!);
+  const [video, setVideo] = useState<IVideo[]>(undefined!);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(undefined);
 
-  const getVideo = async (video_id: number) => {
+  const getVideo = useCallback(async (video_id: number) => {
     setError(undefined);
     setVideo(undefined!);
     setIsLoading(true);
@@ -28,25 +28,23 @@ function Video(): IVideoContext {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
   return { video, isLoading, error, getVideo };
 }
 
-const VideoContext = createContext<IVideoContext>({} as IVideoContext)
+const VideoContext = createContext<IVideoContext>({} as IVideoContext);
 
 type IProviderProps = {
-  children: React.ReactNode
+  children: React.ReactNode;
 };
 
-const VideoProvider = ({children}: IProviderProps) => {
+const VideoProvider = ({ children }: IProviderProps) => {
   return (
-    <VideoContext.Provider value={Video()}>
-        {children}
-    </VideoContext.Provider>
-  )
-}
+    <VideoContext.Provider value={Video()}>{children}</VideoContext.Provider>
+  );
+};
 
-export const useVideo = () => useContext(VideoContext)
+export const useVideo = () => useContext(VideoContext);
 
 export default VideoProvider;

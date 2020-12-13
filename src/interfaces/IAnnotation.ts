@@ -15,5 +15,5 @@ export interface IAddAnnotation {
 }
 
 export interface IAnnotationResponse {
-  data : Array<IAnnotation>
+  data: Array<IAnnotation>;
 }

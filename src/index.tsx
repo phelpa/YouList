@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { MuiThemeProvider } from '@material-ui/core';
-import { createBrowserHistory } from 'history'
+import { createBrowserHistory } from 'history';
 
 // Import Components
 import Single from './components/Single';
@@ -22,26 +22,29 @@ import 'tachyons';
 import './reset.css';
 import './index.css';
 
-
 render(
-    <MuiThemeProvider theme={defaultFont}>
+  <MuiThemeProvider theme={defaultFont}>
     <MuiThemeProvider theme={theme}>
-    <ListsProvider>
-    <VideosProvider>
-    <VideoSingleProvider>
-    <AnnotationsProvider>
-    <Main>
-    <Router history={createBrowserHistory()}>
-        <Route exact path="/" component={ListGrid} />
-        <Route exact path="/list/:listId" component={VideoGrid}></Route>
-        <Route exact path='/list/:listId/video/:videoId' component={Single}></Route>
-    </Router>
-    </Main>
-    </AnnotationsProvider>
-    </VideoSingleProvider>
-    </VideosProvider>
-    </ListsProvider>
+      <ListsProvider>
+        <VideosProvider>
+          <VideoSingleProvider>
+            <AnnotationsProvider>
+              <Main>
+                <Router history={createBrowserHistory()}>
+                  <Route exact path="/" component={ListGrid} />
+                  <Route exact path="/list/:listId" component={VideoGrid} />
+                  <Route
+                    exact
+                    path="/list/:listId/video/:videoId"
+                    component={Single}
+                  />
+                </Router>
+              </Main>
+            </AnnotationsProvider>
+          </VideoSingleProvider>
+        </VideosProvider>
+      </ListsProvider>
     </MuiThemeProvider>
-    </MuiThemeProvider>,
+  </MuiThemeProvider>,
   document.getElementById('root')
 );

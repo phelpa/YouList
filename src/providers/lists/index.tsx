@@ -1,20 +1,20 @@
-import React, {createContext, useContext, useState, } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { get, post } from '../../utils/agent';
 import { listsPath } from '../../constants/endpoint';
 import { IList, ICreateList } from '../../interfaces/IList';
 
 export interface IListsContext {
-  lists: Array<IList>
-  isLoading: boolean
-  error: any
+  lists: Array<IList>;
+  isLoading: boolean;
+  error: any;
   getLists: (user_id: number) => void;
-  isAdding: boolean
-  errorAddList: any
+  isAdding: boolean;
+  errorAddList: any;
   addList: (list: ICreateList) => void;
 }
 
 function Lists(): IListsContext {
-  const [lists, setLists] = useState<Array<IList>>(undefined!);
+  const [lists, setLists] = useState<IList[]>(undefined!);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(undefined);
 
@@ -50,23 +50,21 @@ function Lists(): IListsContext {
     }
   };
 
-  return { lists, isLoading, error, getLists, isAdding, errorAddList , addList };
+  return { lists, isLoading, error, getLists, isAdding, errorAddList, addList };
 }
 
-const ListsContext = createContext<IListsContext>({} as IListsContext)
+const ListsContext = createContext<IListsContext>({} as IListsContext);
 
 type IProviderProps = {
-  children: React.ReactNode
+  children: React.ReactNode;
 };
 
-const ListsProvider = ({children}: IProviderProps) => {
+const ListsProvider = ({ children }: IProviderProps) => {
   return (
-    <ListsContext.Provider value={Lists()}>
-        {children}
-    </ListsContext.Provider>
-  )
-}
+    <ListsContext.Provider value={Lists()}>{children}</ListsContext.Provider>
+  );
+};
 
-export const useLists = () => useContext(ListsContext)
+export const useLists = () => useContext(ListsContext);
 
 export default ListsProvider;

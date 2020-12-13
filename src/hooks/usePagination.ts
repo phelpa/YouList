@@ -1,7 +1,8 @@
 import { useState, useCallback, ChangeEvent } from 'react';
 
-const usePagination = (initialPage?: number):
- [number, (e: ChangeEvent<unknown>, number: number) => void, number] => {
+const usePagination = (
+  initialPage?: number
+): [number, (e: ChangeEvent<unknown>, number: number) => void, number] => {
   const [page, setPage] = useState(initialPage ? initialPage : 0);
   const [perPage, setPerPage] = useState(10);
 

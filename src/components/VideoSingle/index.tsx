@@ -3,52 +3,53 @@ import { useParams } from 'react-router-dom';
 import { useVideo } from '../../providers/videosingle';
 
 const VideoSingle = () => {
-
   const { video, isLoading, getVideo } = useVideo();
   const params = useParams();
 
-  useEffect( () => {
+  useEffect(() => {
+    console.log('entrouuu');
     getVideo(params.videoId);
-  }, [] );
+  }, [getVideo, params.videoId]);
 
   const loadYoutubeAPI = () => {
     if (!window['player']) {
       // 2. This code loads the IFrame Player API code asynchronously.
-      var tag = document.createElement('script');
+      let tag = document.createElement('script');
 
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
+      tag.src = 'https://www.youtube.com/iframe_api';
+      let firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag?.parentNode!.insertBefore(tag, firstScriptTag);
 
       // 3. This function creates an <iframe> (and YouTube player)
       //    after the API code downloads.
-      var YT; //declaring outside the function to avoid 'not defined'
+      let YT; //declaring outside the function to avoid 'not defined'
       window['onYouTubeIframeAPIReady'] = function() {
         YT = window['YT']; //youtube API expects the YT object to be
-                        //assigned to the window object
-        window['player'] = new YT.Player('videoplayer',{
-
-        })
-      }
+        //assigned to the window object
+        window['player'] = new YT.Player('videoplayer', {});
+      };
     }
-  }
+  };
 
-  return (
-
-    isLoading  ? <h1>Waiting request</h1> :
-    <div className="vh-50" >
-      <iframe className="w-100 h-100" title='iframe' id="videoplayer"
-          src={'https://www.youtube.com/embed/'+video?.[0].youtube_id+'?enablejsapi=1'}
-          frameBorder="0"
-          allowFullScreen
+  return isLoading ? (
+    <h1>Waiting request</h1>
+  ) : (
+    <div className="vh-50">
+      <iframe
+        className="w-100 h-100"
+        title="iframe"
+        id="videoplayer"
+        src={
+          'https://www.youtube.com/embed/' +
+          video?.[0].youtube_id +
+          '?enablejsapi=1'
+        }
+        frameBorder="0"
+        allowFullScreen
       ></iframe>
-      {!window['player'] && video?.[0].youtube_id &&
-          loadYoutubeAPI()
-      }
+      {!window['player'] && video?.[0].youtube_id && loadYoutubeAPI()}
     </div>
-
-    );
-
+  );
 };
 
 export default VideoSingle;

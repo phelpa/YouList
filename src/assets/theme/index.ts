@@ -3,19 +3,24 @@ import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import overrides from './overrides';
 
 export const theme = createMuiTheme({
-  overrides,
+  overrides
 });
 
 export const defaultFont = createMuiTheme({
   typography: {
     fontFamily: [
-      '-apple-system', 'BlinkMacSystemFont',
-      'avenir next', 'avenir',
-      'helvetica neue', 'helvetica',
+      '-apple-system',
+      'BlinkMacSystemFont',
+      'avenir next',
+      'avenir',
+      'helvetica neue',
+      'helvetica',
       'ubuntu',
-      'roboto', 'noto',
-      'segoe ui', 'arial',
+      'roboto',
+      'noto',
+      'segoe ui',
+      'arial',
       'sans-serif'
-    ].join(','),
+    ].join(',')
   }
 });

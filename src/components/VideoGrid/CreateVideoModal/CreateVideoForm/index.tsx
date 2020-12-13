@@ -7,6 +7,4 @@ const CreateVideoForm = () => {
     </>
   );
 };
-
-
 export default CreateVideoForm;

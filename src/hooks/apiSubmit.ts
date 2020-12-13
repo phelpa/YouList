@@ -1,6 +1,9 @@
 import { useState, useCallback } from 'react';
 
-function useApiSubmit<T>(apiCallback: () => Promise<T>, deps: Array<any>): [() => Promise<T>, boolean] {
+function useApiSubmit<T>(
+  apiCallback: () => Promise<T>,
+  deps: Array<any>
+): [() => Promise<T>, boolean] {
   const [isLoading, setIsLoading] = useState(false);
   const cb = useCallback(apiCallback, deps);
 

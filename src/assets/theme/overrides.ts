@@ -3,15 +3,15 @@ import { Overrides } from '@material-ui/core/styles/overrides';
 const overrides: Overrides = {
   MuiDialogTitle: {
     root: {
-      'padding': '5px 12px',
-    },
-    },
+      padding: '5px 12px'
+    }
+  },
   MuiInput: {
     underline: {
       '&:after': {
         borderBottom: 'black'
       }
-    },
+    }
   },
   MuiFormLabel: {
     root: {
