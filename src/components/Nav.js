@@ -1,7 +1,7 @@
 import React from 'react';
 import './Nav.css';
 
-const Nav = props => {
+const Nav = () => {
   return (
     <header className="bg-white black-80 tc pv4">
       {
@@ -10,8 +10,6 @@ const Nav = props => {
           href="/"
         ></a>
       }
-      {/*<a className="circle bw4 bg-white-80 ba b--black dib pa5 w4 h4 br-100" href="/">
-      </a>*/}
       <h1 className="mt2 mb0 baskerville i fw1 f1">YouList</h1>
       <h2 className="mt2 mb0 f6 fw4 ttu tracked">
         your own customized videos page

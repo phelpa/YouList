@@ -6,14 +6,15 @@ import CreateVideoModal from './CreateVideoModal';
 import { useVideos } from '../../providers/videos';
 import { useParams } from 'react-router-dom';
 
-const VideoGrid = (props: any) => {
+const VideoGrid = () => {
   const [isOpen, openModal, closeModal] = useModal();
   const { videos, isLoading, getVideos } = useVideos();
   const params = useParams();
 
   useEffect(() => {
     getVideos(params.listId);
-  }, [getVideos, params.listId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="w-100 bg-white ">
@@ -22,7 +23,7 @@ const VideoGrid = (props: any) => {
         {videos &&
           videos.map((video, i) => <Video key={i} i={i} video={video} />)}
         <ActionIcon
-          callback={() => openModal()}
+          callback={openModal}
           icon="ondemand_video"
           description="Adicionar novo vídeo"
         />

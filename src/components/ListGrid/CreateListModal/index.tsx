@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Button,
   Dialog,
@@ -29,12 +29,7 @@ const CreateListModal = ({ closeModal }: IProps) => {
   };
 
   return (
-    <Dialog
-      maxWidth="xs"
-      fullWidth={true}
-      open={true}
-      onClose={() => closeModal()}
-    >
+    <Dialog maxWidth="xs" fullWidth={true} open={true} onClose={closeModal}>
       <DialogTitle className="bg-light-gray">Nova lista</DialogTitle>
       <DialogContent>
         <Formik
@@ -90,28 +85,3 @@ const CreateListModal = ({ closeModal }: IProps) => {
 };
 
 export default CreateListModal;
-
-{
-  /* TODO COLOCAR UPLOAD DE ARQUIVO
-                <Field
-                size='small'
-                fullWidth
-                margin='normal'
-                helperText='Escolha sua melhor foto de apresentação'
-                name='image'
-                type='file'
-                rows='3'
-                onClick={() => handleFileUpload()}
-                variant="outlined"
-                inputProps={{
-                  style: {
-                    cursor: 'pointer',
-                    backgroundImage: "url('../../img/vectorpaint.svg')",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center",
-                    caretColor: 'transparent',
-                   },
-                }}
-                component={TextFormField}
-                /> */
-}

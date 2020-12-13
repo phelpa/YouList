@@ -7,9 +7,9 @@ const VideoSingle = () => {
   const params = useParams();
 
   useEffect(() => {
-    console.log('entrouuu');
     getVideo(params.videoId);
-  }, [getVideo, params.videoId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const loadYoutubeAPI = () => {
     if (!window['player']) {

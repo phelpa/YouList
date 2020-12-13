@@ -7,6 +7,10 @@ export interface IAnnotation {
   videotime: number;
 }
 
+export interface IAnnotationField {
+  annotation: string;
+}
+
 export interface IAddAnnotation {
   user_id: number;
   video_id: number;

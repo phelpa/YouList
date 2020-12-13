@@ -24,10 +24,10 @@ const ListGrid = () => {
         ))}
         <ActionIcon
           description="Adicionar nova lista"
-          callback={() => openModal()}
+          callback={openModal}
           icon="videocam"
         />
-        {isOpen && <CreateListModal closeModal={() => closeModal()} />}
+        {isOpen && <CreateListModal closeModal={closeModal} />}
       </div>
     </div>
   );

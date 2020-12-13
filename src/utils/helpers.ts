@@ -27,6 +27,7 @@ export const insertAnnotationAtTheRightPosition = (
     ) {
       return true;
     }
+    return false;
   });
 
   if (index === -1) {

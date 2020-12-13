@@ -3,14 +3,12 @@ import { render } from 'react-dom';
 import { MuiThemeProvider } from '@material-ui/core';
 import { createBrowserHistory } from 'history';
 
-// Import Components
 import Single from './components/Single';
 import VideoGrid from './components/VideoGrid';
 import ListGrid from './components/ListGrid';
 import Main from './components/Main';
 
-// Import react router deps
-import { Router, Route, IndexRoute } from 'react-router';
+import { Router, Route } from 'react-router';
 import ListsProvider from './providers/lists';
 import VideosProvider from './providers/videos';
 import VideoSingleProvider from './providers/videosingle';

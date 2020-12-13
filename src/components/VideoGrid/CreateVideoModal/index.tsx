@@ -56,12 +56,7 @@ const CreateVideoModal = ({ closeModal, listId }: IProps) => {
   };
 
   return (
-    <Dialog
-      maxWidth="xs"
-      fullWidth={true}
-      open={true}
-      onClose={() => closeModal()}
-    >
+    <Dialog maxWidth="xs" fullWidth={true} open={true} onClose={closeModal}>
       <DialogTitle className="bg-light-gray">Novo vídeo</DialogTitle>
       <DialogContent>
         <Formik

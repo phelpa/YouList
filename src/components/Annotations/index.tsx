@@ -6,7 +6,7 @@ import TextFormField from '../Shared/TextFormField';
 import { Button, InputAdornment } from '@material-ui/core';
 import Pagination from '@material-ui/lab/Pagination';
 import usePagination from '../../hooks/usePagination';
-import { IAnnotation, IAddAnnotation } from '../../interfaces/IAnnotation';
+import { IAnnotationField, IAnnotation } from '../../interfaces/IAnnotation';
 
 const Annotations = () => {
   const params = useParams();
@@ -21,7 +21,7 @@ const Annotations = () => {
   const [page, changePage, perPage] = usePagination();
   const [currentTime, setCurrentTime] = useState('0:00');
 
-  const submitAnnotation = (values: any) => {
+  const submitAnnotation = (values: IAnnotationField) => {
     const presentTime = window['player']?.getCurrentTime();
     const annotation = {
       user_id: 10,
@@ -103,7 +103,7 @@ const Annotations = () => {
             )}
 
             <Formik
-              initialValues={{} as any}
+              initialValues={{} as IAnnotationField}
               onSubmit={data => submitAnnotation(data)}
             >
               <Form>
