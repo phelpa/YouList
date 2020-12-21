@@ -5,6 +5,7 @@ import CreateListModal from './CreateListModal';
 import ActionIcon from '../Shared/ActionIcon';
 import { useLists } from '../../providers/lists';
 import useModal from '../../hooks/useModal';
+import { FlexWrapper } from './styles';
 
 const ListGrid = () => {
   const [isOpen, openModal, closeModal] = useModal();
@@ -16,8 +17,8 @@ const ListGrid = () => {
   }, []);
 
   return (
-    <div className="w-100 bg-white">
-      <div className="flex flex-wrap">
+    <div className="w-100">
+      <FlexWrapper>
         {isLoading && <div>Carregando...</div>}
         {lists?.map((list: IList, i: number) => (
           <List key={i} list={list} />
@@ -28,7 +29,7 @@ const ListGrid = () => {
           icon="videocam"
         />
         {isOpen && <CreateListModal closeModal={closeModal} />}
-      </div>
+      </FlexWrapper>
     </div>
   );
 };
