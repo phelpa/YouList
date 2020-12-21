@@ -1,24 +1,14 @@
 import React from 'react';
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle
-} from '@material-ui/core';
+import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
 import { Field, Form, Formik } from 'formik';
 import TextFormField from '../../Shared/TextFormField';
-import { styled } from '@material-ui/core/styles';
 import { useLists } from '../../../providers/lists';
 import { ICreateList } from '../../../interfaces/IList';
+import { SubmitButton, StyledDialogTitle } from './styles';
 
 interface IProps {
   closeModal: () => void;
 }
-
-const SubmitButton = styled(Button)({
-  backgroundColor: '#eee'
-});
 
 const CreateListModal = ({ closeModal }: IProps) => {
   const { addList } = useLists();
@@ -30,7 +20,7 @@ const CreateListModal = ({ closeModal }: IProps) => {
 
   return (
     <Dialog maxWidth="xs" fullWidth={true} open={true} onClose={closeModal}>
-      <DialogTitle className="bg-light-gray">Nova lista</DialogTitle>
+      <StyledDialogTitle>Nova lista</StyledDialogTitle>
       <DialogContent>
         <Formik
           initialValues={{} as ICreateList}
