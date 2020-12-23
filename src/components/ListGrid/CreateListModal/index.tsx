@@ -1,10 +1,15 @@
 import React from 'react';
-import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
 import { Field, Form, Formik } from 'formik';
 import TextFormField from '../../Shared/TextFormField';
 import { useLists } from '../../../providers/lists';
 import { ICreateList } from '../../../interfaces/IList';
-import { SubmitButton, StyledDialogTitle } from './styles';
+import { SubmitButton } from './styles';
+import {
+  MyDialog,
+  MyDialogTitle,
+  MyDialogContent,
+  MyDialogActions
+} from '../../../adapters';
 
 interface IProps {
   closeModal: () => void;
@@ -19,9 +24,9 @@ const CreateListModal = ({ closeModal }: IProps) => {
   };
 
   return (
-    <Dialog maxWidth="xs" fullWidth={true} open={true} onClose={closeModal}>
-      <StyledDialogTitle>Nova lista</StyledDialogTitle>
-      <DialogContent>
+    <MyDialog maxWidth="xs" fullWidth={true} open={true} onClose={closeModal}>
+      <MyDialogTitle>Nova lista</MyDialogTitle>
+      <MyDialogContent>
         <Formik
           initialValues={{} as ICreateList}
           onSubmit={data => sendList(data)}
@@ -64,13 +69,13 @@ const CreateListModal = ({ closeModal }: IProps) => {
               component={TextFormField}
             />
 
-            <DialogActions>
+            <MyDialogActions>
               <SubmitButton type="submit">Criar</SubmitButton>
-            </DialogActions>
+            </MyDialogActions>
           </Form>
         </Formik>
-      </DialogContent>
-    </Dialog>
+      </MyDialogContent>
+    </MyDialog>
   );
 };
 
