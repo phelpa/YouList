@@ -29,7 +29,7 @@ const CreateListModal = ({ closeModal }: IProps) => {
       <MyDialogContent>
         <Formik
           initialValues={{} as ICreateList}
-          onSubmit={data => sendList(data)}
+          onSubmit={(data: ICreateList) => sendList(data)}
         >
           <Form>
             <Field

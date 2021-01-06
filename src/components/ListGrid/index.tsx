@@ -5,7 +5,7 @@ import CreateListModal from './CreateListModal';
 import ActionIcon from '../Shared/ActionIcon';
 import { useLists } from '../../providers/lists';
 import useModal from '../../hooks/useModal';
-import { FlexWrapper } from './styles';
+import { FlexWrapper } from '../Shared/FlexWrapper';
 
 const ListGrid = () => {
   const [isOpen, openModal, closeModal] = useModal();
