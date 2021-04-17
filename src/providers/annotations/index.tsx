@@ -71,6 +71,7 @@ function Annotations(): IAnnotationsContext {
 const AnnotationsContext = createContext<IAnnotationsContext>(
   {} as IAnnotationsContext
 );
+
 export const useAnnotations = () => useContext(AnnotationsContext);
 
 type IProviderProps = {

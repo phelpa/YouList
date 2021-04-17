@@ -1,10 +1,10 @@
-import React, { createContext, useContext, useState } from 'react';
-import { get, post } from '../../utils/agent';
+import { useState } from 'react';
 import { listPath, videosPath } from '../../constants/endpoint';
 import { IVideo, ICreateVideo } from '../../interfaces/IVideo';
+import { HttpGetClient, HttpPostClient } from '../../infra/http/protocols/http';
 
 export interface IVideosContext {
-  videos: Array<IVideo>;
+  videos: IVideo[] | undefined;
   isLoading: boolean;
   error: any;
   getVideos: (list_id: number) => void;
@@ -13,18 +13,22 @@ export interface IVideosContext {
   addVideo: (video: ICreateVideo) => void;
 }
 
-function Videos(): IVideosContext {
-  const [videos, setVideos] = useState<IVideo[]>(undefined!);
+export const VideosHook = (
+  httpGetClient: HttpGetClient<IVideo[]>,
+  httpPostClient: HttpPostClient<IVideo>,
+  url: string
+): IVideosContext => {
+  const [videos, setVideos] = useState<IVideo[]>();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(undefined);
 
   const getVideos = async (list_id: number) => {
     setError(undefined);
-    setVideos(undefined!);
+    setVideos(undefined);
     setIsLoading(true);
     try {
-      const videos = await get(`${listPath}/${list_id}/videos`);
-      setVideos(videos);
+      const { data } = await httpGetClient.get(`${listPath}/${list_id}/videos`);
+      setVideos(data);
     } catch (e) {
       setError(e);
       setVideos(undefined!);
@@ -40,8 +44,9 @@ function Videos(): IVideosContext {
     setErrorAddVideo(undefined);
     setIsAdding(true);
     try {
-      const { data }: any = await post(`${videosPath}`, video);
-      setVideos([...videos, data]);
+      const { data } = await httpPostClient.post(`${videosPath}`, video);
+      const newVideos = [...videos!, data] as IVideo[];
+      setVideos(newVideos);
     } catch (e) {
       setError(e);
       setVideos(undefined!);
@@ -59,20 +64,4 @@ function Videos(): IVideosContext {
     errorAddVideo,
     addVideo
   };
-}
-
-const VideosContext = createContext<IVideosContext>({} as IVideosContext);
-
-type IProviderProps = {
-  children: React.ReactNode;
 };
-
-const VideosProvider = ({ children }: IProviderProps) => {
-  return (
-    <VideosContext.Provider value={Videos()}>{children}</VideosContext.Provider>
-  );
-};
-
-export const useVideos = () => useContext(VideosContext);
-
-export default VideosProvider;

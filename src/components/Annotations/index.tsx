@@ -7,6 +7,8 @@ import { Button, InputAdornment } from '@material-ui/core';
 import Pagination from '@material-ui/lab/Pagination';
 import usePagination from '../../hooks/usePagination';
 import { IAnnotationField, IAnnotation } from '../../interfaces/IAnnotation';
+// import MyFormik from '../../adapters/MyFormik';
+// import MyFormikField from '../../adapters/MyFormikField';
 
 const Annotations = () => {
   const params = useParams();
@@ -102,6 +104,24 @@ const Annotations = () => {
                 hideNextButton
               />
             )}
+
+            {/* <MyFormik
+              initialValues={{
+                firstName: 'Aldair',
+                lastName: 'Pereira',
+                email: ''
+              }}
+              onSubmit={(data: any) => console.log(data, 'opleeee')}
+            > */}
+            {/*({ handleSubmit, values }) => (
+                <form onSubmit={handleSubmit}>
+                  {console.log(values, 'oia o values')}
+                  <div>Aldair</div>
+                  <MyFormikField />
+                  <button type="submit">Submit</button>
+                </form>
+              )*/}
+            {/* </MyFormik> */}
 
             <Formik
               initialValues={{} as IAnnotationField}

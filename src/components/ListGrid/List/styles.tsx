@@ -12,6 +12,7 @@ export const StyledArticle = styled('article')({
   marginRight: 'auto',
   margin: '2rem'
 });
+
 export const StyledImg = styled('img')({
   height: '16rem',
   width: '100%',

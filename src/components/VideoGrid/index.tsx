@@ -3,12 +3,15 @@ import Video from '../Video';
 import ActionIcon from '../Shared/ActionIcon';
 import useModal from '../../hooks/useModal';
 import CreateVideoModal from './CreateVideoModal';
-import { useVideos } from '../../providers/videos';
+// import { useVideos } from '../../providers/videos';
 import { useParams } from 'react-router-dom';
+import { useVideos } from '../../providers/videos/videos_factory';
 
 const VideoGrid = () => {
   const [isOpen, openModal, closeModal] = useModal();
   const { videos, isLoading, getVideos } = useVideos();
+
+  console.log(videos, 'olha o videos');
   const params = useParams();
 
   useEffect(() => {

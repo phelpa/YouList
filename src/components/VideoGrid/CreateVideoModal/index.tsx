@@ -9,8 +9,9 @@ import {
 import { Field, Form, Formik } from 'formik';
 import TextFormField from '../../Shared/TextFormField';
 import { styled } from '@material-ui/core/styles';
-import { useVideos } from '../../../providers/videos';
+// import { useVideos } from '../../../providers/videos';
 import { ICreateVideo } from '../../../interfaces/IVideo';
+import { useVideos } from '../../../providers/videos/videos_factory';
 
 interface IProps {
   closeModal: () => void;

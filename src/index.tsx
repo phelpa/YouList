@@ -10,7 +10,7 @@ import Main from './components/Main';
 
 import { Router, Route } from 'react-router';
 import ListsProvider from './providers/lists';
-import VideosProvider from './providers/videos';
+import VideosProvider from './providers/videos/videos_factory';
 import VideoSingleProvider from './providers/videosingle';
 import AnnotationsProvider from './providers/annotations';
 import { theme } from './assets/theme/';
