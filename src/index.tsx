@@ -46,3 +46,38 @@ render(
   </MuiThemeProvider>,
   document.getElementById('root')
 );
+/*
+function App() {
+  return (
+    <ThemeProvider>
+      <AuthenticationProvider>
+        <Router>
+          <Home path="/" />
+          <About path="/about" />
+          <UserPage path="/:userId" />
+          <UserSettings path="/settings" />
+          <Notifications path="/notifications" />
+        </Router>
+      </AuthenticationProvider>
+    </ThemeProvider>
+  )
+}
+function Notifications() {
+  return (
+    <NotificationsProvider>
+      <NotificationsTab />
+      <NotificationsTypeList />
+      <NotificationsList />
+    </NotificationsProvider>
+  )
+}
+function UserPage({username}) {
+  return (
+    <UserProvider username={username}>
+      <UserInfo />
+      <UserNav />
+      <UserActivity />
+    </UserProvider>
+  )
+}
+*/

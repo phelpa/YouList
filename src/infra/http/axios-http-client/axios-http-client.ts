@@ -19,6 +19,7 @@ export class AxiosHttpClient implements HttpPostClient, HttpGetClient {
     if (params) {
       headers = params.headers;
     }
+
     try {
       axiosResponse = await axios.post(url, body, { headers });
     } catch (error) {

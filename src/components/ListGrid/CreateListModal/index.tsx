@@ -10,7 +10,9 @@ import {
   MyDialogContent,
   MyDialogActions
 } from '../../../adapters';
-
+import useMyFormik from '../../../hooks/useMyFormik';
+import MyFormikField from '../../../adapters/MyFormikField';
+import MyForm from '../../../adapters/MyForm/';
 interface IProps {
   closeModal: () => void;
 }
@@ -18,6 +20,14 @@ interface IProps {
 const CreateListModal = ({ closeModal }: IProps) => {
   const { addList } = useLists();
 
+  const formik = useMyFormik({
+    initialValues: {
+      aldair: ''
+    },
+    onSubmit: values => console.log(values)
+  });
+
+  console.log(formik, 'oia o formik');
   const sendList = async (list: ICreateList) => {
     await addList({ ...list, user_id: 10 });
     closeModal();
@@ -27,6 +37,25 @@ const CreateListModal = ({ closeModal }: IProps) => {
     <MyDialog maxWidth="xs" fullWidth={true} open={true} onClose={closeModal}>
       <MyDialogTitle>Nova lista</MyDialogTitle>
       <MyDialogContent>
+        <MyForm context={formik}>
+          <MyFormikField
+            size="small"
+            fullWidth
+            margin="normal"
+            name="aldair"
+            label="Título"
+            type="text"
+            variant="outlined"
+          />
+          <MyFormikField
+            size="small"
+            fullWidth
+            margin="normal"
+            name="pereira"
+            label="Título"
+            type="text"
+          />
+        </MyForm>
         <Formik
           initialValues={{} as ICreateList}
           onSubmit={(data: ICreateList) => sendList(data)}
