@@ -10,7 +10,6 @@ export interface IAnnotation {
 export interface IAnnotationField {
   annotation: string;
 }
-
 export interface IAddAnnotation {
   user_id: number;
   video_id: number;
