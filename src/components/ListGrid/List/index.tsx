@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+
 import { IList } from '../../../interfaces/IList';
 import {
   StyledArticle,

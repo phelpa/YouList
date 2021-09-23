@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
-import Video from '../Video';
-import ActionIcon from '../Shared/ActionIcon';
-import useModal from '../../hooks/useModal';
-import CreateVideoModal from './CreateVideoModal';
-// import { useVideos } from '../../providers/videos';
+
 import { useParams } from 'react-router-dom';
+
+import useModal from '../../hooks/useModal';
 import { useVideos } from '../../providers/videos/videos_factory';
+import ActionIcon from '../Shared/ActionIcon';
+import Video from '../Video';
+import CreateVideoModal from './CreateVideoModal';
 
 const VideoGrid = () => {
   const [isOpen, openModal, closeModal] = useModal();

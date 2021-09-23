@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useState } from 'react';
-import { get, post } from '../../utils/agent';
+
 import { listsPath } from '../../constants/endpoint';
 import { IList, ICreateList } from '../../interfaces/IList';
+import { get, post } from '../../utils/agent';
 
 export interface IListsContext {
   lists: Array<IList>;

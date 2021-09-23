@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
-import { get } from '../../utils/agent';
+
 import { videoPath } from '../../constants/endpoint';
 import { IVideo } from '../../interfaces/IVideo';
+import { get } from '../../utils/agent';
 
 export interface IVideoContext {
   video: IVideo[];

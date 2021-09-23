@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   Button,
   Dialog,
@@ -6,13 +7,12 @@ import {
   DialogContent,
   DialogTitle
 } from '@material-ui/core';
-import { Field, Form, Formik } from 'formik';
-import TextFormField from '../../Shared/TextFormField';
 import { styled } from '@material-ui/core/styles';
-// import { useVideos } from '../../../providers/videos';
+import { Field, Form, Formik } from 'formik';
+
 import { ICreateVideo } from '../../../interfaces/IVideo';
 import { useVideos } from '../../../providers/videos/videos_factory';
-
+import TextFormField from '../../Shared/TextFormField';
 interface IProps {
   closeModal: () => void;
   listId: number;

@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
+
 import { useParams } from 'react-router-dom';
+
 import { useVideo } from '../../providers/videosingle';
 
 const VideoSingle = () => {

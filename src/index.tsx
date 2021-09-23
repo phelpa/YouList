@@ -1,20 +1,20 @@
 import React from 'react';
-import { render } from 'react-dom';
+
 import { MuiThemeProvider } from '@material-ui/core';
 import { createBrowserHistory } from 'history';
+import { render } from 'react-dom';
+import { Router, Route } from 'react-router';
 
-import Single from './components/Single';
-import VideoGrid from './components/VideoGrid';
+import { defaultFont } from './assets/theme';
+import { theme } from './assets/theme/';
 import ListGrid from './components/ListGrid';
 import Main from './components/Main';
-
-import { Router, Route } from 'react-router';
+import Single from './components/Single';
+import VideoGrid from './components/VideoGrid';
+import AnnotationsProvider from './providers/annotations';
 import ListsProvider from './providers/lists';
 import VideosProvider from './providers/videos/videos_factory';
 import VideoSingleProvider from './providers/videosingle';
-import AnnotationsProvider from './providers/annotations';
-import { theme } from './assets/theme/';
-import { defaultFont } from './assets/theme';
 
 import 'tachyons';
 import './reset.css';
