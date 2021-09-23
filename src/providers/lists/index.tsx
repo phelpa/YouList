@@ -23,7 +23,7 @@ function Lists(): IListsContext {
     setLists(undefined!);
     setIsLoading(true);
     try {
-      const lists = await get(`${listsPath}/user/${user_id}`);
+      const { lists } = await get(`${listsPath}/`, { user_id });
       setLists(lists);
     } catch (e) {
       setError(e);

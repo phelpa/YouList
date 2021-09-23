@@ -1,10 +1,10 @@
-export const baseUrl = 'http://localhost:3003';
+export const baseUrl = 'http://localhost:9000/api';
 
 // BASE
 export const baseService = `${baseUrl}`;
 
 //LISTS
-export const listsPath = `${baseService}/lists`;
+export const listsPath = `${baseService}/get_lists`;
 
 //LIST
 export const listPath = `${baseService}/list`;

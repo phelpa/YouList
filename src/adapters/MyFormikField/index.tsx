@@ -1,7 +1,9 @@
 import React from 'react';
-import MyTextField from '../MyTextField';
+
 import { TextFieldProps } from '@material-ui/core';
+
 import { FormFieldsContext } from '../MyForm';
+import MyTextField from '../MyTextField';
 
 const MyFormikField: React.FC<TextFieldProps> = ({
   name,

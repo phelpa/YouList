@@ -4,13 +4,10 @@
     "react",
     "react-hooks",
     "@typescript-eslint",
-    "prettier"
+    "prettier",
+    "import"
   ],
-  "extends": [
-    "plugin:react/recommended",
-    "prettier/@typescript-eslint",
-    "plugin:prettier/recommended"
-  ],
+  "extends": ["plugin:react/recommended", "prettier/@typescript-eslint"],
   "parserOptions": {
     "ecmaVersion": 10,
     "sourceType": "module",
@@ -20,28 +17,11 @@
     }
   },
   "rules": {
-    "prettier/prettier": ["error", { "singleQuote": true }],
-    "react/display-name": [
-      "off"
-    ],
-    "indent": [2, 2],
-    "react/prop-types": [
-      "off"
-    ],
-    "no-restricted-imports": [
-      "warn",
-      "date-fns",
-      "mdi-react",
-      "lodash"
-    ],
-    "linebreak-style": [
-      "warn",
-      "unix"
-    ],
-    "max-lines": [
-      "warn",
-      300
-    ],
+    "react/display-name": ["off"],
+    "react/prop-types": ["off"],
+    "no-restricted-imports": ["warn", "date-fns", "mdi-react", "lodash"],
+    "linebreak-style": ["warn", "unix"],
+    "max-lines": ["warn", 300],
     "max-len": [
       "warn",
       120,
@@ -57,15 +37,9 @@
         "max": 1
       }
     ],
-    "no-trailing-spaces": [
-      "warn"
-    ],
-    "no-extra-semi": [
-      "warn"
-    ],
-    "no-var": [
-      "warn"
-    ],
+    "no-trailing-spaces": ["warn"],
+    "no-extra-semi": ["warn"],
+    "no-var": ["warn"],
     "quotes": [
       "warn",
       "single",
@@ -73,28 +47,34 @@
         "avoidEscape": true
       }
     ],
-    "object-shorthand": [
-      "warn"
-    ],
-    "semi": [
-      "warn",
-      "always"
-    ],
-    "no-return-await": [
-      "warn"
-    ],
-    "react/jsx-no-undef": [
-      "off"
-    ],
+    "object-shorthand": ["warn"],
+    "semi": ["warn", "always"],
+    "no-return-await": ["warn"],
+    "react/jsx-no-undef": ["off"],
     "react-hooks/rules-of-hooks": "warn",
     "react-hooks/exhaustive-deps": "warn",
-    "react/jsx-no-bind": "warn",
-    "@typescript-eslint/no-unused-vars": [
-      "warn"
+    "react/jsx-no-bind": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
     ],
-    "@typescript-eslint/adjacent-overload-signatures": [
-      "warn"
-    ],
+    "@typescript-eslint/no-unused-vars": ["warn"],
+    "@typescript-eslint/adjacent-overload-signatures": ["warn"],
     "@typescript-eslint/explicit-member-accessibility": [
       "warn",
       {
@@ -133,11 +113,7 @@
         ]
       }
     ],
-    "@typescript-eslint/no-namespace": [
-      "warn"
-    ],
-    "@typescript-eslint/no-require-imports": [
-      "warn"
-    ]
+    "@typescript-eslint/no-namespace": ["warn"],
+    "@typescript-eslint/no-require-imports": ["warn"]
   }
 }

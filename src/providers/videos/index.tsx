@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { listPath, videosPath } from '../../constants/endpoint';
-import { IVideo, ICreateVideo } from '../../interfaces/IVideo';
-import { HttpGetClient, HttpPostClient } from '../../infra/http/protocols/http';
+import { useState } from "react";
+import { listPath, videosPath } from "../../constants/endpoint";
+import { IVideo, ICreateVideo } from "../../interfaces/IVideo";
+import { HttpGetClient, HttpPostClient } from "../../infra/http/protocols/http";
 
 export interface IVideosContext {
   videos: IVideo[] | undefined;
@@ -27,7 +27,11 @@ export const VideosHook = (
     setVideos(undefined);
     setIsLoading(true);
     try {
-      const { data } = await httpGetClient.get(`${listPath}/${list_id}/videos`);
+      //{{Host}}/api/get_videos?user_id=3
+      //http://localhost:9000/list/2/videos
+      const { data } = await httpGetClient.get(`${listPath}/get_videos`, {
+        list_id,
+      });
       setVideos(data);
     } catch (e) {
       setError(e);
@@ -62,6 +66,6 @@ export const VideosHook = (
     getVideos,
     isAdding,
     errorAddVideo,
-    addVideo
+    addVideo,
   };
 };

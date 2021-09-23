@@ -1,12 +1,12 @@
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import createTheme from '@material-ui/core/styles/createTheme';
 
 import overrides from './overrides';
 
-export const theme = createMuiTheme({
+export const theme = createTheme({
   overrides
 });
 
-export const defaultFont = createMuiTheme({
+export const defaultFont = createTheme({
   typography: {
     fontFamily: [
       '-apple-system',

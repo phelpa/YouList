@@ -1,18 +1,19 @@
 import React, { useEffect } from 'react';
-import List from './List';
-import { IList } from '../../interfaces/IList';
-import CreateListModal from './CreateListModal';
-import ActionIcon from '../Shared/ActionIcon';
-import { useLists } from '../../providers/lists';
+
 import useModal from '../../hooks/useModal';
+import { IList } from '../../interfaces/IList';
+import { useLists } from '../../providers/lists';
+import ActionIcon from '../Shared/ActionIcon';
 import { FlexWrapper } from '../Shared/FlexWrapper';
+import CreateListModal from './CreateListModal';
+import List from './List';
 
 const ListGrid = () => {
   const [isOpen, openModal, closeModal] = useModal();
   const { lists, isLoading, getLists } = useLists();
 
   useEffect(() => {
-    getLists(10);
+    getLists(1);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

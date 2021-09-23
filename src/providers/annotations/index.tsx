@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useState } from 'react';
-import { get, post } from '../../utils/agent';
+
 import { annotationsPath } from '../../constants/endpoint';
 import { IAnnotation, IAddAnnotation } from '../../interfaces/IAnnotation';
+import { get, post } from '../../utils/agent';
 import { insertAnnotationAtTheRightPosition } from '../../utils/helpers';
 
 export interface IAnnotationsContext {

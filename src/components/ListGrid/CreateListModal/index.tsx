@@ -1,18 +1,21 @@
 import React from 'react';
+
 import { Field, Form, Formik } from 'formik';
-import TextFormField from '../../Shared/TextFormField';
-import { useLists } from '../../../providers/lists';
-import { ICreateList } from '../../../interfaces/IList';
-import { SubmitButton } from './styles';
+
 import {
   MyDialog,
   MyDialogTitle,
   MyDialogContent,
   MyDialogActions
 } from '../../../adapters';
-import useMyFormik from '../../../hooks/useMyFormik';
-import MyFormikField from '../../../adapters/MyFormikField';
 import MyForm from '../../../adapters/MyForm/';
+import MyFormikField from '../../../adapters/MyFormikField';
+import useMyFormik from '../../../hooks/useMyFormik';
+import { ICreateList } from '../../../interfaces/IList';
+import { useLists } from '../../../providers/lists';
+import TextFormField from '../../Shared/TextFormField';
+import { SubmitButton } from './styles';
+
 interface IProps {
   closeModal: () => void;
 }

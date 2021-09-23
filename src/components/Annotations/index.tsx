@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Field, Form, Formik } from 'formik';
-import { useAnnotations } from '../../providers/annotations';
-import TextFormField from '../Shared/TextFormField';
+
 import { Button, InputAdornment } from '@material-ui/core';
 import Pagination from '@material-ui/lab/Pagination';
-import usePagination from '../../hooks/usePagination';
+import { Field, Form, Formik } from 'formik';
+import { useParams } from 'react-router-dom';
+import usePagination from 'use-pagination-mui';
+
 import { IAnnotationField, IAnnotation } from '../../interfaces/IAnnotation';
-// import MyFormik from '../../adapters/MyFormik';
-// import MyFormikField from '../../adapters/MyFormikField';
+import { useAnnotations } from '../../providers/annotations';
+import TextFormField from '../Shared/TextFormField';
 
 const Annotations = () => {
   const params = useParams();
@@ -21,7 +21,7 @@ const Annotations = () => {
     addAnnotation
   } = useAnnotations();
 
-  const [page, changePage, perPage] = usePagination();
+  const { page, changePage, perPage } = usePagination();
   const [currentTime, setCurrentTime] = useState('0:00');
 
   const submitAnnotation = (values: IAnnotationField) => {
@@ -99,7 +99,7 @@ const Annotations = () => {
               <Pagination
                 count={Math.ceil(annotations?.length / perPage)}
                 page={page}
-                onChange={changePage}
+                // onChange={changePage}
                 hidePrevButton
                 hideNextButton
               />

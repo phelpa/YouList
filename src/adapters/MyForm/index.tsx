@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { FormikProps } from 'formik';
 
 import { makeStyles } from '@material-ui/core/styles';
+import { FormikProps } from 'formik';
 
 export interface IFormProps {
   context: FormikProps<any>;
