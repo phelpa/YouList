@@ -1,21 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
 
-import useModal from '../../hooks/useModal';
-import { IList } from '../../interfaces/IList';
-import { useLists } from '../../providers/lists';
-import ActionIcon from '../Shared/ActionIcon';
-import { FlexWrapper } from '../Shared/FlexWrapper';
-import CreateListModal from './CreateListModal';
-import List from './List';
+import useModal from '../../hooks/useModal'
+import { IList } from '../../interfaces/IList'
+import { useLists } from '../../providers/lists'
+import ActionIcon from '../Shared/ActionIcon'
+import { FlexWrapper } from '../Shared/FlexWrapper'
+import CreateListModal from './CreateListModal'
+import List from './List'
 
 const ListGrid = () => {
-  const [isOpen, openModal, closeModal] = useModal();
-  const { lists, isLoading, getLists } = useLists();
+  const [isOpen, openModal, closeModal] = useModal()
+  const { lists, isLoading, getLists } = useLists()
 
   useEffect(() => {
-    getLists(1);
+    getLists(3)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   return (
     <div className="w-100">
@@ -32,7 +32,7 @@ const ListGrid = () => {
         {isOpen && <CreateListModal closeModal={closeModal} />}
       </FlexWrapper>
     </div>
-  );
-};
+  )
+}
 
-export default ListGrid;
+export default ListGrid

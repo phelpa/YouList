@@ -1,6 +1,7 @@
-import React, { memo } from 'react';
+import React, { memo } from 'react'
 
-import { IList } from '../../../interfaces/IList';
+import { youtubeImg } from '../../../constants/endpoint'
+import { IList } from '../../../interfaces/IList'
 import {
   StyledArticle,
   StyledImg,
@@ -8,16 +9,15 @@ import {
   VideoTitle,
   DescriptionText,
   StyledLink
-} from './styles';
-
+} from './styles'
 interface IProps {
-  list: IList;
+  list: IList
 }
 
 const List = memo(({ list }: IProps) => {
   return (
     <StyledArticle>
-      <StyledImg src={list.urlimage} alt="" />
+      <StyledImg src={youtubeImg(list.youtube_id)} alt="" />
       <Description>
         <StyledLink to={`/list/${list.id}`}>
           <VideoTitle>{list.title}</VideoTitle>
@@ -25,7 +25,7 @@ const List = memo(({ list }: IProps) => {
         <DescriptionText>{list.description}</DescriptionText>
       </Description>
     </StyledArticle>
-  );
-});
+  )
+})
 
-export default List;
+export default List

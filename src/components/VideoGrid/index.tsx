@@ -1,24 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
 
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom'
 
-import useModal from '../../hooks/useModal';
-import { useVideos } from '../../providers/videos/videos_factory';
-import ActionIcon from '../Shared/ActionIcon';
-import Video from '../Video';
-import CreateVideoModal from './CreateVideoModal';
+import useModal from '../../hooks/useModal'
+import { useVideos } from '../../providers/videos'
+import ActionIcon from '../Shared/ActionIcon'
+import Video from '../Video'
+import CreateVideoModal from './CreateVideoModal'
 
 const VideoGrid = () => {
-  const [isOpen, openModal, closeModal] = useModal();
-  const { videos, isLoading, getVideos } = useVideos();
+  const [isOpen, openModal, closeModal] = useModal()
+  const { videos, isLoading, getVideos } = useVideos()
 
-  console.log(videos, 'olha o videos');
-  const params = useParams();
+  console.log(videos, 'olha o videos')
+  const params = useParams()
 
   useEffect(() => {
-    getVideos(params.listId);
+    getVideos(params.listId)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   return (
     <div className="w-100 bg-white ">
@@ -36,7 +36,7 @@ const VideoGrid = () => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default VideoGrid;
+export default VideoGrid

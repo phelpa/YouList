@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 import {
   Button,
@@ -6,55 +6,56 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle
-} from '@material-ui/core';
-import { styled } from '@material-ui/core/styles';
-import { Field, Form, Formik } from 'formik';
+} from '@material-ui/core'
+import { styled } from '@material-ui/core/styles'
+import { Field, Form, Formik } from 'formik'
 
-import { ICreateVideo } from '../../../interfaces/IVideo';
-import { useVideos } from '../../../providers/videos/videos_factory';
-import TextFormField from '../../Shared/TextFormField';
+import { ICreateVideo } from '../../../interfaces/IVideo'
+import { useVideos } from '../../../providers/videos'
+import TextFormField from '../../Shared/TextFormField'
+
 interface IProps {
-  closeModal: () => void;
-  listId: number;
+  closeModal: () => void
+  listId: number
 }
 
 const SubmitButton = styled(Button)({
   backgroundColor: '#eee'
-});
+})
 
 const CreateVideoModal = ({ closeModal, listId }: IProps) => {
-  const { addVideo } = useVideos();
+  const { addVideo } = useVideos()
 
   const sendVideo = async (video: ICreateVideo) => {
-    const videoPayload = { ...video, list_id: listId, user_id: 10 };
-    await addVideo(videoPayload);
-    closeModal();
-  };
+    const videoPayload = { ...video, list_id: listId, user_id: 10 }
+    await addVideo(videoPayload)
+    closeModal()
+  }
 
   const handlePaste = (e: any) => {
-    e.stopPropagation();
-    e.preventDefault();
+    e.stopPropagation()
+    e.preventDefault()
 
-    const clipboardData = e.clipboardData || window['clipboardData'];
-    const pastedData = clipboardData.getData('Text');
+    const clipboardData = e.clipboardData || window['clipboardData']
+    const pastedData = clipboardData.getData('Text')
 
-    return pastedData;
-  };
+    return pastedData
+  }
 
   const getYoutubeId = (url: string) => {
-    if (!url) return;
-    const myregexp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/gi;
+    if (!url) return
+    const myregexp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/gi
 
     if (myregexp) {
-      const youtubeUrl = url.match(myregexp);
+      const youtubeUrl = url.match(myregexp)
       if (youtubeUrl) {
-        const youtubeUrlString = youtubeUrl![0];
-        const youtubeId = youtubeUrlString?.slice(-11);
-        return youtubeId;
+        const youtubeUrlString = youtubeUrl![0]
+        const youtubeId = youtubeUrlString?.slice(-11)
+        return youtubeId
       }
     }
-    return url;
-  };
+    return url
+  }
 
   return (
     <Dialog maxWidth="xs" fullWidth={true} open={true} onClose={closeModal}>
@@ -96,9 +97,9 @@ const CreateVideoModal = ({ closeModal, listId }: IProps) => {
                 fullWidth
                 value={values?.youtube_id ?? ''}
                 onPaste={(e: any) => {
-                  const pastedData = handlePaste(e);
-                  const ytId = getYoutubeId(pastedData);
-                  setFieldValue('youtube_id', ytId);
+                  const pastedData = handlePaste(e)
+                  const ytId = getYoutubeId(pastedData)
+                  setFieldValue('youtube_id', ytId)
                 }}
                 margin="normal"
                 name="youtube_id"
@@ -117,7 +118,7 @@ const CreateVideoModal = ({ closeModal, listId }: IProps) => {
         </Formik>
       </DialogContent>
     </Dialog>
-  );
-};
+  )
+}
 
-export default CreateVideoModal;
+export default CreateVideoModal

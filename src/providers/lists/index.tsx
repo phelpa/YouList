@@ -1,71 +1,73 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react'
 
-import { listsPath } from '../../constants/endpoint';
-import { IList, ICreateList } from '../../interfaces/IList';
-import { get, post } from '../../utils/agent';
+import { listsPath } from '../../constants/endpoint'
+import httpClient from '../../infra/http/axios-http-client/axios-http-client'
+import { IList, IListResponse, ICreateList } from '../../interfaces/IList'
 
 export interface IListsContext {
-  lists: Array<IList>;
-  isLoading: boolean;
-  error: any;
-  getLists: (user_id: number) => void;
-  isAdding: boolean;
-  errorAddList: any;
-  addList: (list: ICreateList) => void;
+  lists: Array<IList>
+  isLoading: boolean
+  error: any
+  getLists: (user_id: number) => void
+  isAdding: boolean
+  errorAddList: any
+  addList: (list: ICreateList) => void
 }
 
 function Lists(): IListsContext {
-  const [lists, setLists] = useState<IList[]>(undefined!);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(undefined);
+  const [lists, setLists] = useState<IList[]>(undefined!)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<unknown>()
 
   const getLists = async (user_id: number) => {
-    setError(undefined);
-    setLists(undefined!);
-    setIsLoading(true);
+    setError(undefined)
+    setLists(undefined!)
+    setIsLoading(true)
     try {
-      const { lists } = await get(`${listsPath}/`, { user_id });
-      setLists(lists);
+      const { lists } = await httpClient.get<IListResponse>(`${listsPath}/`, {
+        user_id
+      })
+      setLists(lists)
     } catch (e) {
-      setError(e);
-      setLists(undefined!);
+      setError(e)
+      setLists(undefined!)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
-  const [isAdding, setIsAdding] = useState(false);
-  const [errorAddList, setErrorAddList] = useState(undefined);
+  const [isAdding, setIsAdding] = useState(false)
+  const [errorAddList, setErrorAddList] = useState(undefined)
 
   const addList = async (list: ICreateList) => {
-    setErrorAddList(undefined);
-    setIsAdding(true);
+    setErrorAddList(undefined)
+    setIsAdding(true)
     try {
-      const { data }: any = await post(`${listsPath}`, list);
-      setLists([...lists, data]);
+      const { data }: any = await httpClient.post(`${listsPath}`, list)
+      setLists([...lists, data])
     } catch (e) {
-      setError(e);
-      setLists(undefined!);
+      setError(e)
+      setLists(undefined!)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
-  return { lists, isLoading, error, getLists, isAdding, errorAddList, addList };
+  return { lists, isLoading, error, getLists, isAdding, errorAddList, addList }
 }
 
-const ListsContext = createContext<IListsContext>({} as IListsContext);
+const ListsContext = createContext<IListsContext>({} as IListsContext)
 
 type IProviderProps = {
-  children: React.ReactNode;
-};
+  children: React.ReactNode
+}
 
 const ListsProvider = ({ children }: IProviderProps) => {
   return (
     <ListsContext.Provider value={Lists()}>{children}</ListsContext.Provider>
-  );
-};
+  )
+}
 
-export const useLists = () => useContext(ListsContext);
+export const useLists = () => useContext(ListsContext)
 
-export default ListsProvider;
+export default ListsProvider

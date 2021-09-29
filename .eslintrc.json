@@ -48,7 +48,7 @@
       }
     ],
     "object-shorthand": ["warn"],
-    "semi": ["warn", "always"],
+    "semi": ["off", "always"],
     "no-return-await": ["warn"],
     "react/jsx-no-undef": ["off"],
     "react-hooks/rules-of-hooks": "warn",

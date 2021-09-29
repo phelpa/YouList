@@ -1,24 +1,24 @@
-import React from 'react';
+import React from 'react'
 
-import { MuiThemeProvider } from '@material-ui/core';
-import { createBrowserHistory } from 'history';
-import { render } from 'react-dom';
-import { Router, Route } from 'react-router';
+import { MuiThemeProvider } from '@material-ui/core'
+import { createBrowserHistory } from 'history'
+import { render } from 'react-dom'
+import { Router, Route } from 'react-router'
 
-import { defaultFont } from './assets/theme';
-import { theme } from './assets/theme/';
-import ListGrid from './components/ListGrid';
-import Main from './components/Main';
-import Single from './components/Single';
-import VideoGrid from './components/VideoGrid';
-import AnnotationsProvider from './providers/annotations';
-import ListsProvider from './providers/lists';
-import VideosProvider from './providers/videos/videos_factory';
-import VideoSingleProvider from './providers/videosingle';
+import { defaultFont } from './assets/theme'
+import { theme } from './assets/theme/'
+import ListGrid from './components/ListGrid'
+import Main from './components/Main'
+import Single from './components/Single'
+import VideoGrid from './components/VideoGrid'
+import AnnotationsProvider from './providers/annotations'
+import ListsProvider from './providers/lists'
+import VideosProvider from './providers/videos'
+import VideoSingleProvider from './providers/videosingle'
 
-import 'tachyons';
-import './reset.css';
-import './index.css';
+import 'tachyons'
+import './reset.css'
+import './index.css'
 
 render(
   <MuiThemeProvider theme={defaultFont}>
@@ -45,7 +45,7 @@ render(
     </MuiThemeProvider>
   </MuiThemeProvider>,
   document.getElementById('root')
-);
+)
 /*
 function App() {
   return (
