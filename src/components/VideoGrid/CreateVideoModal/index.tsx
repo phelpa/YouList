@@ -56,7 +56,7 @@ const CreateVideoModal = ({ closeModal, listId }: IProps) => {
             name="description"
             label="Description"
             variant="outlined"
-            multiline={true}
+            multiline
             rows="3"
           />
           <MyFormikField

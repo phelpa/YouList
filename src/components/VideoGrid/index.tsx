@@ -5,8 +5,8 @@ import { useParams } from 'react-router-dom'
 import useModal from '../../hooks/useModal'
 import { useVideos } from '../../providers/videos'
 import ActionIcon from '../Shared/ActionIcon'
-import Video from '../Video'
 import CreateVideoModal from './CreateVideoModal'
+import Video from './Video'
 
 const VideoGrid = () => {
   const [isOpen, openModal, closeModal] = useModal()
@@ -21,7 +21,7 @@ const VideoGrid = () => {
   return (
     <div className="w-100 bg-white ">
       <div className="flex flex-wrap">
-        {isLoading && <div>Carregando...</div>}
+        {isLoading && <div>Loading...</div>}
         {videos?.map(video => (
           <Video key={video.id} video={video} />
         ))}

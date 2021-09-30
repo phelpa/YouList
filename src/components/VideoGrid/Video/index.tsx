@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 const Video = (props: any) => {
-  const video = props.video;
+  const video = props.video
   return (
     <article className="mainDiv w5 br2 ba dark-gray b--black-10 mh4 mv4 center">
       <iframe
@@ -27,7 +27,7 @@ const Video = (props: any) => {
         </p>
       </div>
     </article>
-  );
-};
+  )
+}
 
-export default Video;
+export default Video

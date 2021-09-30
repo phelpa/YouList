@@ -47,7 +47,7 @@ const CreateListModal = ({ closeModal }: IProps) => {
           <MyFormikField
             name="description"
             label="Description"
-            multiline={true}
+            multiline
             rows="3"
             helperText="A description of what your list is about"
           />

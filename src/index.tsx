@@ -9,8 +9,8 @@ import { defaultFont } from './assets/theme'
 import { theme } from './assets/theme/'
 import ListGrid from './components/ListGrid'
 import Main from './components/Main'
-import Single from './components/Single'
 import VideoGrid from './components/VideoGrid'
+import VideoPage from './components/VideoPage'
 import AnnotationsProvider from './providers/annotations'
 import ListsProvider from './providers/lists'
 import VideosProvider from './providers/videos'
@@ -34,7 +34,7 @@ render(
                   <Route
                     exact
                     path="/list/:listId/video/:videoId"
-                    component={Single}
+                    component={VideoPage}
                   />
                 </Router>
               </Main>
