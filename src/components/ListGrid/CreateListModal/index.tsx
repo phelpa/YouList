@@ -1,114 +1,71 @@
-import React from 'react';
-
-import { Field, Form, Formik } from 'formik';
+import React, { ClipboardEvent } from 'react'
 
 import {
   MyDialog,
   MyDialogTitle,
   MyDialogContent,
   MyDialogActions
-} from '../../../adapters';
-import MyForm from '../../../adapters/MyForm/';
-import MyFormikField from '../../../adapters/MyFormikField';
-import useMyFormik from '../../../hooks/useMyFormik';
-import { ICreateList } from '../../../interfaces/IList';
-import { useLists } from '../../../providers/lists';
-import TextFormField from '../../Shared/TextFormField';
-import { SubmitButton } from './styles';
+} from '../../../adapters'
+import { MyForm, MyFormikField, MyButton } from '../../../adapters'
+import { retrieveYoutubeIdFromClipBoard } from '../../../helpers/youtube'
+import useMyFormik from '../../../hooks/useMyFormik'
+import { IListForm } from '../../../interfaces/IList'
+import { useLists } from '../../../providers/lists'
 
 interface IProps {
-  closeModal: () => void;
+  closeModal: () => void
 }
 
 const CreateListModal = ({ closeModal }: IProps) => {
-  const { addList } = useLists();
+  const { addList } = useLists()
+
+  const sendList = async (list: IListForm) => {
+    await addList({ ...list, user_id: 3 })
+    closeModal()
+  }
+
+  const onYoutubeUrlPaste = (e: ClipboardEvent<HTMLInputElement>) => {
+    const ytId = retrieveYoutubeIdFromClipBoard(e)
+    formik.setFieldValue('youtube_id', ytId)
+  }
 
   const formik = useMyFormik({
     initialValues: {
-      aldair: ''
+      title: '',
+      description: '',
+      youtube_id: ''
     },
-    onSubmit: values => console.log(values)
-  });
-
-  console.log(formik, 'oia o formik');
-  const sendList = async (list: ICreateList) => {
-    await addList({ ...list, user_id: 10 });
-    closeModal();
-  };
+    onSubmit: sendList
+  })
 
   return (
     <MyDialog maxWidth="xs" fullWidth={true} open={true} onClose={closeModal}>
-      <MyDialogTitle>Nova lista</MyDialogTitle>
+      <MyDialogTitle>New List</MyDialogTitle>
       <MyDialogContent>
         <MyForm context={formik}>
+          <MyFormikField name="title" label="Title" />
           <MyFormikField
-            size="small"
-            fullWidth
-            margin="normal"
-            name="aldair"
-            label="Título"
-            type="text"
-            variant="outlined"
+            name="description"
+            label="Description"
+            multiline={true}
+            rows="3"
+            helperText="A description of what your list is about"
           />
+
           <MyFormikField
-            size="small"
-            fullWidth
-            margin="normal"
-            name="pereira"
-            label="Título"
-            type="text"
+            name="youtube_id"
+            label="https://www.youtube.com/watch?v="
+            helperText="Paste the youtube url to use its thumbnail"
+            onPaste={onYoutubeUrlPaste}
+            value={formik?.values?.youtube_id ?? ''}
           />
+          <MyDialogActions>
+            <MyButton type="submit">Submit</MyButton>
+          </MyDialogActions>
         </MyForm>
-        <Formik
-          initialValues={{} as ICreateList}
-          onSubmit={(data: ICreateList) => sendList(data)}
-        >
-          <Form>
-            <Field
-              size="small"
-              fullWidth
-              margin="normal"
-              name="title"
-              label="Título"
-              type="text"
-              variant="outlined"
-              component={TextFormField}
-            />
-
-            <Field
-              size="small"
-              fullWidth
-              margin="normal"
-              name="description"
-              label="Descrição"
-              type="text"
-              variant="outlined"
-              multiline={true}
-              rows="3"
-              helperText="Uma descrição do que seria a sua lista"
-              component={TextFormField}
-            />
-
-            <Field
-              size="small"
-              fullWidth
-              margin="normal"
-              name="list_image"
-              label="https:\\"
-              type="text"
-              variant="outlined"
-              helperText="Digite o endereço da imagem pra usar como capa da lista"
-              component={TextFormField}
-            />
-
-            <MyDialogActions>
-              <SubmitButton type="submit">Criar</SubmitButton>
-            </MyDialogActions>
-          </Form>
-        </Formik>
       </MyDialogContent>
     </MyDialog>
-  );
-};
+  )
+}
 
-export default CreateListModal;
+export default CreateListModal

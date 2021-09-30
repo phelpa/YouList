@@ -24,9 +24,12 @@ function Lists(): IListsContext {
     setLists(undefined!)
     setIsLoading(true)
     try {
-      const { lists } = await httpClient.get<IListResponse>(`${listsPath}/`, {
-        user_id
-      })
+      const { lists } = await httpClient.get<IListResponse>(
+        `${listsPath}/get_lists`,
+        {
+          user_id
+        }
+      )
       setLists(lists)
     } catch (e) {
       setError(e)
@@ -39,12 +42,15 @@ function Lists(): IListsContext {
   const [isAdding, setIsAdding] = useState(false)
   const [errorAddList, setErrorAddList] = useState(undefined)
 
-  const addList = async (list: ICreateList) => {
+  const addList = async (listPayload: ICreateList) => {
     setErrorAddList(undefined)
     setIsAdding(true)
     try {
-      const { data }: any = await httpClient.post(`${listsPath}`, list)
-      setLists([...lists, data])
+      const { list }: any = await httpClient.post(
+        `${listsPath}/add_list`,
+        listPayload
+      )
+      setLists([...lists, list])
     } catch (e) {
       setError(e)
       setLists(undefined!)

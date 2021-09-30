@@ -7,7 +7,7 @@ export const youtubeImg = (youtubeId: string) =>
 export const baseService = `${baseUrl}`
 
 //LISTS
-export const listsPath = `${baseService}/get_lists`
+export const listsPath = `${baseService}`
 
 //LIST
 export const listPath = `${baseService}`

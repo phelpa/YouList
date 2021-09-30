@@ -39,6 +39,8 @@ const CreateVideoModal = ({ closeModal, listId }: IProps) => {
     const clipboardData = e.clipboardData || window['clipboardData']
     const pastedData = clipboardData.getData('Text')
 
+    console.log(pastedData, 'pastedData')
+
     return pastedData
   }
 

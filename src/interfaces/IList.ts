@@ -14,9 +14,10 @@ export interface ICreateList {
   title: string
   description: string
   user_id: number
-  urlimage: string
+  youtube_id: string
 }
+export type IListForm = Omit<ICreateList, 'user_id'>
 
 export interface ICreateListResponse {
-  data: Array<IList>
+  list: ICreateList
 }
