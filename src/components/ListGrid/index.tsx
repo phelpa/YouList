@@ -20,12 +20,12 @@ const ListGrid = () => {
   return (
     <div className="w-100">
       <FlexWrapper>
-        {isLoading && <div>Carregando...</div>}
-        {lists?.map((list: IList, i: number) => (
-          <List key={i} list={list} />
+        {isLoading && <div>Loading...</div>}
+        {lists?.map((list: IList) => (
+          <List key={list.id} list={list} />
         ))}
         <ActionIcon
-          description="Adicionar nova lista"
+          description="Add new list"
           callback={openModal}
           icon="videocam"
         />

@@ -1,11 +1,10 @@
-import { useFormik, FormikConfig, FormikProps } from 'formik';
-
-export interface IUseFormParams<Values> extends FormikConfig<Values> {}
+import { FormikProps } from 'formik'
+import { useMyFormik as useMyFormikLib, IUseFormParams } from 'use-myformik'
 
 function useMyFormik<T>(config: IUseFormParams<T>): FormikProps<T> {
-  const formik = useFormik(config);
+  const formik = useMyFormikLib(config)
 
-  return formik;
+  return formik
 }
 
-export default useMyFormik;
+export default useMyFormik

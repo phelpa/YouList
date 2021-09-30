@@ -1,37 +1,15 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import { makeStyles } from '@material-ui/core/styles';
-import { FormikProps } from 'formik';
+import { FormikProps } from 'formik'
+import { MyForm as MyFormLib } from 'use-myformik'
 
 export interface IFormProps {
-  context: FormikProps<any>;
-  children?: React.ReactNode;
+  context: FormikProps<any>
+  children?: React.ReactNode
 }
 
-const useStyles = makeStyles(() => ({
-  form: {
-    width: '100%'
-  }
-}));
-
-export const FormFieldsContext = React.createContext<FormikProps<any>>(
-  {} as FormikProps<any>
-);
-
 const MyForm = React.memo<IFormProps>(({ children, context }) => {
-  const classes = useStyles();
+  return <MyFormLib context={context}>{children}</MyFormLib>
+})
 
-  return (
-    <FormFieldsContext.Provider value={context}>
-      <form
-        className={classes.form}
-        onSubmit={context.handleSubmit}
-        onReset={context.handleReset}
-      >
-        {children}
-      </form>
-    </FormFieldsContext.Provider>
-  );
-});
-
-export default MyForm;
+export default MyForm

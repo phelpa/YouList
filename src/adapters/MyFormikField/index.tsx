@@ -1,26 +1,10 @@
-import React from 'react';
+import React from 'react'
 
-import { TextFieldProps } from '@material-ui/core';
+import { TextFieldProps } from '@material-ui/core'
+import { MyFormikField as MyFormikFieldLib } from 'use-myformik'
 
-import { FormFieldsContext } from '../MyForm';
-import MyTextField from '../MyTextField';
+const MyFormikField: React.FC<TextFieldProps> = ({ ...textFieldProps }) => {
+  return <MyFormikFieldLib {...textFieldProps} />
+}
 
-const MyFormikField: React.FC<TextFieldProps> = ({
-  name,
-  ...textFieldProps
-}) => {
-  const form = React.useContext(FormFieldsContext);
-
-  const handleChange = React.useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = e.target.value ?? '';
-
-      form.setFieldValue(name as string, value);
-    },
-    [form, name]
-  );
-
-  return <MyTextField onChange={handleChange} {...textFieldProps} />;
-};
-
-export default MyFormikField;
+export default MyFormikField
