@@ -1,125 +1,77 @@
-import React from 'react'
+import React, { ClipboardEvent } from 'react'
+
+import { styled } from '@material-ui/core/styles'
 
 import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle
-} from '@material-ui/core'
-import { styled } from '@material-ui/core/styles'
-import { Field, Form, Formik } from 'formik'
-
-import { ICreateVideo } from '../../../interfaces/IVideo'
+  MyDialog,
+  MyDialogTitle,
+  MyDialogContent,
+  MyDialogActions
+} from '../../../adapters'
+import { MyForm, MyFormikField, MyButton } from '../../../adapters'
+import { retrieveYoutubeIdFromClipBoard } from '../../../helpers/youtube'
+import useMyFormik from '../../../hooks/useMyFormik'
+import { IVideoForm } from '../../../interfaces/IVideo'
 import { useVideos } from '../../../providers/videos'
-import TextFormField from '../../Shared/TextFormField'
 
 interface IProps {
   closeModal: () => void
   listId: number
 }
 
-const SubmitButton = styled(Button)({
+const SubmitButton = styled(MyButton)({
   backgroundColor: '#eee'
 })
 
 const CreateVideoModal = ({ closeModal, listId }: IProps) => {
   const { addVideo } = useVideos()
 
-  const sendVideo = async (video: ICreateVideo) => {
-    const videoPayload = { ...video, list_id: listId, user_id: 10 }
+  const sendVideo = async (video: IVideoForm) => {
+    const videoPayload = { ...video, list_id: listId }
     await addVideo(videoPayload)
     closeModal()
   }
 
-  const handlePaste = (e: any) => {
-    e.stopPropagation()
-    e.preventDefault()
-
-    const clipboardData = e.clipboardData || window['clipboardData']
-    const pastedData = clipboardData.getData('Text')
-
-    console.log(pastedData, 'pastedData')
-
-    return pastedData
+  const onYoutubeUrlPaste = (e: ClipboardEvent<HTMLInputElement>) => {
+    const ytId = retrieveYoutubeIdFromClipBoard(e)
+    formik.setFieldValue('youtube_id', ytId)
   }
 
-  const getYoutubeId = (url: string) => {
-    if (!url) return
-    const myregexp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/gi
-
-    if (myregexp) {
-      const youtubeUrl = url.match(myregexp)
-      if (youtubeUrl) {
-        const youtubeUrlString = youtubeUrl![0]
-        const youtubeId = youtubeUrlString?.slice(-11)
-        return youtubeId
-      }
-    }
-    return url
-  }
+  const formik = useMyFormik({
+    initialValues: {
+      title: '',
+      description: '',
+      youtube_id: ''
+    },
+    onSubmit: sendVideo
+  })
 
   return (
-    <Dialog maxWidth="xs" fullWidth={true} open={true} onClose={closeModal}>
-      <DialogTitle className="bg-light-gray">Novo vídeo</DialogTitle>
-      <DialogContent>
-        <Formik
-          initialValues={{} as ICreateVideo}
-          onSubmit={data => sendVideo(data)}
-        >
-          {({ setFieldValue, values }) => (
-            <Form>
-              <Field
-                size="small"
-                fullWidth
-                margin="normal"
-                name="title"
-                label="Título"
-                type="text"
-                variant="outlined"
-                component={TextFormField}
-              />
-
-              <Field
-                size="small"
-                fullWidth
-                margin="normal"
-                name="description"
-                label="Descrição"
-                type="text"
-                variant="outlined"
-                multiline={true}
-                rows="3"
-                helperText="Uma descrição do seu vídeo"
-                component={TextFormField}
-              />
-
-              <Field
-                size="small"
-                fullWidth
-                value={values?.youtube_id ?? ''}
-                onPaste={(e: any) => {
-                  const pastedData = handlePaste(e)
-                  const ytId = getYoutubeId(pastedData)
-                  setFieldValue('youtube_id', ytId)
-                }}
-                margin="normal"
-                name="youtube_id"
-                label="youtube.com/watch?v="
-                type="text"
-                variant="outlined"
-                helperText="Digite o id do vídeo do youtube"
-                component={TextFormField}
-              />
-
-              <DialogActions>
-                <SubmitButton type="submit">Criar</SubmitButton>
-              </DialogActions>
-            </Form>
-          )}
-        </Formik>
-      </DialogContent>
-    </Dialog>
+    <MyDialog maxWidth="xs" fullWidth={true} open={true} onClose={closeModal}>
+      <MyDialogTitle className="bg-light-gray">Novo vídeo</MyDialogTitle>
+      <MyDialogContent>
+        <MyForm context={formik}>
+          <MyFormikField name="title" label="Título" />
+          <MyFormikField
+            name="description"
+            label="Description"
+            variant="outlined"
+            multiline={true}
+            rows="3"
+          />
+          <MyFormikField
+            value={formik?.values?.youtube_id ?? ''}
+            onPaste={onYoutubeUrlPaste}
+            name="youtube_id"
+            label="youtube.com/watch?v="
+            helperText="Paste the youtube url"
+          />
+          <MyDialogActions>
+            <SubmitButton type="submit">Criar</SubmitButton>
+          </MyDialogActions>
+        </MyForm>
+      </MyDialogContent>
+    </MyDialog>
   )
 }
 

@@ -51,7 +51,6 @@ const CreateListModal = ({ closeModal }: IProps) => {
             rows="3"
             helperText="A description of what your list is about"
           />
-
           <MyFormikField
             name="youtube_id"
             label="https://www.youtube.com/watch?v="

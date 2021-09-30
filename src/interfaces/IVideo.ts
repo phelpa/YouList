@@ -15,9 +15,10 @@ export interface ICreateVideo {
   description: string
   list_id: number
   youtube_id: string
-  user_id: number
 }
 
+export type IVideoForm = Omit<ICreateVideo, 'list_id'>
+
 export interface ICreateVideoResponse {
-  data: Array<IVideo>
+  data: IVideo[]
 }

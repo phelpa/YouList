@@ -11,8 +11,6 @@ import CreateVideoModal from './CreateVideoModal'
 const VideoGrid = () => {
   const [isOpen, openModal, closeModal] = useModal()
   const { videos, isLoading, getVideos } = useVideos()
-
-  console.log(videos, 'olha o videos')
   const params = useParams()
 
   useEffect(() => {
@@ -24,12 +22,13 @@ const VideoGrid = () => {
     <div className="w-100 bg-white ">
       <div className="flex flex-wrap">
         {isLoading && <div>Carregando...</div>}
-        {videos &&
-          videos.map((video, i) => <Video key={i} i={i} video={video} />)}
+        {videos?.map(video => (
+          <Video key={video.id} video={video} />
+        ))}
         <ActionIcon
           callback={openModal}
           icon="ondemand_video"
-          description="Adicionar novo vídeo"
+          description="Add new video"
         />
         {isOpen && (
           <CreateVideoModal listId={params.listId} closeModal={closeModal} />
