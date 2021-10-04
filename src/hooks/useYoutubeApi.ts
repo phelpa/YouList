@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-const useYoutubeApi = () => {
+const loadYoutubeApi = () => {
   // useEffect(() => {
   //     loadYoutubeAPI()
   //   }
@@ -24,4 +24,4 @@ const useYoutubeApi = () => {
   }
 }
 
-export default useYoutubeApi
+export default loadYoutubeApi
