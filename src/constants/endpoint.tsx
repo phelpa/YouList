@@ -16,7 +16,7 @@ export const listPath = `${baseService}`
 export const videosPath = `${baseService}/videos`
 
 //VIDEO
-export const videoPath = `${baseService}/video`
+export const videoPath = `${baseService}`
 
 //Annotations
 export const annotationsPath = `${baseService}/annotations`

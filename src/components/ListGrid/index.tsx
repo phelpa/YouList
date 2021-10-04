@@ -13,7 +13,7 @@ const ListGrid = () => {
   const { lists, isLoading, getLists } = useLists()
 
   useEffect(() => {
-    getLists(3)
+    getLists(1)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

@@ -1,73 +1,73 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
-import { Button, InputAdornment } from '@material-ui/core';
-import Pagination from '@material-ui/lab/Pagination';
-import { Field, Form, Formik } from 'formik';
-import { useParams } from 'react-router-dom';
-import usePagination from 'use-pagination-mui';
+import { Button, InputAdornment } from '@material-ui/core'
+import Pagination from '@material-ui/lab/Pagination'
+import { Field, Form, Formik } from 'formik'
+import { useParams } from 'react-router-dom'
+import usePagination from 'use-pagination-mui'
 
-import { IAnnotationField, IAnnotation } from '../../interfaces/IAnnotation';
-import { useAnnotations } from '../../providers/annotations';
-import TextFormField from '../Shared/TextFormField';
+import { IAnnotationField, IAnnotation } from '../../interfaces/IAnnotation'
+import { useAnnotations } from '../../providers/annotations'
+import TextFormField from '../Shared/TextFormField'
 
 const Annotations = () => {
-  const params = useParams();
-  const videoId = params?.videoId;
+  const params = useParams()
+  const videoId = params?.videoId
 
   const {
     annotations,
     isLoading,
     getAnnotations,
     addAnnotation
-  } = useAnnotations();
+  } = useAnnotations()
 
-  const { page, changePage, perPage } = usePagination();
-  const [currentTime, setCurrentTime] = useState('0:00');
+  const { page, changePage, perPage } = usePagination()
+  const [currentTime, setCurrentTime] = useState('0:00')
 
   const submitAnnotation = (values: IAnnotationField) => {
-    const presentTime = window['player']?.getCurrentTime();
+    const presentTime = window['player']?.getCurrentTime()
     const annotation = {
       user_id: 10,
       video_id: videoId,
       annotation: values.annotation,
       videotime: presentTime
-    };
-    addAnnotation(annotation);
-  };
+    }
+    addAnnotation(annotation)
+  }
 
   const setMinuteAndSecond = () => {
-    window?.['player']?.pauseVideo();
-    const presentTime = window['player']?.getCurrentTime();
-    const minute = fancyTimeFormat(presentTime);
-    setCurrentTime(minute);
-  };
+    window?.['player']?.pauseVideo()
+    const presentTime = window['player']?.getCurrentTime()
+    const minute = fancyTimeFormat(presentTime)
+    setCurrentTime(minute)
+  }
 
   const goToSpecificTime = (videotime: number) => {
-    window['player']?.seekTo(videotime);
-  };
+    window['player']?.seekTo(videotime)
+  }
 
   const fancyTimeFormat = (duration: number) => {
     // Hours, minutes and seconds
-    let hrs = ~~(duration / 3600);
-    let mins = ~~((duration % 3600) / 60);
-    let secs = ~~duration % 60;
+    let hrs = ~~(duration / 3600)
+    let mins = ~~((duration % 3600) / 60)
+    let secs = ~~duration % 60
 
     // Output like "1:01" or "4:03:59" or "123:03:59"
-    let ret = '';
+    let ret = ''
 
     if (hrs > 0) {
-      ret += '' + hrs + ':' + (mins < 10 ? '0' : '');
+      ret += '' + hrs + ':' + (mins < 10 ? '0' : '')
     }
 
-    ret += '' + mins + ':' + (secs < 10 ? '0' : '');
-    ret += '' + secs;
-    return ret;
-  };
+    ret += '' + mins + ':' + (secs < 10 ? '0' : '')
+    ret += '' + secs
+    return ret
+  }
 
   useEffect(() => {
-    getAnnotations(videoId);
+    getAnnotations(videoId)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   return (
     <>
@@ -153,7 +153,7 @@ const Annotations = () => {
         </article>
       )}
     </>
-  );
-};
+  )
+}
 
-export default Annotations;
+export default Annotations
