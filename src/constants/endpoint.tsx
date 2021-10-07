@@ -13,10 +13,10 @@ export const listsPath = `${baseService}`
 export const listPath = `${baseService}`
 
 //VIDEOS
-export const videosPath = `${baseService}/videos`
+export const videosPath = `${baseService}`
 
 //VIDEO
 export const videoPath = `${baseService}`
 
 //Annotations
-export const annotationsPath = `${baseService}/annotations`
+export const annotationsPath = `${baseService}`

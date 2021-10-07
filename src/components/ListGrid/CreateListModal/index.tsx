@@ -20,7 +20,7 @@ const CreateListModal = ({ closeModal }: IProps) => {
   const { addList } = useLists()
 
   const sendList = async (list: IListForm) => {
-    await addList({ ...list, user_id: 3 })
+    await addList({ ...list, user_id: 1 })
     closeModal()
   }
 

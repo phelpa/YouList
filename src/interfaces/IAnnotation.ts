@@ -1,22 +1,20 @@
 export interface IAnnotation {
-  id: number;
-  user_id: number;
-  video_id: number;
-  annotation: string;
-  created: Date;
-  videotime: number;
+  id: number
+  video_id: number
+  text: string
+  created: Date
+  videotime: number
 }
 
 export interface IAnnotationField {
-  annotation: string;
+  annotation: string
 }
 export interface IAddAnnotation {
-  user_id: number;
-  video_id: number;
-  videotime: number;
-  annotation: string;
+  video_id: number
+  videotime: number
+  text: string
 }
 
 export interface IAnnotationResponse {
-  data: Array<IAnnotation>;
+  data: IAnnotation[]
 }

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { useVideo } from '../../providers/videosingle'
-import Annotations from '../Annotations'
+import Annotations from './Annotations'
 import VideoPlayer from './VideoPlayer'
 
 const VideoPage = () => {

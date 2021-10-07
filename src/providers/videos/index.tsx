@@ -24,8 +24,6 @@ export const VideosHook = (): IVideosContext => {
     setVideos(undefined)
     setIsLoading(true)
     try {
-      //{{Host}}/api/get_videos?user_id=3
-      //http://localhost:9000/list/2/videos
       const { videos } = await httpClient.get<IVideoResponse>(
         `${listPath}/get_videos`,
         {
@@ -44,12 +42,15 @@ export const VideosHook = (): IVideosContext => {
   const [isAdding, setIsAdding] = useState(false)
   const [errorAddVideo, setErrorAddVideo] = useState(undefined)
 
-  const addVideo = async (video: ICreateVideo) => {
+  const addVideo = async (videoPayload: ICreateVideo) => {
     setErrorAddVideo(undefined)
     setIsAdding(true)
     try {
-      const { data } = await httpClient.post(`${videosPath}`, video)
-      const newVideos = [...videos!, data] as IVideo[]
+      const { video } = await httpClient.post(
+        `${videosPath}/add_video`,
+        videoPayload
+      )
+      const newVideos = [...videos!, video] as IVideo[]
       setVideos(newVideos)
     } catch (e) {
       setError(e)

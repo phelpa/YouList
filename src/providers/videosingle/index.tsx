@@ -13,13 +13,14 @@ export interface IVideoContext {
 
 function Video(): IVideoContext {
   const [video, setVideo] = useState<IVideo>(undefined!)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(undefined)
 
   const getVideo = useCallback(async (video_id: number) => {
     setError(undefined)
     setVideo(undefined!)
     setIsLoading(true)
+
     try {
       const { videos } = await httpClient.get<IVideoResponse>(
         `${baseService}/get_videos`,

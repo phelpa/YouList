@@ -22,9 +22,8 @@ const VideoGrid = () => {
     <div className="w-100 bg-white ">
       <div className="flex flex-wrap">
         {isLoading && <div>Loading...</div>}
-        {videos?.map(video => (
-          <Video key={video.id} video={video} />
-        ))}
+        {!isLoading &&
+          videos?.map(video => <Video key={video.id} video={video} />)}
         <ActionIcon
           callback={openModal}
           icon="ondemand_video"

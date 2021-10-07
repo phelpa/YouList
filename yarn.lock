@@ -11393,10 +11393,10 @@ use-myformik@^1.0.7:
     formik "^2.2.9"
     react "^17.0.2"
 
-use-pagination-mui@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/use-pagination-mui/-/use-pagination-mui-1.0.1.tgz#07053a09181c7bfda2fcd88040fe3ae5a76306b4"
-  integrity sha512-uvn2VENbCEwYox2QzMh5rGz8+11yDcMZmm4j8gvLOBXq1XIeuTyZQq1Up186mooYshh2BcwUt+u3wE97QRd+ig==
+use-pagination-mui@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/use-pagination-mui/-/use-pagination-mui-1.0.6.tgz#ff5c35cf7f6ccca8c7a2fca9de48f00329f2a56d"
+  integrity sha512-jBJZtciq4C+9YyVUrk6LySQ6rgM1kScAPKI5NJ+E2A4UZMm3jCeYnldf8r6HrRLy89YG5PLeliPE5M6WuTOSEA==
   dependencies:
     react "^17.0.2"
 
