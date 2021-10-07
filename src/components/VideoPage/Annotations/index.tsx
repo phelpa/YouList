@@ -21,7 +21,7 @@ const Annotations = () => {
     addAnnotation
   } = useAnnotations()
 
-  const { page, changePageEventBefore, perPage, arrayPage } = usePagination(10)
+  const { changePageEventBefore, perPage, arrayPage } = usePagination(10)
   const [currentTime, setCurrentTime] = useState('0:00')
 
   const submitAnnotation = (values: IAnnotationField) => {
@@ -65,7 +65,6 @@ const Annotations = () => {
 
   useEffect(() => {
     getAnnotations(videoId)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -75,9 +74,6 @@ const Annotations = () => {
         <article className="vh-50 br2 ba dark-gray b--black-10 mh1 bn">
           <div className="pa3 b--black-10">
             <div className="baskerville i bn b f4">Anotações</div>
-            {console.log(annotations, 'oia annotations')}
-            {console.log(page, 'page')}
-            {console.log(perPage, 'perPage')}
             {annotations
               ?.slice(arrayPage * perPage, arrayPage * perPage + perPage)
               ?.map((annotation: IAnnotation, i: number) => (

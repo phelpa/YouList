@@ -1,35 +1,35 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react'
 
 function useApiCall<T>(
   apiCallback: () => Promise<any>,
   deps: Array<any>
 ): [any, boolean, any, () => void] {
-  const [data, setData] = useState<any>(undefined);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(undefined);
+  const [data, setData] = useState<any>(undefined)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<unknown>(undefined)
 
-  const cb = useCallback(apiCallback, deps);
+  const cb = useCallback(apiCallback, deps)
 
   const fetchData = useCallback(async () => {
-    setError(undefined);
-    setData(undefined);
-    setIsLoading(true);
+    setError(undefined)
+    setData(undefined)
+    setIsLoading(true)
     try {
-      const data = await cb();
-      setData(data);
+      const data = await cb()
+      setData(data)
     } catch (e) {
-      setError(e);
-      setData(undefined);
+      setError(e)
+      setData(undefined)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  }, [cb]);
+  }, [cb])
 
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+    fetchData()
+  }, [fetchData])
 
-  return [data, isLoading, error, fetchData];
+  return [data, isLoading, error, fetchData]
 }
 
-export default useApiCall;
+export default useApiCall

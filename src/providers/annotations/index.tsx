@@ -3,7 +3,6 @@ import React, { createContext, useContext, useState } from 'react'
 import { annotationsPath } from '../../constants/endpoint'
 import { IAnnotation, IAddAnnotation } from '../../interfaces/IAnnotation'
 import { get, post } from '../../utils/agent'
-import { insertAnnotationAtTheRightPosition } from '../../utils/helpers'
 
 export interface IAnnotationsContext {
   annotations: IAnnotation[]
@@ -18,7 +17,7 @@ export interface IAnnotationsContext {
 function Annotations(): IAnnotationsContext {
   const [annotations, setAnnotations] = useState<IAnnotation[]>(undefined!)
   const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState(undefined)
+  const [error, setError] = useState<unknown>(undefined)
 
   const getAnnotations = async (video_id: number) => {
     setError(undefined)
@@ -44,17 +43,19 @@ function Annotations(): IAnnotationsContext {
     setErrorAddAnnotation(undefined)
     setIsAdding(true)
     try {
-      const { annotation }: any = await post(
+      const { annotation } = await post(
         `${annotationsPath}/add_annotation`,
         annotationPayload
       )
 
-      const newAnnotations = insertAnnotationAtTheRightPosition(
-        annotation,
-        annotations
-      )
+      const newAnnotations = [...annotations, annotation]
 
-      setAnnotations(newAnnotations)
+      const sortedAnnotations = newAnnotations.sort(
+        (a: IAnnotation, b: IAnnotation) => {
+          return a.videotime - b.videotime
+        }
+      )
+      setAnnotations(sortedAnnotations)
     } catch (e) {
       setError(e)
       setAnnotations(undefined!)

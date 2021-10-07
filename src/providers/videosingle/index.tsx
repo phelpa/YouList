@@ -14,7 +14,7 @@ export interface IVideoContext {
 function Video(): IVideoContext {
   const [video, setVideo] = useState<IVideo>(undefined!)
   const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState(undefined)
+  const [error, setError] = useState<unknown>(undefined)
 
   const getVideo = useCallback(async (video_id: number) => {
     setError(undefined)

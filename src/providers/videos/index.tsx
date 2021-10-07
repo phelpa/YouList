@@ -17,7 +17,7 @@ export interface IVideosContext {
 export const VideosHook = (): IVideosContext => {
   const [videos, setVideos] = useState<IVideo[]>()
   const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState(undefined)
+  const [error, setError] = useState<unknown>(undefined)
 
   const getVideos = async (list_id: number) => {
     setError(undefined)
