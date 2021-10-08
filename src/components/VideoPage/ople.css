@@ -1,0 +1,19 @@
+.aldair {
+  width: 65%;
+}
+
+.pereira {
+  width: 30%;
+}
+
+/*if screen is less than 940px*/
+@media only screen and (max-width: 940px) {
+  .aldair {
+    width: 100%;
+    height: 50%;
+  }
+
+  .pereira {
+    width: 50%;
+  }
+}

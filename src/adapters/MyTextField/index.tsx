@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-import { TextField, TextFieldProps } from '@material-ui/core';
+import { TextField, TextFieldProps } from '@material-ui/core'
 
 const MyTextField: React.FC<TextFieldProps> = ({ ...textFieldProps }) => {
-  return <TextField {...textFieldProps} />;
-};
+  return <TextField {...textFieldProps} />
+}
 
-export default MyTextField;
+export default MyTextField

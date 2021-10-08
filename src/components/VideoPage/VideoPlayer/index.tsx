@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { loadYoutubeApi } from '../../../helpers/youtube'
 
@@ -7,8 +7,12 @@ interface IProps {
 }
 
 const VideoPlayer = ({ youtubeId }: IProps) => {
+  useEffect(() => {
+    loadYoutubeApi()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   return (
-    <div className="vh-50">
+    <div className="aldair">
       <iframe
         className="w-100 h-100"
         title="iframe"
@@ -17,7 +21,6 @@ const VideoPlayer = ({ youtubeId }: IProps) => {
         frameBorder="0"
         allowFullScreen
       ></iframe>
-      {loadYoutubeApi()}
     </div>
   )
 }
