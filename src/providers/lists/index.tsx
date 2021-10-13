@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react'
 
-import { listsPath } from '../../constants/endpoint'
+import { baseService } from '../../constants/endpoint'
 import httpClient from '../../infra/http/axios-http-client/axios-http-client'
 import { IList, IListResponse, ICreateList } from '../../interfaces/IList'
 
@@ -25,9 +25,9 @@ function Lists(): IListsContext {
     setIsLoading(true)
     try {
       const { lists } = await httpClient.get<IListResponse>(
-        `${listsPath}/get_lists`,
+        `${baseService}/get_lists`,
         {
-          user_id
+          user_id,
         }
       )
       setLists(lists)
@@ -47,7 +47,7 @@ function Lists(): IListsContext {
     setIsAdding(true)
     try {
       const { list }: any = await httpClient.post(
-        `${listsPath}/add_list`,
+        `${baseService}/add_list`,
         listPayload
       )
       setLists([...lists, list])

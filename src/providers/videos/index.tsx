@@ -1,6 +1,6 @@
 import React, { useState, createContext, useContext } from 'react'
 
-import { listPath, videosPath } from '../../constants/endpoint'
+import { baseService } from '../../constants/endpoint'
 import httpClient from '../../infra/http/axios-http-client/axios-http-client'
 import { IVideo, ICreateVideo, IVideoResponse } from '../../interfaces/IVideo'
 
@@ -25,9 +25,9 @@ export const VideosHook = (): IVideosContext => {
     setIsLoading(true)
     try {
       const { videos } = await httpClient.get<IVideoResponse>(
-        `${listPath}/get_videos`,
+        `${baseService}/get_videos`,
         {
-          list_id
+          list_id,
         }
       )
       setVideos(videos)
@@ -47,7 +47,7 @@ export const VideosHook = (): IVideosContext => {
     setIsAdding(true)
     try {
       const { video } = await httpClient.post(
-        `${videosPath}/add_video`,
+        `${baseService}/add_video`,
         videoPayload
       )
       const newVideos = [...videos!, video] as IVideo[]
@@ -67,7 +67,7 @@ export const VideosHook = (): IVideosContext => {
     getVideos,
     isAdding,
     errorAddVideo,
-    addVideo
+    addVideo,
   }
 }
 

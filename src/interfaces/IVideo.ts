@@ -4,6 +4,8 @@ export interface IVideo {
   description: string
   created: string
   youtube_id: string
+  list_id: number
+  date: Date
 }
 
 export interface IVideoResponse {

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react'
 
-import { annotationsPath } from '../../constants/endpoint'
+import { baseService } from '../../constants/endpoint'
 import { IAnnotation, IAddAnnotation } from '../../interfaces/IAnnotation'
 import { get, post } from '../../utils/agent'
 
@@ -24,8 +24,8 @@ function Annotations(): IAnnotationsContext {
     setAnnotations(undefined!)
     setIsLoading(true)
     try {
-      const { annotations } = await get(`${annotationsPath}/get_annotations`, {
-        video_id
+      const { annotations } = await get(`${baseService}/get_annotations`, {
+        video_id,
       })
       setAnnotations(annotations)
     } catch (e) {
@@ -44,7 +44,7 @@ function Annotations(): IAnnotationsContext {
     setIsAdding(true)
     try {
       const { annotation } = await post(
-        `${annotationsPath}/add_annotation`,
+        `${baseService}/add_annotation`,
         annotationPayload
       )
 
@@ -71,7 +71,7 @@ function Annotations(): IAnnotationsContext {
     getAnnotations,
     isAdding,
     errorAddAnnotation,
-    addAnnotation
+    addAnnotation,
   }
 }
 
