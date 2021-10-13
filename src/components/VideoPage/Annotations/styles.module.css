@@ -1,10 +1,10 @@
-.pereira {
+.annotations {
   width: 30%;
 }
 
 /*if screen is less than 940px*/
 @media only screen and (max-width: 940px) {
-  .pereira {
+  .annotations {
     width: 50%;
   }
 }

@@ -82,7 +82,7 @@ const Annotations = () => {
       {isLoading && <div>Carregando...</div>}
       {!isLoading && (
         <article
-          className={`vh-50 br2 ba dark-gray b--black-10 mh1 bn ${styles.annotation}`}
+          className={`vh-50 br2 ba dark-gray b--black-10 mh1 bn ${styles.annotations}`}
         >
           <div className="pa3 b--black-10">
             {annotations
