@@ -13,6 +13,7 @@ import {
 import useMyFormik from '../../../hooks/useMyFormik'
 import { IAnnotationField, IAnnotation } from '../../../interfaces/IAnnotation'
 import { useAnnotations } from '../../../providers/annotations'
+import styles from './styles.module.css'
 
 const Annotations = () => {
   const params = useParams()
@@ -80,7 +81,9 @@ const Annotations = () => {
     <>
       {isLoading && <div>Carregando...</div>}
       {!isLoading && (
-        <article className="vh-50 br2 ba dark-gray b--black-10 mh1 bn pereira">
+        <article
+          className={`vh-50 br2 ba dark-gray b--black-10 mh1 bn ${styles.annotation}`}
+        >
           <div className="pa3 b--black-10">
             {annotations
               ?.slice(arrayPage * perPage, arrayPage * perPage + perPage)

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 
 import { loadYoutubeApi } from '../../../helpers/youtube'
+import styles from './styles.module.css'
 
 interface IProps {
   youtubeId: string
@@ -13,7 +14,7 @@ const VideoPlayer = ({ youtubeId }: IProps) => {
   }, [])
 
   return (
-    <div className="aldair">
+    <div className={styles.player}>
       <iframe
         className="w-100 h-100"
         title="iframe"

@@ -6,8 +6,6 @@ import { useVideo } from '../../providers/videosingle'
 import Annotations from './Annotations'
 import VideoPlayer from './VideoPlayer'
 
-import './ople.css'
-
 const VideoPage = () => {
   const { video, isLoading, getVideo } = useVideo()
   const params = useParams()
