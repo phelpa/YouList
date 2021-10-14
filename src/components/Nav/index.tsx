@@ -1,6 +1,5 @@
 import React from 'react'
-import './Nav.css'
-
+// import styles from './styles.module.css'
 const Nav = () => {
   return (
     <header className="bg-white black-80 tc pv4">

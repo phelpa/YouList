@@ -1,0 +1,8 @@
+/*bg-white black-80 tc pv4 */
+
+.header {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.8);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}

@@ -6,7 +6,7 @@ import { render } from 'react-dom'
 import { Router, Route } from 'react-router'
 
 import ListGrid from './components/ListGrid'
-import Main from './components/Main'
+import Nav from './components/Nav'
 import VideoGrid from './components/VideoGrid'
 import VideoPage from './components/VideoPage'
 import { theme } from './css/theme'
@@ -25,17 +25,16 @@ render(
       <VideosProvider>
         <VideoSingleProvider>
           <AnnotationsProvider>
-            <Main>
-              <Router history={createBrowserHistory()}>
-                <Route exact path="/" component={ListGrid} />
-                <Route exact path="/list/:listId" component={VideoGrid} />
-                <Route
-                  exact
-                  path="/list/:listId/video/:videoId"
-                  component={VideoPage}
-                />
-              </Router>
-            </Main>
+            <Nav />
+            <Router history={createBrowserHistory()}>
+              <Route exact path="/" component={ListGrid} />
+              <Route exact path="/list/:listId" component={VideoGrid} />
+              <Route
+                exact
+                path="/list/:listId/video/:videoId"
+                component={VideoPage}
+              />
+            </Router>
           </AnnotationsProvider>
         </VideoSingleProvider>
       </VideosProvider>
