@@ -5,44 +5,41 @@ import { createBrowserHistory } from 'history'
 import { render } from 'react-dom'
 import { Router, Route } from 'react-router'
 
-import { defaultFont } from './assets/theme'
-import { theme } from './assets/theme/'
 import ListGrid from './components/ListGrid'
 import Main from './components/Main'
 import VideoGrid from './components/VideoGrid'
 import VideoPage from './components/VideoPage'
+import { theme } from './css/theme'
 import AnnotationsProvider from './providers/annotations'
 import ListsProvider from './providers/lists'
 import VideosProvider from './providers/videos'
 import VideoSingleProvider from './providers/videosingle'
 
 import 'tachyons'
-import './reset.css'
-import './index.css'
+import './css/base/reset.css'
+import './css/base/font.css'
 
 render(
-  <MuiThemeProvider theme={defaultFont}>
-    <MuiThemeProvider theme={theme}>
-      <ListsProvider>
-        <VideosProvider>
-          <VideoSingleProvider>
-            <AnnotationsProvider>
-              <Main>
-                <Router history={createBrowserHistory()}>
-                  <Route exact path="/" component={ListGrid} />
-                  <Route exact path="/list/:listId" component={VideoGrid} />
-                  <Route
-                    exact
-                    path="/list/:listId/video/:videoId"
-                    component={VideoPage}
-                  />
-                </Router>
-              </Main>
-            </AnnotationsProvider>
-          </VideoSingleProvider>
-        </VideosProvider>
-      </ListsProvider>
-    </MuiThemeProvider>
+  <MuiThemeProvider theme={theme}>
+    <ListsProvider>
+      <VideosProvider>
+        <VideoSingleProvider>
+          <AnnotationsProvider>
+            <Main>
+              <Router history={createBrowserHistory()}>
+                <Route exact path="/" component={ListGrid} />
+                <Route exact path="/list/:listId" component={VideoGrid} />
+                <Route
+                  exact
+                  path="/list/:listId/video/:videoId"
+                  component={VideoPage}
+                />
+              </Router>
+            </Main>
+          </AnnotationsProvider>
+        </VideoSingleProvider>
+      </VideosProvider>
+    </ListsProvider>
   </MuiThemeProvider>,
   document.getElementById('root')
 )
