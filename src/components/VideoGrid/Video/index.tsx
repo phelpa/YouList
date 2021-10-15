@@ -3,6 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import { IVideo } from '../../../interfaces/IVideo'
+import styles from './styles.module.css'
 
 interface IProps {
   video: IVideo
@@ -10,26 +11,24 @@ interface IProps {
 
 const Video = ({ video }: IProps) => {
   return (
-    <article className="mainDiv w5 br2 ba dark-gray b--black-10 mh4 mv4 center">
+    <article className={styles.article}>
       <iframe
         title="iframeYoutube"
-        className="h5 db w-100 br2 br--top"
+        className={`${styles.iframe} w-100`}
         src={`https://www.youtube.com/embed/${video.youtube_id}`}
         frameBorder="0"
         allow="autoplay; encrypted-media"
         allowFullScreen
       ></iframe>
-      <div className="description pa2 ph3-ns pb3-ns">
+      <div className={styles.description}>
         <Link
           to={`/list/${video.list_id}/video/${video.id}`}
-          className="no-underline black"
+          className={styles.link}
         >
-          <h1 className="videotitle f5 f4-ns mv0">{video.title}</h1>
+          <h1 className={styles.video_title}>{video.title}</h1>
         </Link>
 
-        <p className="descriptionText f6 lh-copy measure mt2 mid-gray">
-          {video.description}
-        </p>
+        <p className={styles.description_text}>{video.description}</p>
       </div>
     </article>
   )

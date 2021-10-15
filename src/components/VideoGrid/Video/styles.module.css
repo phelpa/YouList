@@ -1,0 +1,43 @@
+.article {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+  width: 16rem;
+  border-radius: 0.25rem;
+  border-color: rgba(0, 0, 0, 0.1);
+  border-style: solid;
+  border-width: 1px;
+}
+
+.iframe {
+  height: 16rem;
+  display: block;
+  border-radius: 0.25rem;
+}
+
+.description {
+  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.link {
+  text-decoration: none;
+  color: #000;
+}
+
+.video_title {
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.description_text {
+  max-width: 30em;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  color: #555;
+  line-height: 1.5;
+}
