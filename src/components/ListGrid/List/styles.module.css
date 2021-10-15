@@ -1,0 +1,40 @@
+.article {
+  border-radius: 0.25rem;
+  width: 16rem;
+  border-style: solid;
+  border-width: 1px;
+  color: #333333;
+  border-color: rgba(0, 0, 0, 0.1);
+  margin-left: auto;
+  margin-right: auto;
+  margin: 2rem;
+}
+
+.image {
+  height: 16rem;
+  width: 100%;
+  border-radius: 0.25rem;
+}
+
+.description {
+  padding: 1rem;
+}
+
+.link {
+  text-decoration: none;
+  color: #000000;
+}
+
+.video_title {
+  font-size: 1rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.description_text {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  max-width: 30em;
+  margin-top: 0.5rem;
+  color: #555555;
+}

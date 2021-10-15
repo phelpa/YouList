@@ -16,6 +16,7 @@ import VideosProvider from './providers/videos'
 import VideoSingleProvider from './providers/videosingle'
 
 import 'tachyons'
+import './css/utilities/index.css'
 import './css/base/reset.css'
 import './css/base/font.css'
 
