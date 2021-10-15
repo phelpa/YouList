@@ -4,7 +4,7 @@ import {
   MyDialog,
   MyDialogTitle,
   MyDialogContent,
-  MyDialogActions
+  MyDialogActions,
 } from '../../../adapters'
 import { MyForm, MyFormikField, MyButton } from '../../../adapters'
 import { retrieveYoutubeIdFromClipBoard } from '../../../helpers/youtube'
@@ -33,9 +33,9 @@ const CreateListModal = ({ closeModal }: IProps) => {
     initialValues: {
       title: '',
       description: '',
-      youtube_id: ''
+      youtube_id: '',
     },
-    onSubmit: sendList
+    onSubmit: sendList,
   })
 
   return (
