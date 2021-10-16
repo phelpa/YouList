@@ -15,7 +15,6 @@ import ListsProvider from './providers/lists'
 import VideosProvider from './providers/videos'
 import VideoSingleProvider from './providers/videosingle'
 
-import 'tachyons'
 import './css/utilities/index.css'
 import './css/base/reset.css'
 import './css/base/font.css'
@@ -43,38 +42,3 @@ render(
   </MuiThemeProvider>,
   document.getElementById('root')
 )
-/*
-function App() {
-  return (
-    <ThemeProvider>
-      <AuthenticationProvider>
-        <Router>
-          <Home path="/" />
-          <About path="/about" />
-          <UserPage path="/:userId" />
-          <UserSettings path="/settings" />
-          <Notifications path="/notifications" />
-        </Router>
-      </AuthenticationProvider>
-    </ThemeProvider>
-  )
-}
-function Notifications() {
-  return (
-    <NotificationsProvider>
-      <NotificationsTab />
-      <NotificationsTypeList />
-      <NotificationsList />
-    </NotificationsProvider>
-  )
-}
-function UserPage({username}) {
-  return (
-    <UserProvider username={username}>
-      <UserInfo />
-      <UserNav />
-      <UserActivity />
-    </UserProvider>
-  )
-}
-*/
