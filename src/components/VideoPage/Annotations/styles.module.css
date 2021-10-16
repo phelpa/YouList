@@ -1,5 +1,13 @@
 .annotations {
+  height: 50vh;
+  border-radius: 0.25rem;
   width: 30%;
+  color: #333;
+  border-color: rgba(0, 0, 0, 0.1);
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  border-style: none;
+  border-width: 0;
 }
 
 /*if screen is less than 940px*/
@@ -7,4 +15,37 @@
   .annotations {
     width: 50%;
   }
+}
+
+.content {
+  padding: 1rem;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.annotation {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.time {
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 30em;
+  font-family: baskerville, serif;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  color: #555;
+}
+
+.time:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.annotation_text {
+  font-size: 1rem;
+  line-height: 1.5;
+  font-style: normal;
+  max-width: 30em;
+  padding-left: 0.25rem;
 }

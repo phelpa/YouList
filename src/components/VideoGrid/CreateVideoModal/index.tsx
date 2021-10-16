@@ -1,12 +1,10 @@
 import React, { ClipboardEvent } from 'react'
 
-import { styled } from '@material-ui/core/styles'
-
 import {
   MyDialog,
   MyDialogTitle,
   MyDialogContent,
-  MyDialogActions
+  MyDialogActions,
 } from '../../../adapters'
 import { MyForm, MyFormikField, MyButton } from '../../../adapters'
 import { retrieveYoutubeIdFromClipBoard } from '../../../helpers/youtube'
@@ -18,10 +16,6 @@ interface IProps {
   closeModal: () => void
   listId: number
 }
-
-const SubmitButton = styled(MyButton)({
-  backgroundColor: '#eee'
-})
 
 const CreateVideoModal = ({ closeModal, listId }: IProps) => {
   const { addVideo } = useVideos()
@@ -41,17 +35,17 @@ const CreateVideoModal = ({ closeModal, listId }: IProps) => {
     initialValues: {
       title: '',
       description: '',
-      youtube_id: ''
+      youtube_id: '',
     },
-    onSubmit: sendVideo
+    onSubmit: sendVideo,
   })
 
   return (
     <MyDialog maxWidth="xs" fullWidth={true} open={true} onClose={closeModal}>
-      <MyDialogTitle className="bg-light-gray">Novo vídeo</MyDialogTitle>
+      <MyDialogTitle>New Video</MyDialogTitle>
       <MyDialogContent>
         <MyForm context={formik}>
-          <MyFormikField name="title" label="Título" />
+          <MyFormikField name="title" label="Title" />
           <MyFormikField
             name="description"
             label="Description"
@@ -67,7 +61,7 @@ const CreateVideoModal = ({ closeModal, listId }: IProps) => {
             helperText="Paste the youtube url"
           />
           <MyDialogActions>
-            <SubmitButton type="submit">Criar</SubmitButton>
+            <MyButton type="submit">Submit</MyButton>
           </MyDialogActions>
         </MyForm>
       </MyDialogContent>

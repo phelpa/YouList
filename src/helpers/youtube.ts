@@ -12,7 +12,8 @@ const handlePaste = (e: ClipboardEvent<HTMLInputElement>) => {
 
 const getYoutubeId = (url: string) => {
   if (!url) return
-  const myregexp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/gi
+  const myregexp =
+    /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/gi
 
   if (myregexp) {
     const youtubeUrl = url.match(myregexp)
@@ -45,12 +46,10 @@ export const loadYoutubeApi = () => {
     // 3. This function creates an <iframe> (and YouTube player)
     //    after the API code downloads.
     let YT //declaring outside the function to avoid 'not defined'
-    window['onYouTubeIframeAPIReady'] = function() {
+    window['onYouTubeIframeAPIReady'] = function () {
       YT = window['YT'] //youtube API expects the YT object to be
       //assigned to the window object
       window['player'] = new YT.Player('videoplayer', {})
     }
   }
 }
-
-export default loadYoutubeApi

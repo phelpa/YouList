@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 
 import { useVideo } from '../../providers/videosingle'
 import Annotations from './Annotations'
+import styles from './styles.module.css'
 import VideoPlayer from './VideoPlayer'
 
 const VideoPage = () => {
@@ -16,7 +17,7 @@ const VideoPage = () => {
   }, [])
 
   return (
-    <div className="flex flex-wrap justify-center" style={{ height: '70vh' }}>
+    <div className={`flex_wrap justify_center ${styles.video_player}`}>
       {isLoading && <div>Loading...</div>}
       {!isLoading && (
         <>

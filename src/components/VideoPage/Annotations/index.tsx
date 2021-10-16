@@ -79,24 +79,22 @@ const Annotations = () => {
 
   return (
     <>
-      {isLoading && <div>Carregando...</div>}
+      {isLoading && <div>Loading...</div>}
       {!isLoading && (
-        <article
-          className={`vh-50 br2 ba dark-gray b--black-10 mh1 bn ${styles.annotations}`}
-        >
-          <div className="pa3 b--black-10">
+        <article className={styles.annotations}>
+          <div className={styles.content}>
             {annotations
               ?.slice(arrayPage * perPage, arrayPage * perPage + perPage)
               ?.map((annotation: IAnnotation, i: number) => (
-                <div className="mv2" key={i}>
+                <div className={styles.annotation} key={i}>
                   <span
-                    className="f6 f5-ns lh-copy measure baskerville ph1 mid-gray underline-hover pointer"
+                    className={styles.time}
                     onClick={() => goToSpecificTime(annotation.videotime)}
                   >
                     {fancyTimeFormat(annotation.videotime)}
                   </span>
 
-                  <span className="f6 f5-ns lh-copy fs-normal measure pl1">
+                  <span className={styles.annotation_text}>
                     {annotation.text}
                   </span>
                 </div>

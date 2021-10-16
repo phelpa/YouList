@@ -6,3 +6,7 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.justify_center {
+  justify-content: center;
+}
