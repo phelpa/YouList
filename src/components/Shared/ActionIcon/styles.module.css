@@ -1,0 +1,48 @@
+.article {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+  width: 16rem;
+  border-radius: 0.25rem;
+}
+
+.action {
+  text-decoration: none;
+  opacity: 1;
+  transition: opacity 0.15s ease-in;
+  color: #000;
+  max-width: 16rem;
+  border-color: rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  border-radius: 0.25rem;
+}
+
+.action:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.icon {
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #eee;
+  width: 4rem;
+  height: 4rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 0.5rem;
+}
+
+.description {
+  max-width: 30em;
+  font-size: 0.875rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  color: #555;
+  line-height: 1.5;
+  justify-content: center;
+  display: flex;
+}
