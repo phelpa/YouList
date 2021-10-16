@@ -17,7 +17,7 @@ const ListGrid = () => {
   }, [])
 
   return (
-    <div className="w-100">
+    <div className="w_100">
       <div className="flex_wrap">
         {isLoading && <div>Loading...</div>}
         {lists?.map((list: IList) => (

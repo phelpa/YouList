@@ -14,7 +14,7 @@ const Video = ({ video }: IProps) => {
     <article className={styles.article}>
       <iframe
         title="iframeYoutube"
-        className={`${styles.iframe} w-100`}
+        className={`${styles.iframe} w_100`}
         src={`https://www.youtube.com/embed/${video.youtube_id}`}
         frameBorder="0"
         allow="autoplay; encrypted-media"

@@ -16,7 +16,7 @@ const VideoPlayer = ({ youtubeId }: IProps) => {
   return (
     <div className={styles.player}>
       <iframe
-        className="w-100 h-100"
+        className="w_100 h_100"
         title="iframe"
         id="videoplayer"
         src={`https://www.youtube.com/embed/${youtubeId}?enablejsapi=1`}
