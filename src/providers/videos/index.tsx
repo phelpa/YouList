@@ -2,7 +2,11 @@ import React, { useState, createContext, useContext } from 'react'
 
 import { baseService } from '../../constants/endpoint'
 import httpClient from '../../infra/http/axios-http-client/axios-http-client'
-import { IVideo, ICreateVideo, IVideoResponse } from '../../interfaces/IVideo'
+import {
+  IVideo,
+  ICreateVideo,
+  IVideoGetResponse,
+} from '../../interfaces/IVideo'
 
 export interface IVideosContext {
   videos: IVideo[] | undefined
@@ -24,7 +28,7 @@ export const VideosHook = (): IVideosContext => {
     setVideos(undefined)
     setIsLoading(true)
     try {
-      const { videos } = await httpClient.get<IVideoResponse>(
+      const { videos } = await httpClient.get<IVideoGetResponse>(
         `${baseService}/get_videos`,
         {
           list_id,

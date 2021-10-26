@@ -8,8 +8,11 @@ export interface IVideo {
   date: Date
 }
 
-export interface IVideoResponse {
+export interface IVideoGetResponse {
   videos: IVideo[]
+}
+export interface IVideoPostResponse {
+  video: IVideo
 }
 
 export interface ICreateVideo {

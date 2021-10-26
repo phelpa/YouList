@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useCallback } from 'react'
 
 import { baseService } from '../../constants/endpoint'
 import httpClient from '../../infra/http/axios-http-client/axios-http-client'
-import { IVideo, IVideoResponse } from '../../interfaces/IVideo'
+import { IVideo, IVideoGetResponse } from '../../interfaces/IVideo'
 
 export interface IVideoContext {
   video: IVideo
@@ -22,10 +22,10 @@ function Video(): IVideoContext {
     setIsLoading(true)
 
     try {
-      const { videos } = await httpClient.get<IVideoResponse>(
+      const { videos } = await httpClient.get<IVideoGetResponse>(
         `${baseService}/get_videos`,
         {
-          id: video_id
+          id: video_id,
         }
       )
       setVideo(videos[0])

@@ -10,7 +10,7 @@ import { MyForm, MyFormikField, MyButton } from '../../../adapters'
 import { retrieveYoutubeIdFromClipBoard } from '../../../helpers/youtube'
 import useMyFormik from '../../../hooks/useMyFormik'
 import { IVideoForm } from '../../../interfaces/IVideo'
-import { useVideos } from '../../../providers/videos'
+import videosService from '../../../services/videos'
 
 interface IProps {
   closeModal: () => void
@@ -18,11 +18,9 @@ interface IProps {
 }
 
 const CreateVideoModal = ({ closeModal, listId }: IProps) => {
-  const { addVideo } = useVideos()
-
   const sendVideo = async (video: IVideoForm) => {
     const videoPayload = { ...video, list_id: listId }
-    await addVideo(videoPayload)
+    await videosService.addVideo(videoPayload)
     closeModal()
   }
 

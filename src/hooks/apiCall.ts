@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react'
 function useApiCall<T>(
   apiCallback: () => Promise<any>,
   deps: Array<any>
-): [any, boolean, any, () => void] {
+): [boolean, any, any, () => void] {
   const [data, setData] = useState<any>(undefined)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<unknown>(undefined)
@@ -29,7 +29,7 @@ function useApiCall<T>(
     fetchData()
   }, [fetchData])
 
-  return [data, isLoading, error, fetchData]
+  return [isLoading, data, error, fetchData]
 }
 
 export default useApiCall
