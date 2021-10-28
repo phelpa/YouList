@@ -10,7 +10,7 @@ import { MyForm, MyFormikField, MyButton } from '../../../adapters'
 import { retrieveYoutubeIdFromClipBoard } from '../../../helpers/youtube'
 import useMyFormik from '../../../hooks/useMyFormik'
 import { IVideoForm } from '../../../interfaces/IVideo'
-import videosService from '../../../services/videos'
+import videosActions from '../../../redux/videos/actions'
 
 interface IProps {
   closeModal: () => void
@@ -18,15 +18,16 @@ interface IProps {
 }
 
 const CreateVideoModal = ({ closeModal, listId }: IProps) => {
-  const sendVideo = async (video: IVideoForm) => {
-    const videoPayload = { ...video, list_id: listId }
-    await videosService.addVideo(videoPayload)
-    closeModal()
-  }
 
   const onYoutubeUrlPaste = (e: ClipboardEvent<HTMLInputElement>) => {
     const ytId = retrieveYoutubeIdFromClipBoard(e)
     formik.setFieldValue('youtube_id', ytId)
+  }
+
+  const sendVideo = async (values: IVideoForm) => {
+    const videoPayload = { ...values, list_id: listId }
+    await videosActions.addVideo(videoPayload)
+    closeModal()
   }
 
   const formik = useMyFormik({
@@ -59,7 +60,9 @@ const CreateVideoModal = ({ closeModal, listId }: IProps) => {
             helperText="Paste the youtube url"
           />
           <MyDialogActions>
-            <MyButton type="submit">Submit</MyButton>
+            <MyButton type="submit" loading={formik.isSubmitting}>
+              Submit
+            </MyButton>
           </MyDialogActions>
         </MyForm>
       </MyDialogContent>

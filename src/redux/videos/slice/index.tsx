@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { createSelector } from 'reselect'
 
-import { RootState } from '..'
-import { IVideo } from '../../interfaces/IVideo'
+import { IVideo } from '../../../interfaces/IVideo'
+import { RootState } from '../../store'
 
 export const videosSlice = createSlice({
   name: 'videos',

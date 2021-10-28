@@ -1,25 +1,25 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react'
 
 function useApiSubmit<T>(
   apiCallback: () => Promise<T>,
   deps: Array<any>
-): [() => Promise<T>, boolean] {
-  const [isLoading, setIsLoading] = useState(false);
-  const cb = useCallback(apiCallback, deps);
+): [boolean, () => Promise<T>] {
+  const [isLoading, setIsLoading] = useState(false)
+  const cb = useCallback(apiCallback, deps)
 
   const fetchData = useCallback(async () => {
-    setIsLoading(true);
+    setIsLoading(true)
     try {
-      const data = await cb();
-      return data;
+      const data = await cb()
+      return data
     } catch (e) {
-      throw e;
+      throw e
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  }, [cb]);
+  }, [cb])
 
-  return [fetchData, isLoading];
+  return [isLoading, fetchData]
 }
 
-export default useApiSubmit;
+export default useApiSubmit

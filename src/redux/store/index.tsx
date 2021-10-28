@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import { videosSlice } from './slices/videos'
+import { videosSlice } from '../videos/slice'
 
 declare module 'react-redux' {
   // eslint-disable-next-line @typescript-eslint/naming-convention

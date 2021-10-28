@@ -28,7 +28,8 @@
     "noEmit": true,
     "suppressImplicitAnyIndexErrors": true,
     "jsx": "react-jsx",
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false
   },
   "include": ["src"]
 }
