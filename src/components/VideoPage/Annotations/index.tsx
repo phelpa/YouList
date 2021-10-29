@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 
 import { useParams } from 'react-router-dom'
 import usePagination from 'use-pagination-mui'
+import { useSelector } from 'react-redux'
 
+import useApiCall from '../../../hooks/apiCall'
 import {
   MyForm,
   MyFormikField,
@@ -10,28 +12,28 @@ import {
   MyInputAdornment,
   MyPagination,
 } from '../../../adapters'
+import annotationsActions from '../../../redux/annotations/actions'
 import useMyFormik from '../../../hooks/useMyFormik'
-import { IAnnotationField, IAnnotation } from '../../../interfaces/IAnnotation'
-import { useAnnotations } from '../../../providers/annotations'
+import { IAnnotationForm, IAnnotation } from '../../../interfaces/IAnnotation'
+import { annotationsSelector } from '../../../redux/annotations/slice'
 import styles from './styles.module.css'
 
 const Annotations = () => {
   const params = useParams()
   const videoId = params?.videoId
 
-  const { annotations, isLoading, getAnnotations, addAnnotation } =
-    useAnnotations()
+  const annotations = useSelector(annotationsSelector)
 
   const { changePageEventBefore, perPage, arrayPage } = usePagination(10)
 
-  const submitAnnotation = (values: IAnnotationField) => {
+  const submitAnnotation = (values: IAnnotationForm) => {
     const presentTime = window['player']?.getCurrentTime?.()
     const annotation = {
       video_id: videoId,
       text: values.annotation,
       videotime: presentTime,
     }
-    addAnnotation(annotation)
+    annotationsActions.addAnnotation(annotation)
   }
 
   const formik = useMyFormik({
@@ -72,15 +74,15 @@ const Annotations = () => {
     return ret
   }
 
-  useEffect(() => {
-    getAnnotations(videoId)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const [loading] = useApiCall(
+    () => annotationsActions.getAnnotations(videoId),
+    []
+  )
 
   return (
     <>
-      {isLoading && <div>Loading...</div>}
-      {!isLoading && (
+      {loading && <div>Loading...</div>}
+      {!loading && (
         <article className={styles.annotations}>
           <div className={styles.content}>
             {annotations

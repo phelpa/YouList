@@ -6,8 +6,12 @@ export interface IAnnotation {
   videotime: number
 }
 
-export interface IAnnotationField {
-  annotation: string
+export interface IAnnotationGetResponse {
+  annotations: IAnnotation[]
+}
+
+export interface IAnnotationPostResponse {
+  annotation: IAnnotation
 }
 export interface IAddAnnotation {
   video_id: number
@@ -15,6 +19,6 @@ export interface IAddAnnotation {
   text: string
 }
 
-export interface IAnnotationResponse {
-  data: IAnnotation[]
+export interface IAnnotationForm {
+  annotation: string
 }
