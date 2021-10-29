@@ -23,7 +23,3 @@ export interface ICreateVideo {
 }
 
 export type IVideoForm = Omit<ICreateVideo, 'list_id'>
-
-export interface ICreateVideoResponse {
-  data: IVideo[]
-}

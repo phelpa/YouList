@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import { videosSlice } from '../videos/slice'
+import { listsSlice } from '../lists/slice'
 
 declare module 'react-redux' {
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -10,6 +11,7 @@ declare module 'react-redux' {
 export const store = configureStore({
   reducer: {
     videos: videosSlice.reducer,
+    lists: listsSlice.reducer,
   },
 })
 

@@ -1,25 +1,25 @@
 import React, { useEffect } from 'react'
 
+import { useSelector } from 'react-redux'
+import useApiCall from '../../hooks/apiCall'
 import useModal from '../../hooks/useModal'
+import listsActions from '../../redux/lists/actions'
 import { IList } from '../../interfaces/IList'
-import { useLists } from '../../providers/lists'
+import { listsSelector } from '../../redux/lists/slice'
 import ActionIcon from '../Shared/ActionIcon'
 import CreateListModal from './CreateListModal'
 import List from './List'
 
 const ListGrid = () => {
   const [isOpen, openModal, closeModal] = useModal()
-  const { lists, isLoading, getLists } = useLists()
+  const lists = useSelector(listsSelector)
 
-  useEffect(() => {
-    getLists(1)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const [loading] = useApiCall(() => listsActions.getLists(1), [])
 
   return (
     <div className="w_100">
       <div className="flex_wrap">
-        {isLoading && <div>Loading...</div>}
+        {loading && <div>Loading...</div>}
         {lists?.map((list: IList) => (
           <List key={list.id} list={list} />
         ))}

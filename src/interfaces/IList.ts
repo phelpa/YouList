@@ -6,8 +6,12 @@ export interface IList {
   youtube_id: string
 }
 
-export interface IListResponse {
+export interface IListGetResponse {
   lists: IList[]
+}
+
+export interface IListPostResponse {
+  list: IList
 }
 
 export interface ICreateList {
@@ -16,8 +20,5 @@ export interface ICreateList {
   user_id: number
   youtube_id: string
 }
-export type IListForm = Omit<ICreateList, 'user_id'>
 
-export interface ICreateListResponse {
-  list: ICreateList
-}
+export type IListForm = Omit<ICreateList, 'user_id'>

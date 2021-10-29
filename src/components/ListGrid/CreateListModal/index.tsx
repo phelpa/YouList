@@ -10,23 +10,21 @@ import { MyForm, MyFormikField, MyButton } from '../../../adapters'
 import { retrieveYoutubeIdFromClipBoard } from '../../../helpers/youtube'
 import useMyFormik from '../../../hooks/useMyFormik'
 import { IListForm } from '../../../interfaces/IList'
-import { useLists } from '../../../providers/lists'
+import listsActions from '../../../redux/lists/actions'
 
 interface IProps {
   closeModal: () => void
 }
 
 const CreateListModal = ({ closeModal }: IProps) => {
-  const { addList } = useLists()
-
-  const sendList = async (list: IListForm) => {
-    await addList({ ...list, user_id: 1 })
-    closeModal()
-  }
-
   const onYoutubeUrlPaste = (e: ClipboardEvent<HTMLInputElement>) => {
     const ytId = retrieveYoutubeIdFromClipBoard(e)
     formik.setFieldValue('youtube_id', ytId)
+  }
+
+  const sendList = async (list: IListForm) => {
+    await listsActions.addList({ ...list, user_id: 1 })
+    closeModal()
   }
 
   const formik = useMyFormik({
@@ -59,7 +57,9 @@ const CreateListModal = ({ closeModal }: IProps) => {
             value={formik?.values?.youtube_id ?? ''}
           />
           <MyDialogActions>
-            <MyButton type="submit">Submit</MyButton>
+            <MyButton type="submit" loading={formik.isSubmitting}>
+              Submit
+            </MyButton>
           </MyDialogActions>
         </MyForm>
       </MyDialogContent>

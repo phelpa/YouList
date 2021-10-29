@@ -18,7 +18,6 @@ interface IProps {
 }
 
 const CreateVideoModal = ({ closeModal, listId }: IProps) => {
-
   const onYoutubeUrlPaste = (e: ClipboardEvent<HTMLInputElement>) => {
     const ytId = retrieveYoutubeIdFromClipBoard(e)
     formik.setFieldValue('youtube_id', ytId)
