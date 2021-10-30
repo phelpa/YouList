@@ -16,6 +16,7 @@ export class ListsActions {
         user_id,
       }
     )
+
     store.dispatch(listsSlice.actions.set(lists))
   }
 

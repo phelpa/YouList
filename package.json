@@ -16,6 +16,7 @@
     "react-redux": "^7.2.5",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.3",
     "typescript": "^4.3.2",
     "use-myformik": "^1.0.7",
     "use-pagination-mui": "^1.0.6"
@@ -36,10 +37,12 @@
     "eslint-plugin-react-hooks": "2.3.0",
     "prettier": "^2.4.1",
     "typescript-plugin-css-modules": "^3.4.0",
-    "vite": "^2.6.13"
+    "vite": "^2.6.13",
+    "vite-tsconfig-paths": "^3.3.17"
   },
   "scripts": {
-    "start": "vite",
+    "start": "react-scripts start",
+    "vite": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },

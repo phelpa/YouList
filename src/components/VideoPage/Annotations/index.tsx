@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
+import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import usePagination from 'use-pagination-mui'
-import { useSelector } from 'react-redux'
 
-import useApiCall from '../../../hooks/apiCall'
 import {
   MyForm,
   MyFormikField,
@@ -12,9 +11,10 @@ import {
   MyInputAdornment,
   MyPagination,
 } from '../../../adapters'
-import annotationsActions from '../../../redux/annotations/actions'
+import useApiCall from '../../../hooks/apiCall'
 import useMyFormik from '../../../hooks/useMyFormik'
 import { IAnnotationForm, IAnnotation } from '../../../interfaces/IAnnotation'
+import annotationsActions from '../../../redux/annotations/actions'
 import { annotationsSelector } from '../../../redux/annotations/slice'
 import styles from './styles.module.css'
 

@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { useSelector } from 'react-redux'
+
 import useApiCall from '../../hooks/apiCall'
 import useModal from '../../hooks/useModal'
-import listsActions from '../../redux/lists/actions'
 import { IList } from '../../interfaces/IList'
+import listsActions from '../../redux/lists/actions'
 import { listsSelector } from '../../redux/lists/slice'
 import ActionIcon from '../Shared/ActionIcon'
 import CreateListModal from './CreateListModal'

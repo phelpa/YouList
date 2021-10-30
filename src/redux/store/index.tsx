@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import { videosSlice } from '../videos/slice'
-import { listsSlice } from '../lists/slice'
 import { annotationsSlice } from '../annotations/slice'
+import { listsSlice } from '../lists/slice'
+import { videosSlice } from '../videos/slice'
 
 declare module 'react-redux' {
   // eslint-disable-next-line @typescript-eslint/naming-convention

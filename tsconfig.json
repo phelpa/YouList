@@ -29,7 +29,8 @@
     "suppressImplicitAnyIndexErrors": true,
     "jsx": "react-jsx",
     "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "baseUrl": "src"
   },
   "include": ["src"]
 }

@@ -3,7 +3,7 @@ import axios from 'axios'
 import {
   HttpPostParams,
   HttpPostClient,
-  HttpGetClient
+  HttpGetClient,
 } from '../protocols/http'
 
 export class AxiosHttpClient implements HttpPostClient, HttpGetClient {
@@ -17,8 +17,9 @@ export class AxiosHttpClient implements HttpPostClient, HttpGetClient {
     return axios.post(url, body, { headers })
   }
 
-  get<T>(url: string, params: Object = {}): Promise<T> {
-    return axios.get(url, { params })
+  async get<T>(url: string, params: Object = {}): Promise<T> {
+    const response = await axios.get(url, { params })
+    return response.data
   }
 
   private handleError(error: any): Error {
