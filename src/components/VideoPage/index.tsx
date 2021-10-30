@@ -1,25 +1,25 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
+import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-import { useVideo } from '../../providers/videosingle'
+import useApiCall from '../../hooks/apiCall'
+import videoActions from '../../redux/video/actions'
+import { videoSelector } from '../../redux/video/slice'
 import Annotations from './Annotations'
 import styles from './styles.module.css'
 import VideoPlayer from './VideoPlayer'
 
 const VideoPage = () => {
-  const { video, isLoading, getVideo } = useVideo()
   const params = useParams()
+  const video = useSelector(videoSelector)
 
-  useEffect(() => {
-    getVideo(params.videoId)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const [loading] = useApiCall(() => videoActions.getVideo(params.videoId), [])
 
   return (
     <div className={`flex_wrap justify_center ${styles.video_player}`}>
-      {isLoading && <div>Loading...</div>}
-      {!isLoading && (
+      {loading && <div>Loading...</div>}
+      {!loading && (
         <>
           <VideoPlayer youtubeId={video.youtube_id} />
           <Annotations />

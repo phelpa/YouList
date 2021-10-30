@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 
 import { annotationsSlice } from '../annotations/slice'
 import { listsSlice } from '../lists/slice'
+import { videoSlice } from '../video/slice'
 import { videosSlice } from '../videos/slice'
 
 declare module 'react-redux' {
@@ -14,6 +15,7 @@ export const store = configureStore({
     videos: videosSlice.reducer,
     lists: listsSlice.reducer,
     annotations: annotationsSlice.reducer,
+    video: videoSlice.reducer,
   },
 })
 
