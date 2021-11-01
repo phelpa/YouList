@@ -2,7 +2,7 @@ export interface IAnnotation {
   id: number
   video_id: number
   text: string
-  created: Date
+  date: Date
   videotime: number
 }
 

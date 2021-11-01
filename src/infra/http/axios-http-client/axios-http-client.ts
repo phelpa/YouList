@@ -7,14 +7,15 @@ import {
 } from '../protocols/http'
 
 export class AxiosHttpClient implements HttpPostClient, HttpGetClient {
-  post<T>(url: string, body: any, params?: HttpPostParams): Promise<T> {
+  async post<T>(url: string, body: any, params?: HttpPostParams): Promise<T> {
     let headers
 
     if (params) {
       headers = params.headers
     }
 
-    return axios.post(url, body, { headers })
+    const response = await axios.post(url, body, { headers })
+    return response.data
   }
 
   async get<T>(url: string, params: Object = {}): Promise<T> {

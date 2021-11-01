@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
+import { loadYoutubeApi } from '../../helpers/youtube'
 import useApiCall from '../../hooks/apiCall'
 import videoActions from '../../redux/video/actions'
 import { videoSelector } from '../../redux/video/slice'
@@ -16,10 +17,14 @@ const VideoPage = () => {
 
   const [loading] = useApiCall(() => videoActions.getVideo(params.videoId), [])
 
+  useEffect(() => {
+    loadYoutubeApi()
+  }, [])
+
   return (
     <div className={`flex_wrap justify_center ${styles.video_player}`}>
       {loading && <div>Loading...</div>}
-      {!loading && (
+      {video?.youtube_id && (
         <>
           <VideoPlayer youtubeId={video.youtube_id} />
           <Annotations />

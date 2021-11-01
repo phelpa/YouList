@@ -35,7 +35,7 @@ export const retrieveYoutubeIdFromClipBoard = (
 }
 
 export const loadYoutubeApi = () => {
-  if (!window['player']) {
+  if (typeof window['youtubePlayer']?.getCurrentTime !== 'function') {
     // 2. This code loads the IFrame Player API code asynchronously.
     let tag = document.createElement('script')
 
@@ -49,7 +49,7 @@ export const loadYoutubeApi = () => {
     window['onYouTubeIframeAPIReady'] = function () {
       YT = window['YT'] //youtube API expects the YT object to be
       //assigned to the window object
-      window['player'] = new YT.Player('videoplayer', {})
+      window['youtubePlayer'] = new YT.Player('videoplayer', {})
     }
   }
 }

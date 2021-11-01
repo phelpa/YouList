@@ -26,14 +26,15 @@ const Annotations = () => {
 
   const { changePageEventBefore, perPage, arrayPage } = usePagination(10)
 
-  const submitAnnotation = (values: IAnnotationForm) => {
-    const presentTime = window['player']?.getCurrentTime?.()
+  const submitAnnotation = async (values: IAnnotationForm) => {
+    const presentTime = window['youtubePlayer']?.getCurrentTime?.()
     const annotation = {
       video_id: videoId,
       text: values.annotation,
       videotime: presentTime,
     }
-    annotationsActions.addAnnotation(annotation)
+
+    await annotationsActions.addAnnotation(annotation)
   }
 
   const formik = useMyFormik({
@@ -46,14 +47,14 @@ const Annotations = () => {
   const [currentTime, setCurrentTime] = useState('0:00')
 
   const setMinuteAndSecond = () => {
-    window?.['player']?.pauseVideo?.()
-    const presentTime = window['player']?.getCurrentTime?.()
+    window?.['youtubePlayer']?.pauseVideo?.()
+    const presentTime = window['youtubePlayer']?.getCurrentTime?.()
     const minute = fancyTimeFormat(presentTime)
     setCurrentTime(minute)
   }
 
   const goToSpecificTime = (videotime: number) => {
-    window['player']?.seekTo?.(videotime)
+    window['youtubePlayer']?.seekTo?.(videotime)
   }
 
   const fancyTimeFormat = (duration: number) => {

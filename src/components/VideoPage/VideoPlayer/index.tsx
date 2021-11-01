@@ -1,18 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { memo } from 'react'
 
-import { loadYoutubeApi } from '../../../helpers/youtube'
 import styles from './styles.module.css'
 
 interface IProps {
   youtubeId: string
 }
 
-const VideoPlayer = ({ youtubeId }: IProps) => {
-  useEffect(() => {
-    loadYoutubeApi()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
+const VideoPlayer = memo(({ youtubeId }: IProps) => {
   return (
     <div className={styles.player}>
       <iframe
@@ -25,5 +19,6 @@ const VideoPlayer = ({ youtubeId }: IProps) => {
       ></iframe>
     </div>
   )
-}
+})
+
 export default VideoPlayer
