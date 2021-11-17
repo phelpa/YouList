@@ -10,6 +10,7 @@ import { MyForm, MyFormikField, MyButton } from '../../../adapters'
 import { retrieveYoutubeIdFromClipBoard } from '../../../helpers/youtube'
 import useMyFormik from '../../../hooks/useMyFormik'
 import { IVideoForm } from '../../../interfaces/IVideo'
+import videoActions from '../../../redux/video/actions'
 import videosActions from '../../../redux/videos/actions'
 
 interface IProps {
@@ -18,9 +19,14 @@ interface IProps {
 }
 
 const CreateVideoModal = ({ closeModal, listId }: IProps) => {
-  const onYoutubeUrlPaste = (e: ClipboardEvent<HTMLInputElement>) => {
+  const onYoutubeUrlPaste = async (e: ClipboardEvent<HTMLInputElement>) => {
     const ytId = retrieveYoutubeIdFromClipBoard(e)
     formik.setFieldValue('youtube_id', ytId)
+    if (ytId) {
+      const youtubeInfo = await videoActions.getVideoYoutubeInfo(ytId)
+      formik.setFieldValue('title', youtubeInfo.title)
+      formik.setFieldValue('description', youtubeInfo.description)
+    }
   }
 
   const sendVideo = async (values: IVideoForm) => {
@@ -43,14 +49,6 @@ const CreateVideoModal = ({ closeModal, listId }: IProps) => {
       <MyDialogTitle>New Video</MyDialogTitle>
       <MyDialogContent>
         <MyForm context={formik}>
-          <MyFormikField name="title" label="Title" />
-          <MyFormikField
-            name="description"
-            label="Description"
-            variant="outlined"
-            multiline
-            rows="3"
-          />
           <MyFormikField
             value={formik?.values?.youtube_id ?? ''}
             onPaste={onYoutubeUrlPaste}
@@ -58,6 +56,20 @@ const CreateVideoModal = ({ closeModal, listId }: IProps) => {
             label="youtube.com/watch?v="
             helperText="Paste the youtube url"
           />
+          <MyFormikField
+            value={formik?.values?.title ?? ''}
+            name="title"
+            label="Title"
+          />
+          <MyFormikField
+            value={formik?.values?.description ?? ''}
+            name="description"
+            label="Description"
+            variant="outlined"
+            multiline
+            // rows="3"
+          />
+
           <MyDialogActions>
             <MyButton type="submit" loading={formik.isSubmitting}>
               Submit

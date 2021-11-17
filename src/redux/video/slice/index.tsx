@@ -6,15 +6,17 @@ import { RootState } from '../../store'
 
 export const videoSlice = createSlice({
   name: 'video',
-  initialState: {} as IVideo,
+  initialState: {
+    video: {} as IVideo,
+  },
   reducers: {
-    set: (_, { payload: video }: PayloadAction<IVideo>) => {
-      return video
+    set: (state, { payload: video }: PayloadAction<IVideo>) => {
+      return { ...state, video }
     },
   },
 })
 
 export const videoSelector = createSelector(
-  (state: RootState) => state.video,
+  (state: RootState) => state.video.video,
   (video) => video
 )

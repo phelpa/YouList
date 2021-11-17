@@ -23,3 +23,13 @@ export interface ICreateVideo {
 }
 
 export type IVideoForm = Omit<ICreateVideo, 'list_id'>
+
+export interface IYoutubeVideo {
+  youtube_id: string
+  title: string
+  description: string
+}
+
+export interface IYoutubeVideoResponse {
+  video: IYoutubeVideo
+}

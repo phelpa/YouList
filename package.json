@@ -41,8 +41,8 @@
     "vite-tsconfig-paths": "^3.3.17"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "vite": "vite",
+    "react-scripts-start": "react-scripts start",
+    "start": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },

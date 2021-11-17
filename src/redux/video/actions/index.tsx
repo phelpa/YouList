@@ -1,6 +1,10 @@
 import { baseService } from '../../../constants/endpoint'
 import httpClient from '../../../infra/http/axios-http-client/axios-http-client'
-import { IVideoGetResponse } from '../../../interfaces/IVideo'
+import {
+  IVideoGetResponse,
+  IYoutubeVideoResponse,
+  IYoutubeVideo,
+} from '../../../interfaces/IVideo'
 import { store } from '../../store'
 import { videoSlice } from '../slice'
 
@@ -13,6 +17,15 @@ export class VideosActions {
       }
     )
     store.dispatch(videoSlice.actions.set(videos[0]))
+  }
+  public async getVideoYoutubeInfo(youtube_id: string): Promise<IYoutubeVideo> {
+    const { video } = await httpClient.get<IYoutubeVideoResponse>(
+      `${baseService}/get_youtube_video_info`,
+      {
+        youtube_id,
+      }
+    )
+    return video
   }
 }
 
