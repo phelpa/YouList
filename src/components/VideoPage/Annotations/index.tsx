@@ -35,6 +35,7 @@ const Annotations = () => {
     }
 
     await annotationsActions.addAnnotation(annotation)
+    formik.setFieldValue('annotation', '')
   }
 
   const formik = useMyFormik({
@@ -126,6 +127,7 @@ const Annotations = () => {
                 size="small"
                 name="annotation"
                 label="Annotation"
+                value={formik.values.annotation}
               />
               <MyButton type="submit" />
             </MyForm>
