@@ -24,8 +24,11 @@ const CreateVideoModal = ({ closeModal, listId }: IProps) => {
     formik.setFieldValue('youtube_id', ytId)
     if (ytId) {
       const youtubeInfo = await videoActions.getVideoYoutubeInfo(ytId)
-      formik.setFieldValue('title', youtubeInfo.title)
-      formik.setFieldValue('description', youtubeInfo.description)
+      formik.setFieldValue('title', youtubeInfo.title?.slice(0, 100))
+      formik.setFieldValue(
+        'description',
+        youtubeInfo.description?.slice(0, 254)
+      )
     }
   }
 
@@ -60,6 +63,7 @@ const CreateVideoModal = ({ closeModal, listId }: IProps) => {
             value={formik?.values?.title ?? ''}
             name="title"
             label="Title"
+            inputProps={{ maxLength: 100 }}
           />
           <MyFormikField
             value={formik?.values?.description ?? ''}
@@ -67,7 +71,7 @@ const CreateVideoModal = ({ closeModal, listId }: IProps) => {
             label="Description"
             variant="outlined"
             multiline
-            // rows="3"
+            inputProps={{ maxLength: 255 }}
           />
 
           <MyDialogActions>

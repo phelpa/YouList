@@ -11,15 +11,24 @@ import { retrieveYoutubeIdFromClipBoard } from '../../../helpers/youtube'
 import useMyFormik from '../../../hooks/useMyFormik'
 import { IListForm } from '../../../interfaces/IList'
 import listsActions from '../../../redux/lists/actions'
+import videoActions from '../../../redux/video/actions'
 
 interface IProps {
   closeModal: () => void
 }
 
 const CreateListModal = ({ closeModal }: IProps) => {
-  const onYoutubeUrlPaste = (e: ClipboardEvent<HTMLInputElement>) => {
+  const onYoutubeUrlPaste = async (e: ClipboardEvent<HTMLInputElement>) => {
     const ytId = retrieveYoutubeIdFromClipBoard(e)
     formik.setFieldValue('youtube_id', ytId)
+    if (ytId) {
+      const youtubeInfo = await videoActions.getVideoYoutubeInfo(ytId)
+      formik.setFieldValue('title', youtubeInfo.title?.slice(0, 100))
+      formik.setFieldValue(
+        'description',
+        youtubeInfo.description?.slice(0, 254)
+      )
+    }
   }
 
   const sendList = async (list: IListForm) => {
@@ -41,20 +50,26 @@ const CreateListModal = ({ closeModal }: IProps) => {
       <MyDialogTitle>New List</MyDialogTitle>
       <MyDialogContent>
         <MyForm context={formik}>
-          <MyFormikField name="title" label="Title" />
+          <MyFormikField
+            name="youtube_id"
+            label="https://www.youtube.com/watch?v="
+            helperText="Paste the youtube url for the first video of your list"
+            onPaste={onYoutubeUrlPaste}
+            value={formik?.values?.youtube_id ?? ''}
+          />
+          <MyFormikField
+            name="title"
+            label="Title"
+            value={formik?.values?.title ?? ''}
+            inputProps={{ maxLength: 100 }}
+          />
           <MyFormikField
             name="description"
             label="Description"
             multiline
-            rows="3"
             helperText="A description of what your list is about"
-          />
-          <MyFormikField
-            name="youtube_id"
-            label="https://www.youtube.com/watch?v="
-            helperText="Paste the youtube url to use its thumbnail"
-            onPaste={onYoutubeUrlPaste}
-            value={formik?.values?.youtube_id ?? ''}
+            value={formik?.values?.description ?? ''}
+            inputProps={{ maxLength: 255 }}
           />
           <MyDialogActions>
             <MyButton type="submit" loading={formik.isSubmitting}>
