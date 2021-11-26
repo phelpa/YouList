@@ -1,0 +1,11 @@
+.player {
+  width: 60%;
+}
+
+/*if screen is less than 940px*/
+@media only screen and (max-width: 940px) {
+  .player {
+    width: 100%;
+    height: 50%;
+  }
+}
