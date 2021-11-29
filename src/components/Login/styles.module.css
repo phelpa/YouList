@@ -1,9 +1,8 @@
 .login {
   display: flex;
-  padding-left: 4rem;
   align-items: center;
   justify-content: center;
-  padding-top: 5rem;
+  flex-direction: column;
 }
 
 .form {
@@ -43,7 +42,7 @@
 }
 
 .button {
-  margin-top: 1rem !important;
   background-color: black !important;
   color: white !important;
+  margin-bottom: 1rem !important;
 }

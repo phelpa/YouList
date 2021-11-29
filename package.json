@@ -42,7 +42,7 @@
   },
   "scripts": {
     "react-scripts-start": "react-scripts start",
-    "start": "vite",
+    "start": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
