@@ -9,8 +9,6 @@
 .black_circle {
   padding: 1rem;
   background-color: rgba(0, 0, 0, 0.8);
-  width: 2rem;
-  height: 2rem;
   display: inline-block;
   border-radius: 100%;
   border-color: #000;

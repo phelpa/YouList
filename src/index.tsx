@@ -6,6 +6,7 @@ import Nav from 'components/Nav'
 import VideoGrid from 'components/VideoGrid'
 import VideoPage from 'components/VideoPage'
 import Login from 'components/Login'
+import SignUp from 'components/SignUp'
 import { theme } from 'css/theme'
 import { createBrowserHistory } from 'history'
 import { render } from 'react-dom'
@@ -42,6 +43,7 @@ render(
           component={VideoPage}
         />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={SignUp} />
       </Router>
     </MuiThemeProvider>
   </Provider>,

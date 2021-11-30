@@ -13,7 +13,7 @@
 /*if screen is less than 940px*/
 @media only screen and (max-width: 940px) {
   .annotations {
-    width: 50%;
+    width: 100%;
   }
 }
 
