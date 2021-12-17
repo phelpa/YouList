@@ -14,8 +14,8 @@ import {
 import useApiCall from '../../../hooks/apiCall'
 import useMyFormik from '../../../hooks/useMyFormik'
 import { IAnnotationForm, IAnnotation } from '../../../interfaces/IAnnotation'
-import annotationsActions from '../../../redux/annotations/actions'
-import { annotationsSelector } from '../../../redux/annotations/slice'
+import annotationsActions from '../../../services/annotations/actions'
+import { annotationsSelector } from '../../../services/annotations/slice'
 import styles from './styles.module.css'
 
 const Annotations = () => {

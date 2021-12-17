@@ -28,9 +28,7 @@ const SignUp = () => {
         </div>
 
         <div className={styles.borderform}>
-          <div className={styles.title}>
-            {/* <span className={styles.register}>Register</span> */}
-          </div>
+          <div className={styles.title}></div>
           <MyForm context={formik}>
             <MyFormikField name="name" label="Name" />
             <MyFormikField name="email" label="Email" />

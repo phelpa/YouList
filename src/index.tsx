@@ -12,7 +12,7 @@ import { createBrowserHistory } from 'history'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { Router, Route } from 'react-router'
-import { store } from 'redux/store'
+import { store } from 'services/store'
 
 import './css/utilities/index.css'
 import './css/base/reset.css'

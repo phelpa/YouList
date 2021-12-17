@@ -10,8 +10,8 @@ import { MyForm, MyFormikField, MyButton } from '../../../adapters'
 import { retrieveYoutubeIdFromClipBoard } from '../../../helpers/youtube'
 import useMyFormik from '../../../hooks/useMyFormik'
 import { IListForm } from '../../../interfaces/IList'
-import listsActions from '../../../redux/lists/actions'
-import videoActions from '../../../redux/video/actions'
+import listsActions from '../../../services/lists/actions'
+import videoActions from '../../../services/video/actions'
 
 interface IProps {
   closeModal: () => void
