@@ -2,19 +2,27 @@ import React from 'react'
 
 import { MyForm, MyFormikField, MyButton } from 'adapters'
 import useMyFormik from '../../hooks/useMyFormik'
+import authenticationActions from '../../services/authentication/actions'
+import { authenticationSelector } from '../../services/authentication/slice'
+import { ISignUp } from 'interfaces/IAuthentication'
 
 import styles from './styles.module.css'
 
 const SignUp = () => {
-  const onSubmit = (values) => {
-    console.log(values)
+  const onSubmit = ({ name, email, password }: ISignUp) => {
+    const user = {
+      name,
+      email,
+      password,
+    }
+    authenticationActions.signUp(user)
   }
 
   const formik = useMyFormik({
     initialValues: {
+      name: '',
       email: '',
       password: '',
-      youtube_id: '',
     },
     onSubmit,
   })

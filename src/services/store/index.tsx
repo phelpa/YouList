@@ -4,6 +4,7 @@ import { annotationsSlice } from '../annotations/slice'
 import { listsSlice } from '../lists/slice'
 import { videoSlice } from '../video/slice'
 import { videosSlice } from '../videos/slice'
+import { authenticationSlice } from '../authentication/slice'
 
 declare module 'react-redux' {
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -16,6 +17,7 @@ export const store = configureStore({
     lists: listsSlice.reducer,
     annotations: annotationsSlice.reducer,
     video: videoSlice.reducer,
+    authentication: authenticationSlice.reducer,
   },
 })
 
