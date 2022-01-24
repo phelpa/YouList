@@ -8,11 +8,11 @@ import VideoPage from 'components/VideoPage'
 import Login from 'components/Login'
 import SignUp from 'components/SignUp'
 import { theme } from 'css/theme'
-import { createBrowserHistory } from 'history'
-import { render } from 'react-dom'
+import history from 'CreateHistory'
 import { Provider } from 'react-redux'
 import { Router, Route, Redirect } from 'react-router'
 import { store } from 'services/store'
+import authStorage from 'helpers/authStorage'
 
 import authenticationActions from 'services/authentication/actions'
 
@@ -22,12 +22,7 @@ import './css/base/font.css'
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const isAuthenticated = () => {
-    if (localStorage.getItem('user_data')) {
-      console.log('entrou true')
-      return true
-    }
-    console.log('entrou false')
-    return false
+    return !!authStorage.getUser()
   }
 
   return (
@@ -51,20 +46,17 @@ const App = () => {
   const [loading, setLoading] = useState(false)
 
   const checkAuth = async () => {
-    console.log('entrou checkAuth')
-    const params = new URLSearchParams(window.location.search)
-    const access_token = params.get('access_token')
+    const params = new URL(window.location.href.replace(/#/g, '?'))
+    const accessToken = params.searchParams.get('access_token')
 
-    if (access_token) {
-      console.log('entrou no if do App')
+    if (accessToken) {
       setLoading(true)
       const userData = await authenticationActions.validateToken(
-        access_token as string
+        accessToken as string
       )
-      console.log(userData, 'oia so')
       setLoading(false)
 
-      localStorage.setItem('user_data', userData)
+      authStorage.setUser({ ...userData, accessToken })
     }
   }
 
@@ -88,7 +80,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <MuiThemeProvider theme={theme}>
-        <Router history={createBrowserHistory()}>
+        <Router history={history}>
           <PrivateRoute exact path="/" component={ListGrid} />
           <PrivateRoute exact path="/list/:listId" component={VideoGrid} />
           <PrivateRoute

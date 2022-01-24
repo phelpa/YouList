@@ -12,6 +12,7 @@ import useMyFormik from '../../../hooks/useMyFormik'
 import { IListForm } from '../../../interfaces/IList'
 import listsActions from '../../../services/lists/actions'
 import videoActions from '../../../services/video/actions'
+import authStorage from 'helpers/authStorage'
 
 interface IProps {
   closeModal: () => void
@@ -32,7 +33,7 @@ const CreateListModal = ({ closeModal }: IProps) => {
   }
 
   const sendList = async (list: IListForm) => {
-    await listsActions.addList({ ...list, user_id: 1 })
+    await listsActions.addList({ ...list, user_id: authStorage.getUserId() })
     closeModal()
   }
 

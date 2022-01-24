@@ -10,12 +10,16 @@ import { listsSelector } from '../../services/lists/slice'
 import ActionIcon from '../Shared/ActionIcon'
 import CreateListModal from './CreateListModal'
 import List from './List'
+import authStorage from 'helpers/authStorage'
 
 const ListGrid = () => {
   const [isOpen, openModal, closeModal] = useModal()
   const lists = useSelector(listsSelector)
 
-  const [loading] = useApiCall(() => listsActions.getLists(1), [])
+  const [loading] = useApiCall(
+    () => listsActions.getLists(authStorage.getUserId()),
+    []
+  )
 
   return (
     <div className="w_100">

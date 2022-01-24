@@ -19,6 +19,7 @@
 
 .description {
   padding: 1rem;
+  overflow-wrap: break-word;
 }
 
 .link {
