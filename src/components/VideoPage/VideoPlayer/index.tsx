@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-
+import YouTube from 'react-youtube'
 import styles from './styles.module.css'
 
 interface IProps {
@@ -7,16 +7,20 @@ interface IProps {
 }
 
 const VideoPlayer = memo(({ youtubeId }: IProps) => {
+  const makeYouTubePlayer = (e: any) => {
+    window['youtubePlayer'] = e.target
+  }
+
   return (
     <div className={styles.player}>
-      <iframe
+      <YouTube
         className="w_100 h_100"
-        title="iframe"
+        containerClassName="h_100"
         id="videoplayer"
-        src={`https://www.youtube.com/embed/${youtubeId}?enablejsapi=1`}
-        frameBorder="0"
-        allowFullScreen
-      ></iframe>
+        videoId={youtubeId}
+        opts={{}}
+        onReady={makeYouTubePlayer}
+      />
     </div>
   )
 })
