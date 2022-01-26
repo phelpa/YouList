@@ -3,19 +3,18 @@ import React from 'react'
 import { MyForm, MyFormikField, MyButton } from 'adapters'
 import useMyFormik from '../../hooks/useMyFormik'
 import LoginVideoPage from './LoginVideoPage'
-
+import authenticationsActions from 'services/authentication/actions'
 import styles from './styles.module.css'
 
 const Login = () => {
-  const onSubmit = (values) => {
-    console.log(values)
+  const onSubmit = async (values) => {
+    await authenticationsActions.signIn(values)
   }
 
   const formik = useMyFormik({
     initialValues: {
       email: '',
       password: '',
-      youtube_id: '',
     },
     onSubmit,
   })

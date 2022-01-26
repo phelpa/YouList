@@ -51,12 +51,8 @@ const App = () => {
 
     if (accessToken) {
       setLoading(true)
-      const userData = await authenticationActions.validateToken(
-        accessToken as string
-      )
+      await authenticationActions.validateToken(accessToken as string)
       setLoading(false)
-
-      authStorage.setUser({ ...userData, accessToken })
     }
   }
 

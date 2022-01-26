@@ -13,3 +13,16 @@ export interface ISignUpUser {
 export interface ISignUpResponse {
   user: ISignUpUser
 }
+export interface ILogin {
+  email: string
+  password: string
+}
+
+export interface ILoginUser {
+  id: number
+  email: string
+  token: string
+}
+export interface ILoginResponse {
+  user: ILoginUser
+}
