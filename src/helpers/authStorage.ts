@@ -22,6 +22,9 @@ class AuthStorage {
     const user = JSON.parse(userDataInString)
     return user.id
   }
+  clearUser(): void {
+    localStorage.removeItem('user_data')
+  }
 }
 
 const authStorage = new AuthStorage()

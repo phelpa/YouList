@@ -50,6 +50,7 @@ const App = () => {
     const accessToken = params.searchParams.get('access_token')
 
     if (accessToken) {
+      console.log(accessToken, 'entrou')
       setLoading(true)
       await authenticationActions.validateToken(accessToken as string)
       setLoading(false)

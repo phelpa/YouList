@@ -6,6 +6,7 @@ import {
   ILoginResponse,
   ILogin,
 } from '../../../interfaces/IAuthentication'
+
 import authStorage from 'helpers/authStorage'
 import history from 'CreateHistory'
 
@@ -37,6 +38,11 @@ export class AuthenticationActions {
       { accessToken }
     )
     authStorage.setUser({ ...user, accessToken })
+  }
+
+  public async logout(): Promise<void> {
+    authStorage.clearUser()
+    history.push('/login')
   }
 }
 

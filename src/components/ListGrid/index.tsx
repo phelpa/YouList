@@ -25,9 +25,8 @@ const ListGrid = () => {
     <div className="w_100">
       <div className="flex_wrap">
         {loading && <div>Loading...</div>}
-        {lists?.map((list: IList) => (
-          <List key={list.id} list={list} />
-        ))}
+        {!loading &&
+          lists?.map((list: IList) => <List key={list.id} list={list} />)}
         <ActionIcon
           description="Add new list"
           callback={openModal}
