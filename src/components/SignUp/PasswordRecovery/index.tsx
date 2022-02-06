@@ -6,7 +6,6 @@ import authenticationActions from 'services/authentication/actions'
 
 const PasswordRecovery = () => {
   const onSubmit = async ({ email }) => {
-    console.log('entrou aqui')
     await authenticationActions.resetPassword(email)
   }
 

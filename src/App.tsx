@@ -7,6 +7,7 @@ import VideoGrid from 'components/VideoGrid'
 import VideoPage from 'components/VideoPage'
 import Login from 'components/Login'
 import SignUp from 'components/SignUp'
+import UpdateAccount from 'components/UpdateAccount'
 import { theme } from 'css/theme'
 import history from 'CreateHistory'
 import { Provider } from 'react-redux'
@@ -50,7 +51,6 @@ const App = () => {
     const accessToken = params.searchParams.get('access_token')
 
     if (accessToken) {
-      console.log(accessToken, 'entrou')
       setLoading(true)
       await authenticationActions.validateToken(accessToken as string)
       setLoading(false)
@@ -60,7 +60,8 @@ const App = () => {
   const isRoutePublic = () => {
     return (
       window.location.pathname === '/signup' ||
-      window.location.pathname === '/login'
+      window.location.pathname === '/login' ||
+      window.location.pathname === '/update_account'
     )
   }
 
@@ -87,6 +88,7 @@ const App = () => {
           />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/update_account" component={UpdateAccount} />
         </Router>
       </MuiThemeProvider>
     </Provider>

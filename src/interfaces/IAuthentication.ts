@@ -26,3 +26,13 @@ export interface ILoginUser {
 export interface ILoginResponse {
   user: ILoginUser
 }
+
+export interface IUpdateAccount {
+  token: string
+  new_password: string
+}
+
+export interface IUpdateAccountForm {
+  new_password: string
+  confirm_new_password: string
+}

@@ -58,6 +58,16 @@ export class AuthenticationActions {
     })
   }
 
+  public async updateAccount(
+    token: string,
+    new_password: string
+  ): Promise<void> {
+    await httpClient.post(`${baseService}/update_account`, {
+      token,
+      new_password,
+    })
+  }
+
   public async logout(): Promise<void> {
     authStorage.clearUser()
     history.push('/login')
