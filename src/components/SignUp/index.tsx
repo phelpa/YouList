@@ -1,20 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { MyForm, MyFormikField, MyButton } from 'adapters'
-import useMyFormik from '../../hooks/useMyFormik'
-import authenticationActions from '../../services/authentication/actions'
+import useMyFormik from 'hooks/useMyFormik'
+import authenticationActions from 'services/authentication/actions'
 import { ISignUp } from 'interfaces/IAuthentication'
-
+import { AuthError } from 'constants/authErrors'
 import styles from './styles.module.css'
+import PasswordRecovery from './PasswordRecovery'
 
 const SignUp = () => {
+  const [error, setError] = useState('')
+
   const onSubmit = async ({ name, email, password }: ISignUp) => {
-    const user = {
+    const userPayload = {
       name,
       email,
       password,
     }
-    await authenticationActions.signUp(user)
+    const { user, error } = await authenticationActions.signUp(userPayload)
+
+    if (error) {
+      setError(error)
+    }
   }
 
   const formik = useMyFormik({
@@ -54,6 +61,8 @@ const SignUp = () => {
               </MyButton>
             </div>
           </MyForm>
+
+          {error === AuthError.EmailInUse && <PasswordRecovery />}
         </div>
       </div>
     </div>

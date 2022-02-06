@@ -57,9 +57,10 @@ export class AxiosHttpClient implements HttpPostClient, HttpGetClient {
   }
 
   private handleError(error: any): Error {
-    console.log(error, 'error log')
-    history.push('/login')
-    throw new Error(error.message)
+    console.log(error.response, 'error.response')
+    return error.response
+    // history.push('/login') //jogar para
+    // throw new Error(error.response)
   }
 }
 

@@ -9,13 +9,25 @@ import {
 
 import authStorage from 'helpers/authStorage'
 import history from 'CreateHistory'
+import { AuthError } from 'constants/authErrors'
 
 export class AuthenticationActions {
-  public async signUp(userData: ISignUp): Promise<void> {
-    const { user } = await httpClient.post<ISignUpResponse>(
-      `${baseService}/add_user`,
-      userData
-    )
+  public async signUp(userData: ISignUp): Promise<any> {
+    try {
+      const { user } = await httpClient.post<ISignUpResponse>(
+        `${baseService}/add_user`,
+        userData
+      )
+      return { user }
+    } catch (e: any) {
+      return this.handleSignUpError(e)
+    }
+  }
+
+  private handleSignUpError(e) {
+    if (e?.response?.data?.error?.id) {
+      return { error: e.response.data.error.id }
+    }
   }
 
   public async signIn(userData: ILogin): Promise<void> {
@@ -38,6 +50,12 @@ export class AuthenticationActions {
       { accessToken }
     )
     authStorage.setUser({ ...user, accessToken })
+  }
+
+  public async resetPassword(email: string): Promise<void> {
+    await httpClient.post(`${baseService}/reset_password`, {
+      email,
+    })
   }
 
   public async logout(): Promise<void> {
