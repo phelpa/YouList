@@ -1,0 +1,11 @@
+.recoveryPassword {
+  font-size: 0.875rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+
+.button {
+  background-color: rgb(35, 98, 159) !important;
+  color: white !important;
+  width: 100%;
+}

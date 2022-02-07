@@ -5,10 +5,19 @@ import useMyFormik from '../../hooks/useMyFormik'
 import LoginVideoPage from './LoginVideoPage'
 import authenticationsActions from 'services/authentication/actions'
 import styles from './styles.module.css'
+import useModal from 'hooks/useModal'
+import PasswordRecovery from 'components/Login/PasswordRecovery'
+import history from 'CreateHistory'
 
 const Login = () => {
+  const [isOpen, openModal, closeModal] = useModal()
+
   const onSubmit = async (values) => {
     await authenticationsActions.signIn(values)
+  }
+
+  const onRegisterClick = () => {
+    history.push('/signup')
   }
 
   const formik = useMyFormik({
@@ -29,6 +38,14 @@ const Login = () => {
         <MyForm context={formik}>
           <MyFormikField name="email" label="Email" />
           <MyFormikField name="password" label="Password" />
+          <div className={styles.belowPassword}>
+            <div className={styles.forgotPassword} onClick={openModal}>
+              Forgot Password?
+            </div>
+            <div className={styles.forgotPassword} onClick={onRegisterClick}>
+              Not an member? Register now
+            </div>
+          </div>
           <div className={styles.end}>
             <MyButton
               color="primary"
@@ -41,6 +58,8 @@ const Login = () => {
             </MyButton>
           </div>
         </MyForm>
+
+        {isOpen && <PasswordRecovery closeModal={closeModal} />}
       </div>
       <LoginVideoPage />
     </div>

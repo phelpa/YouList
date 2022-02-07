@@ -5,6 +5,14 @@
   flex-direction: column;
 }
 
+.belowPassword {
+  display: flex;
+  padding-bottom: 1rem;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
 .form {
   width: 20rem;
 }
