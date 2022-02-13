@@ -18,7 +18,12 @@ export class AuthenticationActions {
         `${baseService}/add_user`,
         userData
       )
-      return { user }
+      authStorage.setUser({
+        id: user.id,
+        accessToken: user.token,
+        email: user.email,
+      })
+      history.push('')
     } catch (e: any) {
       return this.handleSignUpError(e)
     }

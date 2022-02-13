@@ -17,7 +17,7 @@ const SignUp = () => {
       email,
       password,
     }
-    const { user, error } = await authenticationActions.signUp(userPayload)
+    const { error } = await authenticationActions.signUp(userPayload)
 
     if (error) {
       setError(error)

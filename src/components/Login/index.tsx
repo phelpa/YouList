@@ -39,10 +39,10 @@ const Login = () => {
           <MyFormikField name="email" label="Email" />
           <MyFormikField name="password" label="Password" />
           <div className={styles.belowPassword}>
-            <div className={styles.forgotPassword} onClick={openModal}>
+            <div className={styles.hoverPointer} onClick={openModal}>
               Forgot Password?
             </div>
-            <div className={styles.forgotPassword} onClick={onRegisterClick}>
+            <div className={styles.hoverPointer} onClick={onRegisterClick}>
               Not an member? Register now
             </div>
           </div>
