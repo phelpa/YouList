@@ -25,6 +25,7 @@ const Login = () => {
       email: '',
       password: '',
     },
+    removeEmptySpace: true,
     onSubmit,
   })
 

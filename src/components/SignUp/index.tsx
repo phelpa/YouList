@@ -30,6 +30,7 @@ const SignUp = () => {
       email: '',
       password: '',
     },
+    removeEmptySpace: true,
     onSubmit,
   })
 
