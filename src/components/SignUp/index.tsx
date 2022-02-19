@@ -7,11 +7,17 @@ import { ISignUp } from 'interfaces/IAuthentication'
 import { AuthError } from 'constants/authErrors'
 import styles from './styles.module.css'
 import PasswordRecovery from './PasswordRecovery'
+import useYupFieldValidator from 'hooks/useYupFieldValidator'
+
+import { ValidationData, ValidationPassword } from './ValidationData'
 
 const SignUp = () => {
   const [error, setError] = useState('')
 
   const onSubmit = async ({ name, email, password }: ISignUp) => {
+    if (passwordErrors.length) {
+      return
+    }
     const userPayload = {
       name,
       email,
@@ -30,9 +36,17 @@ const SignUp = () => {
       email: '',
       password: '',
     },
+    validateOnChange: false,
+    validateOnBlur: false,
+    validationSchema: ValidationData,
     removeEmptySpace: true,
     onSubmit,
   })
+
+  const passwordErrors = useYupFieldValidator(
+    ValidationPassword,
+    formik.values.password
+  )
 
   return (
     <div className={styles.login}>
@@ -47,9 +61,15 @@ const SignUp = () => {
           <MyForm context={formik}>
             <MyFormikField name="name" label="Name" />
             <MyFormikField name="email" label="Email" />
-            <MyFormikField name="password" label="Password" />
-            <MyFormikField name="confirm_password" label="Confirm Password" />
-
+            <MyFormikField name="password" label="Password" type="password" />
+            <MyFormikField
+              name="confirm_password"
+              label="Confirm Password"
+              type="password"
+            />
+            {passwordErrors.map((error) => (
+              <div className={styles.passwordError}>{error}</div>
+            ))}
             <div className={styles.end}>
               <MyButton
                 color="primary"
