@@ -71,6 +71,7 @@ export class AuthenticationActions {
       token,
       new_password,
     })
+    history.push('')
   }
 
   public async logout(): Promise<void> {

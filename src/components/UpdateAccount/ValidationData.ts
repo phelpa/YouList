@@ -10,13 +10,7 @@ export const ValidationPassword = Yup.string()
   .nullable()
 
 export const ValidationData = Yup.object().shape({
-  name: Yup.string()
+  confirm_new_password: Yup.string()
     .required('Required Field')
-    .min(5, 'Must have more than 5 letters'),
-
-  email: Yup.string().email().required('Required Field'),
-
-  confirm_password: Yup.string()
-    .required('Required Field')
-    .oneOf([Yup.ref('password'), null], "Passwords doesn't match"),
+    .oneOf([Yup.ref('new_password'), null], "Passwords doesn't match"),
 })

@@ -3,8 +3,11 @@ import React, { useState, useEffect } from 'react'
 import { MyForm, MyFormikField, MyButton } from 'adapters'
 import useMyFormik from 'hooks/useMyFormik'
 import authenticationActions from 'services/authentication/actions'
-import { IUpdateAccount, IUpdateAccountForm } from 'interfaces/IAuthentication'
+import { IUpdateAccountForm } from 'interfaces/IAuthentication'
 import styles from './styles.module.css'
+import useYupFieldValidator from 'hooks/useYupFieldValidator'
+
+import { ValidationData, ValidationPassword } from './ValidationData'
 
 const UpdateAccount = () => {
   const [token, setToken] = useState('')
@@ -16,6 +19,9 @@ const UpdateAccount = () => {
   }
 
   const onSubmit = async ({ new_password }) => {
+    if (passwordErrors.length) {
+      return
+    }
     await authenticationActions.updateAccount(token, new_password)
   }
 
@@ -24,9 +30,14 @@ const UpdateAccount = () => {
       new_password: '',
       confirm_new_password: '',
     },
+    validationSchema: ValidationData,
     onSubmit,
   })
 
+  const passwordErrors = useYupFieldValidator(
+    ValidationPassword,
+    formik.values.new_password
+  )
   useEffect(() => {
     getToken()
   }, [])
@@ -42,12 +53,21 @@ const UpdateAccount = () => {
         <div className={styles.borderform}>
           <div className={styles.title}></div>
           <MyForm context={formik}>
-            <MyFormikField name="new_password" label="New Password" />
+            <MyFormikField
+              name="new_password"
+              label="New Password"
+              type="password"
+            />
             <MyFormikField
               name="confirm_new_password"
               label="Confirm New Password"
+              type="password"
             />
-
+            {passwordErrors.map((error) => (
+              <div key={error} className={styles.passwordError}>
+                {error}
+              </div>
+            ))}
             <div className={styles.end}>
               <MyButton
                 color="primary"
