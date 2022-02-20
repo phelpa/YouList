@@ -6,6 +6,7 @@ import authenticationActions from 'services/authentication/actions'
 import { IUpdateAccountForm } from 'interfaces/IAuthentication'
 import styles from './styles.module.css'
 import useYupFieldValidator from 'hooks/useYupFieldValidator'
+import history from 'CreateHistory'
 
 import { ValidationData, ValidationPassword } from './ValidationData'
 
@@ -15,6 +16,11 @@ const UpdateAccount = () => {
   const getToken = async () => {
     const params = new URL(window.location.href.replace(/#/g, '?'))
     const accessToken = params.searchParams.get('access_token')
+
+    if (!accessToken) {
+      history.push('')
+    }
+
     setToken(accessToken as string)
   }
 

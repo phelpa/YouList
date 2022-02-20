@@ -8,7 +8,7 @@ const LoginVideoPage = () => {
   return (
     <div className={`flex_wrap justify_center ${styles.video_player}`}>
       <>
-        <VideoPlayer youtubeId={'T_lC2O1oIew'} />
+        <VideoPlayer youtubeId={'kBdfcR-8hEY'} />
         <Annotations />
       </>
     </div>

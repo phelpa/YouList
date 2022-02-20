@@ -68,7 +68,9 @@ const SignUp = () => {
               type="password"
             />
             {passwordErrors.map((error) => (
-              <div className={styles.passwordError}>{error}</div>
+              <div key={error} className={styles.passwordError}>
+                {error}
+              </div>
             ))}
             <div className={styles.end}>
               <MyButton

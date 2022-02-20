@@ -22,6 +22,7 @@ const Annotations = () => {
   const videoId = params?.videoId
   const [annotations, setAnnotations] = useState<IAddAnnotation[]>([
     { video_id: videoId, text: 'Click to move to this time', videotime: 200 },
+    { video_id: videoId, text: 'Great question', videotime: 500 },
   ])
 
   const { changePageEventBefore, perPage, arrayPage } = usePagination(10)
@@ -34,7 +35,11 @@ const Annotations = () => {
       videotime: presentTime,
     }
 
-    setAnnotations([...annotations, annotation])
+    const sortedAnnotations = [...annotations, annotation].sort(
+      (a, b) => a.videotime - b.videotime
+    )
+
+    setAnnotations(sortedAnnotations)
     formik.setFieldValue('annotation', '')
   }
 

@@ -11,7 +11,7 @@ class AuthStorage {
   getUser(): Object | null {
     const userDataInString = localStorage.getItem('user_data')
 
-    if (userDataInString) {
+    if (userDataInString && userDataInString !== 'undefined') {
       return JSON.parse(userDataInString)
     }
 

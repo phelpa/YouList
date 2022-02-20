@@ -38,13 +38,13 @@ const Login = () => {
         </div>
         <MyForm context={formik}>
           <MyFormikField name="email" label="Email" />
-          <MyFormikField name="password" label="Password" />
+          <MyFormikField name="password" label="Password" type="password" />
           <div className={styles.belowPassword}>
             <div className={styles.hoverPointer} onClick={openModal}>
               Forgot Password?
             </div>
             <div className={styles.hoverPointer} onClick={onRegisterClick}>
-              Not an member? Register now
+              Not a member? Register now
             </div>
           </div>
           <div className={styles.end}>
