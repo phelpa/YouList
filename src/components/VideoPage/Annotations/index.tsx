@@ -17,6 +17,7 @@ import { IAnnotationForm, IAnnotation } from '../../../interfaces/IAnnotation'
 import annotationsActions from '../../../services/annotations/actions'
 import { annotationsSelector } from '../../../services/annotations/slice'
 import styles from './styles.module.css'
+import MyCircularProgress from 'adapters/MyCircularProgress'
 
 const Annotations = () => {
   const params = useParams()
@@ -83,7 +84,7 @@ const Annotations = () => {
 
   return (
     <>
-      {loading && <div>Loading...</div>}
+      {loading && <MyCircularProgress />}
       {!loading && (
         <article className={styles.annotations}>
           <div className={styles.content}>

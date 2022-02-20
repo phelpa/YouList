@@ -8,6 +8,7 @@ import MyFormikField from './MyFormikField'
 import MyIcon from './MyIcon'
 import MyInputAdornment from './MyInputAdornment'
 import MyPagination from './MyPagination'
+import MyCircularProgress from './MyCircularProgress'
 
 export {
   MyButton,
@@ -20,4 +21,5 @@ export {
   MyInputAdornment,
   MyPagination,
   MyIcon,
+  MyCircularProgress,
 }

@@ -10,6 +10,7 @@ import { videosSelector } from '../../services/videos/slice'
 import ActionIcon from '../Shared/ActionIcon'
 import CreateVideoModal from './CreateVideoModal'
 import Video from './Video'
+import MyCircularProgress from 'adapters/MyCircularProgress'
 
 const VideoGrid = () => {
   const [isOpen, openModal, closeModal] = useModal()
@@ -20,7 +21,7 @@ const VideoGrid = () => {
 
   return (
     <div className="flex_wrap">
-      {loading && <div>Loading...</div>}
+      {loading && <MyCircularProgress marginLeftAuto />}
       {videos?.map((video) => (
         <Video key={video.id} video={video} />
       ))}

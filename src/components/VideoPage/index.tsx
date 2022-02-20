@@ -9,6 +9,7 @@ import { videoSelector } from '../../services/video/slice'
 import Annotations from './Annotations'
 import styles from './styles.module.css'
 import VideoPlayer from './VideoPlayer'
+import MyCircularProgress from 'adapters/MyCircularProgress'
 
 const VideoPage = () => {
   const params = useParams()
@@ -18,7 +19,7 @@ const VideoPage = () => {
 
   return (
     <div className={`flex_wrap justify_center ${styles.video_player}`}>
-      {loading && <div>Loading...</div>}
+      {loading && <MyCircularProgress />}
       {video?.youtube_id && (
         <>
           <VideoPlayer youtubeId={video.youtube_id} />

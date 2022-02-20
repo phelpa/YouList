@@ -11,6 +11,7 @@ import ActionIcon from '../Shared/ActionIcon'
 import CreateListModal from './CreateListModal'
 import List from './List'
 import authStorage from 'helpers/authStorage'
+import MyCircularProgress from 'adapters/MyCircularProgress'
 
 const ListGrid = () => {
   const [isOpen, openModal, closeModal] = useModal()
@@ -24,7 +25,7 @@ const ListGrid = () => {
   return (
     <div className="w_100">
       <div className="flex_wrap">
-        {loading && <div>Loading...</div>}
+        {loading && <MyCircularProgress marginLeftAuto />}
         {!loading &&
           lists?.map((list: IList) => <List key={list.id} list={list} />)}
         <ActionIcon
