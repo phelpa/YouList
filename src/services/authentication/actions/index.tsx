@@ -35,18 +35,28 @@ export class AuthenticationActions {
     }
   }
 
-  public async signIn(userData: ILogin): Promise<void> {
-    const { user } = await httpClient.post<ILoginResponse>(
-      `${baseService}/sign_in`,
-      userData
-    )
-    authStorage.setUser({
-      id: user.id,
-      accessToken: user.token,
-      email: user.email,
-    })
+  public async signIn(userData: ILogin): Promise<any> {
+    try {
+      const { user } = await httpClient.post<ILoginResponse>(
+        `${baseService}/sign_in`,
+        userData
+      )
+      authStorage.setUser({
+        id: user.id,
+        accessToken: user.token,
+        email: user.email,
+      })
 
-    history.push('')
+      history.push('')
+    } catch (e: any) {
+      return this.handleSignInError(e)
+    }
+  }
+
+  private handleSignInError(e) {
+    if (e?.response?.data?.error?.id) {
+      return { error: e.response.data.error.id }
+    }
   }
 
   public async validateToken(accessToken: string): Promise<void> {

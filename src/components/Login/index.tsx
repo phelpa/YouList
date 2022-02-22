@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { MyForm, MyFormikField, MyButton } from 'adapters'
 import useMyFormik from '../../hooks/useMyFormik'
@@ -8,12 +8,19 @@ import styles from './styles.module.css'
 import useModal from 'hooks/useModal'
 import PasswordRecovery from 'components/Login/PasswordRecovery'
 import history from 'CreateHistory'
+import { AuthError } from 'constants/authErrors'
 
 const Login = () => {
   const [isOpen, openModal, closeModal] = useModal()
+  const [error, setError] = useState('')
 
   const onSubmit = async (values) => {
-    await authenticationsActions.signIn(values)
+    setError('')
+    const { error } = await authenticationsActions.signIn(values)
+
+    if (error) {
+      setError(error)
+    }
   }
 
   const onRegisterClick = () => {
@@ -39,6 +46,9 @@ const Login = () => {
         <MyForm context={formik}>
           <MyFormikField name="email" label="Email" />
           <MyFormikField name="password" label="Password" type="password" />
+          {error === AuthError.InvalidCredentials && (
+            <div className={styles.passwordError}>Invalid Credentials </div>
+          )}
           <div className={styles.belowPassword}>
             <div className={styles.hoverPointer} onClick={openModal}>
               Forgot Password?
@@ -47,6 +57,7 @@ const Login = () => {
               Not a member? Register now
             </div>
           </div>
+
           <div className={styles.end}>
             <MyButton
               color="primary"

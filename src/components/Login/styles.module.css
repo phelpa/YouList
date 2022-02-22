@@ -57,3 +57,8 @@
   color: white !important;
   margin-bottom: 1rem !important;
 }
+
+.passwordError {
+  color: #f44336;
+  padding-bottom: 1rem;
+}
