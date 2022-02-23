@@ -44,9 +44,10 @@
     "typescript-plugin-css-modules": "^3.4.0"
   },
   "scripts": {
-    "react-scripts-start": "react-scripts start",
-    "start": "vite --host",
-    "build": "tsc && vite build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "start-vite": "vite --host",
+    "build-vite": "tsc && vite build",
     "preview": "vite preview"
   },
   "eslintConfig": {
