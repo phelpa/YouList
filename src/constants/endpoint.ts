@@ -1,4 +1,4 @@
-export const baseUrl = 'http://youlist-api.herokuapp.com/api'
+export const baseUrl = 'https://youlist-api.herokuapp.com/api'
 
 export const baseService = `${baseUrl}`
 
